@@ -30,7 +30,7 @@ Supporting a new function will require 3 steps (matching the three directories: 
 1. Create `Render<function name>` in `rendering/functions/<function_name>.dart`.
    Extend `RenderNode` this time; you need to override `configure` for sizing and `render`.
 
-Please use the [pull request template for new functions][new function template]. To use it, you need to either manually insert the branches to compare or you can simply append `?template=new_function.md` to the URL after selecting the branches to compares.
+Please use the [pull request template for new functions][new function template]. To use it, you need to either manually insert the branches to compare or you can simply append `?template=new_function.md` to the URL after selecting the branches to compare.
    
 ### Adding new symbols
 
