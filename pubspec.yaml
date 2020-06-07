@@ -1,8 +1,7 @@
 name: catex
 description: A package that allows to draw TeX equations inline as a widget using only Flutter.
 version: 0.0.1
-author: creativecreatorormaybenot <creativecreatorormaybenot@gmail.com>
-homepage: # todo
+homepage: https://github.com/simpleclub/CaTeX
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

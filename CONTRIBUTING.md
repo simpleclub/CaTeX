@@ -30,7 +30,8 @@ Supporting a new function will require 3 steps (matching the three directories: 
 1. Create `Render<function name>` in `rendering/functions/<function_name>.dart`.
    Extend `RenderNode` this time; you need to override `configure` for sizing and `render`.
 
-Please use the [pull request template for new functions][new function template]. To use it, you need to either manually insert the branches to compare or you can simply append `?template=new_function.md` to the URL after selecting the branches to compare.
+Please use the [pull request template for new functions][new function template]. 
+To use it, you need to either manually insert the branches to compare or you can simply append `?template=new_function.md` to the URL after selecting the branches to compare.
    
 ### Adding new symbols
 
@@ -41,14 +42,11 @@ The file contains a link which has way more symbols predefined than currently su
 
 ### Fork the CaTeX repository
 
-* Ensure you have configured an SSH key with GitHub; see [GitHub's directions](https://help.github.com/articles/generating-ssh-keys/).
+* Ensure you have configured an SSH key with GitHub; see [GitHub's directions][ssh key].
 * Fork [this repository][repo] using the "Fork" button in the upper right corner of the GitHub page.
 * Clone the forked repo: `git clone git@github.com:<your_github_user_name>/CaTeX.git`
 * Navigate into the project: `cd CaTeX`
-
-[//]: # (todo replace with correct link)
-
-* Add this repo as a remote repository: `git remote add upstream git@github.com:creativecreatorormaybenot/CaTeX.git`
+* Add this repo as a remote repository: `git remote add upstream git@github.com:simpleclub/CaTeX.git`
    
 ### Create pull requests
 
@@ -64,9 +62,9 @@ The file contains a link which has way more symbols predefined than currently su
 * Commit your changes: `git commit -am "<commit_message>"`
 * Push your changes: `git push origin <name_of_your_branch>`
 
-After having followed these steps, you are ready to [create a pull request](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork).  
+After having followed these steps, you are ready to [create a pull request][create pr].  
 The GitHub interface makes this very easy by providing a button on your fork page that creates a pull request with changes from a recently pushed to branch.  
-Alternatively, you can also use `git pull-request` via [GitHub hub](https://hub.github.com/).
+Alternatively, you can also use `git pull-request` via [GitHub hub][].
 
 ## Notes
 
@@ -75,9 +73,12 @@ Alternatively, you can also use `git pull-request` via [GitHub hub](https://hub.
 * Adhere to the lints, i.e. the warnings provided by Dart's linter based on the repo's lint rules.  
   Run `flutter analyze` in order to ensure that you are not missing any warnings or errors.
 
-[//]: # (todo replace these links with the correct url)
+[//]: # (a list of all links used in this document)
 
-[repo]: https://github.com/creativecreatorormaybenot/CaTeX
-[pubspec]: https://github.com/creativecreatorormaybenot/CaTeX/blob/master/pubspec.yaml
-[changelog]: https://github.com/creativecreatorormaybenot/CaTeX/blob/master/CHANGELOG.md
+[repo]: https://github.com/simpleclub/CaTeX
+[pubspec]: https://github.com/simpleclub/CaTeX/blob/master/pubspec.yaml
+[changelog]: https://github.com/simpleclub/CaTeX/blob/master/CHANGELOG.md
 [new function template]: https://github.com/simpleclub/CaTeX/compare?template=new_function.md
+[create pr]: https://help.github.com/en/articles/creating-a-pull-request-from-a-fork
+[GitHub hub]: https://hub.github.com/
+[ssh key]: https://help.github.com/articles/generating-ssh-keys/

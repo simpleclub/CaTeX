@@ -54,13 +54,13 @@ This should give a rough feeling for what is most commonly used. A CSV file with
 
 If you find something that is fundamentally flawed, please propose a better solution - we are open to complete revamps.
 
-[//]: # (todo replace relative paths once published)
+[//]: # (a list of all links used in this document)
 
 [logo]: https://i.imgur.com/6DvWz3S.png
-[example]: ./example/README.md
-[categories]: ./lib/src/lookup/characters.dart
-[license]: ./LICENSE
-[contributing]: ./CONTRIBUTING.md
+[example]: https://github.com/simpleclub/CaTeX/blob/master/example/README.md
+[categories]: https://github.com/simpleclub/CaTeX/blob/master/lib/src/lookup/characters.dart
+[license]: https://github.com/simpleclub/CaTeX/blob/master/LICENSE
+[contributing]: https://github.com/simpleclub/CaTeX/blob/master/CONTRIBUTING.md
 [TeXbook]: http://www.ctex.org/documents/shredder/src/texbook.pdf
 [TeX by Topic]: http://texdoc.net/texmf-dist/doc/plain/texbytopic/TeXbyTopic.pdf
 [KaTeX GitHub]: https://github.com/KaTeX/KaTeX
