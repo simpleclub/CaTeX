@@ -1,12 +1,3 @@
----
-name: New CaTeX function 🚀
-about: Template for adding a TeX function to CaTeX.
-title: '[function]'
-labels: 'enhancement'
-assignees: ''
-
----
-
 # New function
 
 <!-- Describe the addition here. 
