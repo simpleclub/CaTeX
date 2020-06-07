@@ -29,6 +29,8 @@ Supporting a new function will require 3 steps (matching the three directories: 
    In this step, you will also have to specify the number of `arguments` and the `greediness` value.
 1. Create `Render<function name>` in `rendering/functions/<function_name>.dart`.
    Extend `RenderNode` this time; you need to override `configure` for sizing and `render`.
+
+Please use the [pull request template for new functions][new function template]. To use it, you need to either manually insert the branches to compare or you can simply append `?template=new_function.md` to the URL after selecting the branches to compares.
    
 ### Adding new symbols
 
@@ -78,3 +80,4 @@ Alternatively, you can also use `git pull-request` via [GitHub hub](https://hub.
 [repo]: https://github.com/creativecreatorormaybenot/CaTeX
 [pubspec]: https://github.com/creativecreatorormaybenot/CaTeX/blob/master/pubspec.yaml
 [changelog]: https://github.com/creativecreatorormaybenot/CaTeX/blob/master/CHANGELOG.md
+[new function template]: https://github.com/simpleclub/CaTeX/compare?template=new_function.md
