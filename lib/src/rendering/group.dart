@@ -40,8 +40,9 @@ class RenderGroup extends RenderNode {
               (height - size.height) / 2,
           dyShifted = dy + _subSupAddend(child);
 
-      // Symbols can cause extra spacing and interact with characters in that way.
-      double symbolSpacing = 0;
+      // Symbols can cause extra spacing and
+      // interact with characters in that way.
+      var symbolSpacing = .0;
       if (previousChild != null) {
         symbolSpacing = pixelSpacingFromCharacters(
           previous: previousChild.context.input,

@@ -10,6 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # The direct meta dependency is used only for tooling purposes.
+  # Meta is included in the Flutter SDK by default as a transitive dependency anyway.
+  meta: any
+
 dev_dependencies:
   pedantic: ^1.8.0 # https://pub.dev/packages/pedantic
 

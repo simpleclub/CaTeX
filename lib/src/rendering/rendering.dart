@@ -242,9 +242,10 @@ class RenderTree extends RenderBox with RenderObjectWithChildMixin<RenderNode> {
   }
 
   FlutterError _exception(String constraint) => FlutterError(RenderingException(
-          reason:
-              'Tree exceeds the $constraint constraint; the output will be clipped, '
-              'consider providing a larger $constraint for CaTeX to take up or decreasing the context size',
+          reason: 'Tree exceeds the $constraint constraint; '
+              'the output will be clipped, '
+              'consider providing a larger $constraint '
+              'for CaTeX to take up or decreasing the context size',
           input: child.context.input)
       .message);
 

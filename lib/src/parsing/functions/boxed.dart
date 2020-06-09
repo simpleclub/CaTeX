@@ -11,6 +11,7 @@ class BoxedNode extends SingleChildNode<RenderBoxed> with FunctionNode {
   FunctionProperties get properties =>
       const FunctionProperties(arguments: 1, greediness: 1);
 
+  @override
   NodeWidget<RenderBoxed> configureWidget(CaTeXContext context) {
     super.configureWidget(context);
 

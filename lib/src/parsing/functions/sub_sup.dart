@@ -21,7 +21,8 @@ class SubSupNode extends SingleChildNode<RenderSubSup>
       createRenderNode,
       children: [
         child.createWidget(context.copyWith(
-          // todo: properly determine size reduction (some systems are already partially setup but unsupported).
+          // todo: properly determine size reduction
+          // (some systems are already partially setup but unsupported).
           textSize: context.textSize * .6,
         )),
       ],

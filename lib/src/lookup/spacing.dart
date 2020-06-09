@@ -1,5 +1,6 @@
 import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/lookup/symbols.dart';
+import 'package:meta/meta.dart';
 
 import 'generated/symbols.g.dart';
 
@@ -8,8 +9,11 @@ import 'generated/symbols.g.dart';
 ///
 /// This function also accepts inputs for [previous] and [current] that are not
 /// single characters. For example, functions are treated as [_Spacing.ord]s.
-double pixelSpacingFromCharacters(
-    {String previous, String current, double fontSize}) {
+double pixelSpacingFromCharacters({
+  @required String previous,
+  @required String current,
+  @required double fontSize,
+}) {
   assert(previous != null);
   assert(current != null);
   assert(fontSize != null);
