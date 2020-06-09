@@ -9,7 +9,8 @@ class SqrtNode extends SingleChildNode with FunctionNode {
   SqrtNode(ParsingContext context) : super(context);
 
   @override
-  FunctionProperties get properties => const FunctionProperties(arguments: 1, greediness: 1);
+  FunctionProperties get properties =>
+      const FunctionProperties(arguments: 1, greediness: 1);
 
   @override
   NodeWidget configureWidget(CaTeXContext context) {

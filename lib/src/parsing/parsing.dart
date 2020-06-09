@@ -111,7 +111,8 @@ class Parser {
               return _parse();
             }
 
-            if (_charIs(CharacterCategory.subscript) || _charIs(CharacterCategory.superscript)) {
+            if (_charIs(CharacterCategory.subscript) ||
+                _charIs(CharacterCategory.superscript)) {
               // These are also implemented as function, however, they need special consideration
               // here because they do not start with an escape character.
               _consumeChar();
@@ -126,7 +127,9 @@ class Parser {
               // End of group should never appear here for a valid input.
               // It is either handled in _extractGroup or in a different token mode.
               throw ParsingException(
-                  reason: 'Found unescaped end of group character without an open group at position $_index', input: _context.input);
+                  reason:
+                      'Found unescaped end of group character without an open group at position $_index',
+                  input: _context.input);
             }
             if (_charIs(CharacterCategory.beginningOfGroup)) {
               // Add what comes after the beginning of group character
@@ -152,7 +155,9 @@ class Parser {
           case _Token.controlSymbol:
             if (_input.isEmpty) {
               throw ParsingException(
-                  reason: 'Expected at least one character after escape character at position $_index', input: _context.input);
+                  reason:
+                      'Expected at least one character after escape character at position $_index',
+                  input: _context.input);
             }
             if (_charIs(CharacterCategory.letter)) {
               // Letters after an escape character are handled as a control word.
@@ -289,7 +294,10 @@ class Parser {
     }
 
     if (openGroups > 0) {
-      throw ParsingException(reason: 'Expected } after the group was opened at position $beginning', input: _context.input);
+      throw ParsingException(
+          reason:
+              'Expected } after the group was opened at position $beginning',
+          input: _context.input);
     }
 
     final groupParser = Parser._(_consumeToken());
@@ -323,14 +331,17 @@ class Parser {
     if (functions.isEmpty) return;
 
     // The function nodes with the highest greediness should be assembled first.
-    functions.sort((a, b) => b.properties.greediness.compareTo(a.properties.greediness));
+    functions.sort(
+        (a, b) => b.properties.greediness.compareTo(a.properties.greediness));
 
     for (final function in functions) {
-      final index = nodes.indexOf(function), arguments = function.properties.arguments;
+      final index = nodes.indexOf(function),
+          arguments = function.properties.arguments;
 
       if (index + arguments >= nodes.length) {
         throw ParsingException(
-            reason: 'Missing arguments for ${function.context.input}; expected $arguments but got ${nodes.length - index - 1}',
+            reason:
+                'Missing arguments for ${function.context.input}; expected $arguments but got ${nodes.length - index - 1}',
             input: _context.input);
       }
 
@@ -362,7 +373,8 @@ class Parser {
     children.replaceRange(
       0,
       children.length,
-      children.fold<List<ParsingNode>>(<ParsingNode>[], (previousValue, element) {
+      children.fold<List<ParsingNode>>(<ParsingNode>[],
+          (previousValue, element) {
         if (element is GroupNode) {
           previousValue.addAll(element.children);
         } else {
@@ -444,7 +456,8 @@ abstract class ParsingNode<R extends RenderNode> {
   NodeWidget createWidget(CaTeXContext context) {
     // Adjusts the input based on the parsing context.
     final result = configureWidget(context.copyWith(input: this.context.input));
-    assert(result != null, 'Override configureWidget and return a widget for a node.');
+    assert(result != null,
+        'Override configureWidget and return a widget for a node.');
     return result;
   }
 

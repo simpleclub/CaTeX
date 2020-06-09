@@ -60,7 +60,8 @@ class RenderGroup extends RenderNode {
         if (CharacterCategory.superscript.matches(child.context.input)) {
           subSupTopOverflow = max(subSupTopOverflow, -dyShifted);
         } else {
-          subSupBottomOverflow = max(subSupBottomOverflow, (dyShifted + size.height) - height);
+          subSupBottomOverflow =
+              max(subSupBottomOverflow, (dyShifted + size.height) - height);
         }
       }
 
@@ -71,7 +72,8 @@ class RenderGroup extends RenderNode {
     // down by that overflow again.
     if (subSupTopOverflow > 0) {
       for (final child in children) {
-        child.positionNode(child.parentData.offset + Offset(0, subSupTopOverflow));
+        child.positionNode(
+            child.parentData.offset + Offset(0, subSupTopOverflow));
       }
     }
 

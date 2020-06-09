@@ -8,7 +8,8 @@ class BoxedNode extends SingleChildNode<RenderBoxed> with FunctionNode {
   BoxedNode(ParsingContext context) : super(context);
 
   @override
-  FunctionProperties get properties => const FunctionProperties(arguments: 1, greediness: 1);
+  FunctionProperties get properties =>
+      const FunctionProperties(arguments: 1, greediness: 1);
 
   NodeWidget<RenderBoxed> configureWidget(CaTeXContext context) {
     super.configureWidget(context);

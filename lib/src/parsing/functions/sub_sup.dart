@@ -4,11 +4,13 @@ import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/functions/sub_sup.dart';
 import 'package:catex/src/widgets.dart';
 
-class SubSupNode extends SingleChildNode<RenderSubSup> with FunctionNode<RenderSubSup> {
+class SubSupNode extends SingleChildNode<RenderSubSup>
+    with FunctionNode<RenderSubSup> {
   SubSupNode(ParsingContext context) : super(context);
 
   @override
-  FunctionProperties get properties => const FunctionProperties(arguments: 1, greediness: 1);
+  FunctionProperties get properties =>
+      const FunctionProperties(arguments: 1, greediness: 1);
 
   @override
   NodeWidget<RenderSubSup> configureWidget(CaTeXContext context) {

@@ -50,7 +50,9 @@ class _CaTeXState extends State<CaTeX> {
   void _parse() {
     _exception = null;
     try {
-      _rootNode = Parser(widget.input, mode: startParsingMode).parse().createWidget(defaultCaTeXContext);
+      _rootNode = Parser(widget.input, mode: startParsingMode)
+          .parse()
+          .createWidget(defaultCaTeXContext);
     } on CaTeXException catch (e) {
       _exception = e;
     }

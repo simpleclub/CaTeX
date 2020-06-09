@@ -7,11 +7,13 @@ import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/functions/font.dart';
 import 'package:catex/src/widgets.dart';
 
-class FontNode extends SingleChildNode<RenderFont> implements FunctionNode<RenderFont> {
+class FontNode extends SingleChildNode<RenderFont>
+    implements FunctionNode<RenderFont> {
   FontNode(ParsingContext context) : super(context);
 
   @override
-  FunctionProperties get properties => const FunctionProperties(arguments: 1, greediness: 1);
+  FunctionProperties get properties =>
+      const FunctionProperties(arguments: 1, greediness: 1);
 
   @override
   NodeWidget<RenderFont> configureWidget(CaTeXContext context) {

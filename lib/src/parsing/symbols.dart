@@ -27,13 +27,18 @@ class SymbolNode extends LeafNode<RenderSymbol> {
     final symbol = symbols[_context.mode][context.input];
 
     if (symbol == null) {
-      throw ConfigurationException(reason: 'Unknown symbol in ${_context.mode}', input: context.input);
+      throw ConfigurationException(
+          reason: 'Unknown symbol in ${_context.mode}', input: context.input);
     }
 
     return RenderSymbol(
       context.copyWith(
-          fontFamily:
-              (symbol.font == SymbolFont.ams ? CaTeXFont.ams : _context.mode == CaTeXMode.math ? CaTeXFont.math : CaTeXFont.main).family),
+          fontFamily: (symbol.font == SymbolFont.ams
+                  ? CaTeXFont.ams
+                  : _context.mode == CaTeXMode.math
+                      ? CaTeXFont.math
+                      : CaTeXFont.main)
+              .family),
       data: symbol,
     );
   }

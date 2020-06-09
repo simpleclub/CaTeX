@@ -10,7 +10,8 @@ class ColorBoxNode extends MultiChildNode<RenderColorBox> with FunctionNode {
   ColorBoxNode(ParsingContext context) : super(context);
 
   @override
-  FunctionProperties get properties => const FunctionProperties(arguments: 2, greediness: 1);
+  FunctionProperties get properties =>
+      const FunctionProperties(arguments: 2, greediness: 1);
 
   @override
   NodeWidget<RenderColorBox> configureWidget(CaTeXContext context) {

@@ -13,7 +13,8 @@ class ColorNode extends MultiChildNode<RenderColor> with FunctionNode {
   ColorNode(ParsingContext context) : super(context);
 
   @override
-  FunctionProperties get properties => const FunctionProperties(arguments: 2, greediness: 1);
+  FunctionProperties get properties =>
+      const FunctionProperties(arguments: 2, greediness: 1);
 
   @override
   NodeWidget<RenderColor> configureWidget(CaTeXContext context) {
@@ -46,9 +47,11 @@ Color colorFromChildNode(ParsingNode child, {@required CaTeXContext context}) {
   assert(child != null);
   assert(context != null);
 
-  final colorString = child.context.input.trim(), color = supportedColors[colorString];
+  final colorString = child.context.input.trim(),
+      color = supportedColors[colorString];
   if (color == null) {
-    throw ConfigurationException(reason: 'Unknwon color: $colorString', input: context.input);
+    throw ConfigurationException(
+        reason: 'Unknwon color: $colorString', input: context.input);
   }
   return color;
 }

@@ -46,25 +46,25 @@ void main(List<String> args) async {
       defineSymbol =
           (String mode, String font, String group, String unicode, String name,
               [bool createUnicodeEntry = false]) {
-    assert(
-        mode?.isNotEmpty == true &&
-            font?.isNotEmpty == true &&
-            group?.isNotEmpty == true &&
-            (unicode == null || unicode?.isNotEmpty == true) &&
-            name?.isNotEmpty == true &&
-            createUnicodeEntry != null,
-        'Input `defineSymbol($mode, $font, $group, $unicode, $name` is invalid.');
+        assert(
+            mode?.isNotEmpty == true &&
+                font?.isNotEmpty == true &&
+                group?.isNotEmpty == true &&
+                (unicode == null || unicode?.isNotEmpty == true) &&
+                name?.isNotEmpty == true &&
+                createUnicodeEntry != null,
+            'Input `defineSymbol($mode, $font, $group, $unicode, $name` is invalid.');
 
-    (mode == math ? mathSymbols : textSymbols)
-        .add("    ${name.contains("'") ? '"$name"' : "'$name'"}: "
-            "$SymbolData(${unicode != null ? "'$unicode'" : null}, "
-            '$SymbolFont.$font, $SymbolGroup.$group),');
+        (mode == math ? mathSymbols : textSymbols)
+            .add("    ${name.contains("'") ? '"$name"' : "'$name'"}: "
+                "$SymbolData(${unicode != null ? "'$unicode'" : null}, "
+                '$SymbolFont.$font, $SymbolGroup.$group),');
 
-    if (unicode != null && createUnicodeEntry) {
-      (mode == math ? mathSymbols : textSymbols).add(
-          "    '$unicode': $SymbolData('$unicode', $SymbolFont.$font, $SymbolGroup.$group),");
-    }
-  };
+        if (unicode != null && createUnicodeEntry) {
+          (mode == math ? mathSymbols : textSymbols).add(
+              "    '$unicode': $SymbolData('$unicode', $SymbolFont.$font, $SymbolGroup.$group),");
+        }
+      };
 
   /// This is based on https://github.com/KaTeX/KaTeX/blob/c8c7c3954c4c3e2a3e0499a1fd52e9c66e286462/src/symbols.js.
   defineSymbol(math, main, rel, "\\u2261", "\\\\equiv", true);

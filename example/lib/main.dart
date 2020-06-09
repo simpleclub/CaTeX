@@ -63,7 +63,8 @@ class Home extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 16),
         itemBuilder: (context, index) {
           if (index == 0) return const Highlighted(child: TextFieldEquation());
-          return Highlighted(child: ToggleEquation(equations[(index - 1) % equations.length]));
+          return Highlighted(
+              child: ToggleEquation(equations[(index - 1) % equations.length]));
         },
       ),
     );

@@ -56,33 +56,33 @@ const List<CaTeXFunction>
 
     /// CaTeX functions that are available in math mode.
     supportedMathFunctions = [
-  CaTeXFunction.frac,
-  CaTeXFunction.tt,
-  CaTeXFunction.rm,
-  CaTeXFunction.sf,
-  CaTeXFunction.bf,
-  CaTeXFunction.it,
-  CaTeXFunction.cal,
-  CaTeXFunction.color,
-  CaTeXFunction.sub,
-  CaTeXFunction.sup,
-  CaTeXFunction.colorBox,
-  CaTeXFunction.boxed,
-  CaTeXFunction.sqrt,
-],
+      CaTeXFunction.frac,
+      CaTeXFunction.tt,
+      CaTeXFunction.rm,
+      CaTeXFunction.sf,
+      CaTeXFunction.bf,
+      CaTeXFunction.it,
+      CaTeXFunction.cal,
+      CaTeXFunction.color,
+      CaTeXFunction.sub,
+      CaTeXFunction.sup,
+      CaTeXFunction.colorBox,
+      CaTeXFunction.boxed,
+      CaTeXFunction.sqrt,
+    ],
 
     /// CaTeX functions that are available in text mode.
     supportedTextFunctions = [
-  CaTeXFunction.tt,
-  CaTeXFunction.rm,
-  CaTeXFunction.sf,
-  CaTeXFunction.bf,
-  CaTeXFunction.it,
-  CaTeXFunction.cal,
-  CaTeXFunction.color,
-  CaTeXFunction.colorBox,
-  CaTeXFunction.boxed,
-];
+      CaTeXFunction.tt,
+      CaTeXFunction.rm,
+      CaTeXFunction.sf,
+      CaTeXFunction.bf,
+      CaTeXFunction.it,
+      CaTeXFunction.cal,
+      CaTeXFunction.color,
+      CaTeXFunction.colorBox,
+      CaTeXFunction.boxed,
+    ];
 
 /// Looks up the [FunctionNode] subclass for a given input.
 ///
