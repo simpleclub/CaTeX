@@ -4,7 +4,8 @@ version: 0.0.1
 homepage: https://github.com/simpleclub/CaTeX
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  # At most stable constraint as defined at https://dart.dev/get-dart#release-channels.
+  sdk: ">=2.8.4 <3.0.0"
 
 dependencies:
   flutter:

@@ -1,6 +1,6 @@
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/functions.dart';
-import 'package:catex/src/parsing/functions/color.dart';
+import 'package:catex/src/parsing/functions/text_color.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/functions/color_box.dart';
 import 'package:catex/src/widgets.dart';

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-/// Colors supported by CaTeX color functions, e.g. `\color` & `\colorbox`.
+/// Colors supported by CaTeX color functions, e.g. `\textcolor` & `\colorbox`.
 ///
 /// These colors are only for the proof of concept and
 /// definitely not what other TeX implementations support.

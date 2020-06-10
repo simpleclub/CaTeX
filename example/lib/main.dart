@@ -9,18 +9,18 @@ List<String> get equations => [
       r'x_{initial} = \frac {20x} {\frac{15}{3}}',
       r'\colorbox{red}{bunt} \boxed{'
           r'\rm{\sf{\bf{'
-          r'\color{red} s \color{pink}  i \color{purple}m'
-          r'\color{blue}p \color{cyan}  l \color{teal}  e}'
-          r'\color{lime}c \color{yellow}l \color{amber} u \color{orange} b'
+          r'\textcolor{red} s \textcolor{pink}  i \textcolor{purple}m'
+          r'\textcolor{blue}p \textcolor{cyan}  l \textcolor{teal}  e}'
+          r'\textcolor{lime}c \textcolor{yellow}l \textcolor{amber} u \textcolor{orange} b'
           r'}}}',
       r'x_i=a^n',
       r'12^{\frac{\frac{2}{7}}{1}}',
       r'\varepsilon = \frac{\frac{2}{1}}{3}',
       r'\alpha\beta\gamma\delta',
-      r'\colorbox{black}{\color{white} {black} } \colorbox{white}{\color{black} {white} }',
+      r'\colorbox{black}{\textcolor{white} {black} } \colorbox{white}{\textcolor{black} {white} }',
       r'\alpha\ \beta\ \ \gamma\ \ \ \delta',
       r'\epsilon = \frac{2}{3 + 2}',
-      r'\tt {type} \color{teal}{\rm{\tt {writer} }}',
+      r'\tt {type} \textcolor{teal}{\rm{\tt {writer} }}',
       r'l = a * t * e * x',
       r'\rm\tt{sp   a c  i n\ \bf\it g}',
       r'5 = 1 \cdot 5',
@@ -62,9 +62,17 @@ class Home extends StatelessWidget {
       body: ListView.builder(
         padding: const EdgeInsets.only(bottom: 16),
         itemBuilder: (context, index) {
-          if (index == 0) return const Highlighted(child: TextFieldEquation());
+          if (index == 0) {
+            return const Highlighted(
+              child: TextFieldEquation(),
+            );
+          }
+
           return Highlighted(
-              child: ToggleEquation(equations[(index - 1) % equations.length]));
+            child: ToggleEquation(
+              equations[(index - 1) % equations.length],
+            ),
+          );
         },
       ),
     );
@@ -136,13 +144,15 @@ class _ToggleEquationState extends State<ToggleEquation> {
   }
 
   Widget buildEquation(BuildContext context) {
-    if (_showSource)
+    if (_showSource) {
       return Text(
         widget.equation,
         // ignore: deprecated_member_use
         style: Theme.of(context).textTheme.subhead,
         textAlign: TextAlign.center,
       );
+    }
+
     return CaTeX(widget.equation);
   }
 
@@ -174,7 +184,14 @@ class Highlighted extends StatelessWidget {
         color: Colors.grey[800],
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Center(child: child),
+          child: DefaultTextStyle.merge(
+            style: const TextStyle(
+              fontSize: 24,
+            ),
+            child: Center(
+              child: child,
+            ),
+          ),
         ),
       ),
     );

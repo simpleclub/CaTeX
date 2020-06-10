@@ -1,11 +1,11 @@
 import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/parsing/functions/boxed.dart';
-import 'package:catex/src/parsing/functions/color.dart';
 import 'package:catex/src/parsing/functions/color_box.dart';
 import 'package:catex/src/parsing/functions/font.dart';
 import 'package:catex/src/parsing/functions/frac.dart';
 import 'package:catex/src/parsing/functions/sqrt.dart';
 import 'package:catex/src/parsing/functions/sub_sup.dart';
+import 'package:catex/src/parsing/functions/text_color.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:flutter/foundation.dart';
 
@@ -25,7 +25,7 @@ enum CaTeXFunction {
   bf,
   it,
   cal,
-  color,
+  textColor,
   sub,
   sup,
   colorBox,
@@ -44,7 +44,7 @@ const supportedFunctionNames = <String, CaTeXFunction>{
   r'\bf': CaTeXFunction.bf,
   r'\it': CaTeXFunction.it,
   r'\cal': CaTeXFunction.cal,
-  r'\color': CaTeXFunction.color,
+  r'\textcolor': CaTeXFunction.textColor,
   r'_': CaTeXFunction.sub,
   r'^': CaTeXFunction.sup,
   r'\colorbox': CaTeXFunction.colorBox,
@@ -63,7 +63,7 @@ const List<CaTeXFunction>
       CaTeXFunction.bf,
       CaTeXFunction.it,
       CaTeXFunction.cal,
-      CaTeXFunction.color,
+      CaTeXFunction.textColor,
       CaTeXFunction.sub,
       CaTeXFunction.sup,
       CaTeXFunction.colorBox,
@@ -79,7 +79,7 @@ const List<CaTeXFunction>
       CaTeXFunction.bf,
       CaTeXFunction.it,
       CaTeXFunction.cal,
-      CaTeXFunction.color,
+      CaTeXFunction.textColor,
       CaTeXFunction.colorBox,
       CaTeXFunction.boxed,
     ];
@@ -114,8 +114,8 @@ FunctionNode lookupFunction(ParsingContext context) {
     case CaTeXFunction.it:
     case CaTeXFunction.cal:
       return FontNode(context);
-    case CaTeXFunction.color:
-      return ColorNode(context);
+    case CaTeXFunction.textColor:
+      return TextColorNode(context);
     case CaTeXFunction.sub:
     case CaTeXFunction.sup:
       return SubSupNode(context);
