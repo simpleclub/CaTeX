@@ -1,6 +1,6 @@
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/rendering/rendering.dart';
 
-class RenderColor extends RenderNode with SingleChildRenderNodeMixin {
-  RenderColor(CaTeXContext context) : super(context);
+class RenderTextColor extends RenderNode with SingleChildRenderNodeMixin {
+  RenderTextColor(CaTeXContext context) : super(context);
 }

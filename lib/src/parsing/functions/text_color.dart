@@ -9,7 +9,7 @@ import 'package:catex/src/rendering/functions/text_color.dart';
 import 'package:catex/src/widgets.dart';
 import 'package:flutter/foundation.dart';
 
-class TextColorNode extends MultiChildNode<RenderColor> with FunctionNode {
+class TextColorNode extends MultiChildNode<RenderTextColor> with FunctionNode {
   TextColorNode(ParsingContext context) : super(context);
 
   @override
@@ -17,7 +17,7 @@ class TextColorNode extends MultiChildNode<RenderColor> with FunctionNode {
       const FunctionProperties(arguments: 2, greediness: 1);
 
   @override
-  NodeWidget<RenderColor> configureWidget(CaTeXContext context) {
+  NodeWidget<RenderTextColor> configureWidget(CaTeXContext context) {
     super.configureWidget(context);
 
     return NodeWidget(
@@ -34,8 +34,8 @@ class TextColorNode extends MultiChildNode<RenderColor> with FunctionNode {
   }
 
   @override
-  RenderColor createRenderNode(CaTeXContext context) {
-    return RenderColor(context);
+  RenderTextColor createRenderNode(CaTeXContext context) {
+    return RenderTextColor(context);
   }
 }
 
