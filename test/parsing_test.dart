@@ -93,11 +93,11 @@ void main() {
     });
   });
 
-  group(r'\sf{\bf{\color{red}s}}', () {
+  group(r'\sf{\bf{\textcolor{red}s}}', () {
     FontNode rootNode;
 
     test('succeeds with a single node (function) as the root node', () {
-      expect(() => rootNode = Parser(r'\sf{\bf{\color{red}s}}').parse(),
+      expect(() => rootNode = Parser(r'\sf{\bf{\textcolor{red}s}}').parse(),
           returnsNormally);
     });
 

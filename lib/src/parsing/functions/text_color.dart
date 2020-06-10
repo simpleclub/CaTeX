@@ -5,12 +5,12 @@ import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/exception.dart';
 import 'package:catex/src/lookup/functions.dart';
 import 'package:catex/src/parsing/parsing.dart';
-import 'package:catex/src/rendering/functions/color.dart';
+import 'package:catex/src/rendering/functions/text_color.dart';
 import 'package:catex/src/widgets.dart';
 import 'package:flutter/foundation.dart';
 
-class ColorNode extends MultiChildNode<RenderColor> with FunctionNode {
-  ColorNode(ParsingContext context) : super(context);
+class TextColorNode extends MultiChildNode<RenderColor> with FunctionNode {
+  TextColorNode(ParsingContext context) : super(context);
 
   @override
   FunctionProperties get properties =>
@@ -51,7 +51,9 @@ Color colorFromChildNode(ParsingNode child, {@required CaTeXContext context}) {
       color = supportedColors[colorString];
   if (color == null) {
     throw ConfigurationException(
-        reason: 'Unknwon color: $colorString', input: context.input);
+      reason: 'Unknown color: $colorString',
+      input: context.input,
+    );
   }
   return color;
 }
