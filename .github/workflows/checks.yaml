@@ -1,0 +1,79 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+
+jobs:
+  analyze:
+    runs-on: ${{ matrix.os }}
+    name: Analysis & format (${{ matrix.channel }} on ${{ matrix.os }})
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.2.0
+        with:
+          channel: ${{ matrix.channel }}
+      - name: Setup projects (root & example)
+        run: |
+          flutter pub get
+          cd example
+          flutter create .
+          rm -rf test
+          flutter pub get
+          cd ..
+      - name: Check format
+        run: flutter format . --set-exit-if-changed --fix
+      - run: flutter analyze
+
+  test:
+    # Not using the conditional as jobs are not re-run when the draft status changes.
+    #if: github.event.pull_request.draft == false
+    runs-on: ${{ matrix.os }}
+    name: Test (${{ matrix.channel }} on ${{ matrix.os }})
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.2.0
+        with:
+          channel: ${{ matrix.channel }}
+      - name: Setup projects (root & example)
+        run: |
+          flutter pub get
+          cd example
+          flutter create .
+          rm -rf test
+          flutter pub get
+          cd ..
+      - name: Run unit tests
+        run: flutter test
