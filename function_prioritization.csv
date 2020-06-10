@@ -161,7 +161,7 @@ function,supported,frequency
 \r,false,2
 \leftrightharpoons,false,2
 \thickapprox,false,2
-\bf,false,2
+\bf,true,2
 \Z,false,2
 \ge,false,2
 \Q,false,2
@@ -332,7 +332,7 @@ _,false,0
 \bull,false,0
 \Bumpeq,false,0
 \bumpeq,false,0
-\cal,false,0
+\cal,true,0
 \cancel,false,0
 \cancelto,false,0
 \Cap,false,0
@@ -562,7 +562,7 @@ _,false,0
 \Iota,false,0
 \iota,false,0
 \isin,false,0
-\it,false,0
+\it,true,0
 \itshape,false,0
 \j,false,0
 \jmath,false,0
@@ -864,7 +864,7 @@ _,false,0
 \sec,false,0
 \sect,false,0
 \setlength,false,0
-\sf,false,0
+\sf,true,0
 \sharp,false,0
 \shortmid,false,0
 \shortparallel,false,0
@@ -983,7 +983,7 @@ _,false,0
 \triangleq,false,0
 \triangleright,false,0
 \trianglerighteq,false,0
-\tt,false,0
+\tt,true,0
 \twoheadleftarrow,false,0
 \twoheadrightarrow,false,0
 \Uarr,false,0
