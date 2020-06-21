@@ -22,8 +22,8 @@ enum CharacterCategory {
 
 final _matches = <CharacterCategory, RegExp>{
   CharacterCategory.escapeCharacter: RegExp(r'\\'),
-  CharacterCategory.beginningOfGroup: RegExp(r'{'),
-  CharacterCategory.endOfGroup: RegExp(r'}'),
+  CharacterCategory.beginningOfGroup: RegExp('{'),
+  CharacterCategory.endOfGroup: RegExp('}'),
   CharacterCategory.mathShift:
       RegExp(r'\$'), // todo: [mathShift] is unsupported.
   CharacterCategory.alignmentTab: null,
@@ -32,10 +32,10 @@ final _matches = <CharacterCategory, RegExp>{
   CharacterCategory.superscript:
       RegExp(r'\^'), // todo: [superscript] is unsupported.
   CharacterCategory.subscript:
-      RegExp(r'_'), // todo: [subscript] is unsupported.
+      RegExp('_'), // todo: [subscript] is unsupported.
   CharacterCategory.ignoredCharacter: null,
   CharacterCategory.space: RegExp(r'[ \t]'), // todo: [space] is unsupported.
-  CharacterCategory.letter: RegExp(r'[A-Za-z]'),
+  CharacterCategory.letter: RegExp('[A-Za-z]'),
   CharacterCategory.otherCharacter: RegExp(
       r'[^A-Za-z\\{}\^_\$ \t]+'), // This needs to be updated when new categories are supported.
   CharacterCategory.activeCharacter: null,

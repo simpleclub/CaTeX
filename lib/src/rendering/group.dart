@@ -84,7 +84,8 @@ class RenderGroup extends RenderNode {
     );
   }
 
-  // todo: determine shift properly (some system already partially setup but unsupported).
+  // todo: determine shift properly
+  // (some system already partially setup but unsupported).
   static const _supFactor = 0.28, _subFactor = 0.238;
 
   /// Shift the child vertically if it is a [RenderSubSup].

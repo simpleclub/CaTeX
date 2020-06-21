@@ -1,4 +1,5 @@
-/// The 8 different styles (display, text, script, scriptscript, and cramped versions).
+/// The 8 different styles (display, text, script, scriptscript,
+/// and cramped versions).
 ///
 /// See *The TeXbook* from page 140 for the different styles.
 /// The actual names are T', S', etc. for the cramped styles, however,
@@ -7,6 +8,8 @@ enum CaTeXStyle { d, dc, t, tc, s, sc, ss, ssc }
 
 // todo(creativecreatorormaybenot): support this.
 class CaTeXStyleData {
+  // Ignore the warning until this is implemented.
+  // ignore: avoid_positional_boolean_parameters
   const CaTeXStyleData(this.id, this.size, this.cramped);
 
   final int id;
@@ -26,7 +29,7 @@ class CaTeXStyleData {
   CaTeXStyleData get text => styles[_text[id]];
 
   @override
-  bool operator ==(other) {
+  bool operator ==(dynamic other) {
     if (identical(other, this)) return true;
 
     if (other is CaTeXStyleData) {

@@ -17,7 +17,8 @@ class FracNode extends MultiChildNode<RenderFrac>
     super.configureWidget(context);
 
     final childrenContext = context.copyWith(
-      // todo: properly determine size reduction (some systems are already partially setup but unsupported).
+      // todo: properly determine size reduction
+      // (some systems are already partially setup but unsupported).
       textSize: context.textSize * .78,
     );
 

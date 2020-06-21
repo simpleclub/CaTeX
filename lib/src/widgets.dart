@@ -5,6 +5,7 @@ import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/lookup/styles.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/rendering.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 /// The context that will be passed to the root node in [CaTeX].
@@ -52,12 +53,13 @@ class CaTeX extends StatefulWidget {
 }
 
 class _CaTeXState extends State<CaTeX> {
-  Widget _rootNode;
+  NodeWidget _rootNode;
   CaTeXException _exception;
 
   void _parse() {
     _exception = null;
     try {
+      // ignore: avoid_redundant_argument_values
       _rootNode = Parser(widget.input, mode: startParsingMode)
           .parse()
           .createWidget(defaultCaTeXContext.copyWith(
@@ -85,7 +87,9 @@ class _CaTeXState extends State<CaTeX> {
 
   @override
   Widget build(BuildContext context) {
-    if (_exception != null) throw FlutterError(_exception.message);
+    if (_exception != null) {
+      return ErrorWidget(_exception);
+    }
 
     // Rendering a full tree can be expensive and the tree never changes.
     // Because of this, we want to insert a repaint boundary between the
@@ -95,10 +99,12 @@ class _CaTeXState extends State<CaTeX> {
 }
 
 class TreeWidget extends SingleChildRenderObjectWidget {
-  TreeWidget(NodeWidget child)
-      : assert(child != null),
+  TreeWidget(
+    NodeWidget child, {
+    Key key,
+  })  : assert(child != null),
         _context = child.context,
-        super(child: child);
+        super(child: child, key: key);
 
   final CaTeXContext _context;
 

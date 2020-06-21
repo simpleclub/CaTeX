@@ -42,12 +42,12 @@ abstract class RenderNode<P extends NodeParentData> extends RenderBox
   /// Sizes this render node and returns its size.
   ///
   /// This should be used in [configure] when sizing children.
-  /// It calls [RenderBox.layout] with no constraints (see [RenderTree.performLayout])
-  /// and configures the [renderSize].
+  /// It calls [RenderBox.layout] with no constraints
+  /// (see [RenderTree.performLayout]) and configures the [renderSize].
   Size sizeChildNode(RenderNode child) {
     assert(constraints != null, 'Do no call sizeChildNode on a child.');
     child._renderSize = null;
-    child.layout(constraints, parentUsesSize: false);
+    child.layout(constraints);
     return child.renderSize;
   }
 
@@ -56,6 +56,13 @@ abstract class RenderNode<P extends NodeParentData> extends RenderBox
   /// This should be called in [configure] on children to position them.
   void positionNode(Offset offset) {
     parentData.offset = offset;
+
+    // Ignoring use_setters_to_change_properties does not work. Hence,
+    // this unnecessary statement makes the linter think that this method
+    // does more than change the property. The tree shaker will remove it
+    // anyway.
+    // ignore: unnecessary_statements
+    Null;
   }
 
   /// Allows to paint a child node in [render].
@@ -103,7 +110,8 @@ abstract class RenderNode<P extends NodeParentData> extends RenderBox
   @override
   bool get sizedByParent => false;
 
-  /// Absorbs every hit immediately without performing hit detection or handling.
+  /// Absorbs every hit immediately without
+  /// performing hit detection or handling.
   ///
   /// This is because CaTeX does not respond to hit events.
   @override
@@ -154,8 +162,9 @@ abstract class RenderNode<P extends NodeParentData> extends RenderBox
 
 /// Mixin for render nodes that are created from a [SingleChildNode].
 ///
-/// Provides easy access to the [child] and by default also implements [RenderNode.configure]
-/// and [RenderNode.paint] by simply delegating it to the child without modification.
+/// Provides easy access to the [child] and by default also
+/// implements [RenderNode.configure] and [RenderNode.paint] by simply
+/// delegating it to the child without modification.
 mixin SingleChildRenderNodeMixin<P extends NodeParentData> on RenderNode<P> {
   RenderNode get child => children[0];
 
@@ -187,14 +196,16 @@ class NodeParentData extends ContainerBoxParentData<RenderNode> {
   }
 }
 
-/// Renders the node tree, inserting a repaint boundary between the nodes and the
-/// rest of the widget tree and also tells the compositor to cache it.
+/// Renders the node tree, inserting a repaint boundary between the nodes
+/// and the rest of the widget tree and also tells the compositor to cache it.
 class RenderTree extends RenderBox with RenderObjectWithChildMixin<RenderNode> {
   RenderTree(CaTeXContext context)
       : assert(context != null),
         _context = context;
 
   CaTeXContext _context;
+
+  CaTeXContext get context => _context;
 
   set context(CaTeXContext value) {
     if (_context == value) return;
@@ -224,7 +235,7 @@ class RenderTree extends RenderBox with RenderObjectWithChildMixin<RenderNode> {
   bool hitTest(BoxHitTestResult result, {Offset position}) => true;
 
   @override
-  void visitChildrenForSemantics(visitor) {
+  void visitChildrenForSemantics(RenderObjectVisitor visitor) {
     // Do not visit the tree for semantic information. The configuration for
     // the whole tree is applied in [describeSemanticsConfiguration].
   }
@@ -241,13 +252,14 @@ class RenderTree extends RenderBox with RenderObjectWithChildMixin<RenderNode> {
       ..label = _context.input;
   }
 
-  FlutterError _exception(String constraint) => FlutterError(RenderingException(
-          reason: 'Tree exceeds the $constraint constraint; '
-              'the output will be clipped, '
-              'consider providing a larger $constraint '
-              'for CaTeX to take up or decreasing the context size',
-          input: child.context.input)
-      .message);
+  static const _commonLayoutExceptionSuffix = 'for CaTeX to take up '
+      'or decreasing the context size to make the output smaller '
+      '(note that CaTeX ignores this error on purpose, i.e. CaTeX simply '
+      'clips the output, which probably provides the best user experience, '
+      'however, *you* should **not ignore** this error. It means that your '
+      'user will not be able to see the whole CaTeX output. Additionally, '
+      'note that the overflow is still rendered, just clipped. Thus, having '
+      'an overflow is not optimal for performance.)';
 
   @override
   void performLayout() {
@@ -257,7 +269,7 @@ class RenderTree extends RenderBox with RenderObjectWithChildMixin<RenderNode> {
     // We do not care about the constraints for the children. If the
     // tree turns out to take up too much space, we will simply clip it
     // and inform the developer that there is not enough space.
-    child.layout(constraints, parentUsesSize: false);
+    child.layout(constraints);
     final treeSize = child.renderSize;
 
     size = Size(
@@ -265,11 +277,39 @@ class RenderTree extends RenderBox with RenderObjectWithChildMixin<RenderNode> {
       min(constraints.maxHeight, max(constraints.minHeight, treeSize.height)),
     );
 
-    if (treeSize.width > constraints.maxWidth) {
-      throw _exception('width');
+    // Throwing the exceptions here will make sure that the developer can
+    // see that the rendered output overflows and still render the result.
+    // This means that effectively these exceptions do not interrupt rendering
+    // at all. The output is simply clipped.
+    if (treeSize.width > constraints.maxWidth &&
+        treeSize.height > constraints.maxHeight) {
+      throw RenderingException(
+        reason: 'Tree exceeds both the width constraint (actual: '
+            '${treeSize.width}; constraint: ${constraints.maxWidth}) '
+            'and the height constraint (actual: ${treeSize.height}; '
+            'constraint: ${constraints.maxHeight}); '
+            'the output will be clipped - consider providing '
+            'larger width and height constraints $_commonLayoutExceptionSuffix',
+        input: child.context.input,
+      );
     }
-    if (treeSize.height > constraints.maxHeight) {
-      throw _exception('height');
+    if (treeSize.width > constraints.maxWidth) {
+      throw RenderingException(
+        reason: 'Tree exceeds the width constraint (actual: '
+            '${treeSize.width}; constraint: ${constraints.maxWidth}); '
+            'the output will be clipped - consider providing a larger '
+            'width constraint $_commonLayoutExceptionSuffix',
+        input: child.context.input,
+      );
+    } else if (treeSize.height > constraints.maxHeight) {
+      throw RenderingException(
+        reason: 'Tree exceeds the height constraint '
+            '(actual: ${treeSize.height}; constraint: '
+            '${constraints.maxHeight}); the output will be clipped - consider '
+            'providing a larger height constraint '
+            '$_commonLayoutExceptionSuffix',
+        input: child.context.input,
+      );
     }
   }
 

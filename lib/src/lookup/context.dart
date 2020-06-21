@@ -54,7 +54,7 @@ class CaTeXContext {
       );
 
   @override
-  bool operator ==(other) {
+  bool operator ==(dynamic other) {
     if (identical(other, this)) return true;
 
     if (other is CaTeXContext) {

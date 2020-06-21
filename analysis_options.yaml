@@ -1,4 +1,18 @@
-include: package:pedantic/analysis_options.yaml
+include: package:lint/analysis_options_package.yaml
+
+linter:
+  rules:
+    # Documenting everything makes the API more
+    # understandable for anyone who wants to contribute.
+    # Additionally, it helps a lot when getting back
+    # into the code.
+    - public_member_api_docs
+
+    # This is good for consistency and not too hard
+    # to actually do. It is especially useful for keeping
+    # documentation and comments readable because the
+    # formatter will not take care of that.
+    - lines_longer_than_80_chars
 
 analyzer:
   exclude:

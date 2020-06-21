@@ -104,7 +104,8 @@ extension on SymbolGroup {
 
 // The following is also based on https://github.com/KaTeX/KaTeX/blob/f7880acb02447b0e1c0643a3aac6b7f3b8349443/src/spacingData.js.
 
-/// Spacing that should be used based on the previous and current character type.
+/// Spacing that should be used based
+/// on the previous and current character type.
 const _spacings = <_Spacing, Map<_Spacing, Spacing>>{
   _Spacing.ord: {
     _Spacing.op: Spacing.thinSpace,

@@ -45,8 +45,8 @@ const supportedFunctionNames = <String, CaTeXFunction>{
   r'\it': CaTeXFunction.it,
   r'\cal': CaTeXFunction.cal,
   r'\textcolor': CaTeXFunction.textColor,
-  r'_': CaTeXFunction.sub,
-  r'^': CaTeXFunction.sup,
+  '_': CaTeXFunction.sub,
+  '^': CaTeXFunction.sup,
   r'\colorbox': CaTeXFunction.colorBox,
   r'\boxed': CaTeXFunction.boxed,
   r'\sqrt': CaTeXFunction.sqrt,
@@ -87,8 +87,9 @@ const List<CaTeXFunction>
 /// Looks up the [FunctionNode] subclass for a given input.
 ///
 /// Returns the node with the appropriate [FunctionProperties] if a function for
-/// the given [context] is supported, i.e. the input matches a name in [supportedFunctionNames]
-/// *and* this function is in [supportedMathFunctions] in math mode or in [supportedTextFunctions]
+/// the given [context] is supported, i.e. the input matches a name in
+/// [supportedFunctionNames] *and* this function is in [supportedMathFunctions]
+/// in math mode or in [supportedTextFunctions]
 /// in text mode. Otherwise, this function returns `null`.
 FunctionNode lookupFunction(ParsingContext context) {
   final input = context.input,
@@ -132,22 +133,22 @@ FunctionNode lookupFunction(ParsingContext context) {
 }
 
 class FunctionProperties {
-  const FunctionProperties(
-      {@required this.arguments, @required this.greediness})
-      : assert(arguments != null),
+  const FunctionProperties({
+    @required this.arguments,
+    @required this.greediness,
+  })  : assert(arguments != null),
         assert(greediness != null),
         assert(arguments > 0),
         assert(greediness > 0);
 
-  final int
+  /// Defines how many groups after itself a function will consume.
+  final int arguments;
 
-      /// Defines how many groups after itself a function will consume.
-      arguments,
-
-      /// Defines how greedy a function is to grab groups.
-      ///
-      /// The higher the greediness, the earlier a function will be allocated its arguments.
-      /// For example, `\sqrt \frac 2 {3}` should produce a fraction inside of a square root.
-      /// If functions were allocated their arguments from left to right, parsing would fail.
-      greediness;
+  /// Defines how greedy a function is to grab groups.
+  ///
+  /// The higher the greediness, the earlier a function will be
+  /// allocated its arguments. For example, `\sqrt \frac 2 {3}` should
+  /// produce a fraction inside of a square root. If functions were
+  /// allocated their arguments from left to right, parsing would fail.
+  final int greediness;
 }

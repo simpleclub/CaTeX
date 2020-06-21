@@ -16,7 +16,7 @@ const symbols = <$CaTeXMode, Map<$String, $SymbolData>>{''';
 /// Writes the code for supported symbols to a file called `symbols.g.dart`.
 ///
 /// The directory is determined by the path specified as the first argument.
-void main(List<String> args) async {
+Future<void> main(List<String> args) async {
   final file = File(p.join(args.first, 'symbols.g.dart'));
 
   // This makes sure the code does not run for nothing.
@@ -28,7 +28,7 @@ void main(List<String> args) async {
       mathSymbols = [],
       textSymbols = [];
 
-  final math = 'math',
+  const math = 'math',
       text = 'text',
       main = 'main',
       ams = 'ams',
@@ -42,29 +42,38 @@ void main(List<String> args) async {
       punct = 'punct',
       rel = 'rel',
       spacing = 'spacing',
-      textord = 'textord',
-      defineSymbol =
-          (String mode, String font, String group, String unicode, String name,
-              [bool createUnicodeEntry = false]) {
-        assert(
-            mode?.isNotEmpty == true &&
-                font?.isNotEmpty == true &&
-                group?.isNotEmpty == true &&
-                (unicode == null || unicode?.isNotEmpty == true) &&
-                name?.isNotEmpty == true &&
-                createUnicodeEntry != null,
-            'Input `defineSymbol($mode, $font, $group, $unicode, $name` is invalid.');
+      textord = 'textord';
 
-        (mode == math ? mathSymbols : textSymbols)
-            .add("    ${name.contains("'") ? '"$name"' : "'$name'"}: "
-                "$SymbolData(${unicode != null ? "'$unicode'" : null}, "
-                '$SymbolFont.$font, $SymbolGroup.$group),');
+  void defineSymbol(
+    String mode,
+    String font,
+    String group,
+    String unicode,
+    String name, [
+    // ignore: avoid_positional_boolean_parameters
+    bool createUnicodeEntry = false,
+  ]) {
+    assert(
+      mode?.isNotEmpty == true &&
+          font?.isNotEmpty == true &&
+          group?.isNotEmpty == true &&
+          (unicode == null || unicode?.isNotEmpty == true) &&
+          name?.isNotEmpty == true &&
+          createUnicodeEntry != null,
+      'Input `defineSymbol($mode, $font, $group, $unicode, $name` is invalid.',
+    );
 
-        if (unicode != null && createUnicodeEntry) {
-          (mode == math ? mathSymbols : textSymbols).add(
-              "    '$unicode': $SymbolData('$unicode', $SymbolFont.$font, $SymbolGroup.$group),");
-        }
-      };
+    (mode == math ? mathSymbols : textSymbols)
+        .add("    ${name.contains("'") ? '"$name"' : "'$name'"}: "
+            "$SymbolData(${unicode != null ? "'$unicode'" : null}, "
+            '$SymbolFont.$font, $SymbolGroup.$group),');
+
+    if (unicode != null && createUnicodeEntry) {
+      (mode == math ? mathSymbols : textSymbols)
+          .add("    '$unicode': $SymbolData('$unicode', "
+              "$SymbolFont.$font, $SymbolGroup.$group),");
+    }
+  }
 
   /// This is based on https://github.com/KaTeX/KaTeX/blob/c8c7c3954c4c3e2a3e0499a1fd52e9c66e286462/src/symbols.js.
   defineSymbol(math, main, rel, "\\u2261", "\\\\equiv", true);
