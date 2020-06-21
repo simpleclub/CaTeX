@@ -5,12 +5,18 @@ import 'package:catex/src/lookup/exception.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:flutter/rendering.dart';
 
+/// Abstract class for all render nodes.
+///
+/// A sub class should implement [configure] and [render].
 abstract class RenderNode<P extends NodeParentData> extends RenderBox
     with
         ContainerRenderObjectMixin<RenderNode, P>,
         RenderBoxContainerDefaultsMixin<RenderNode, P> {
+  /// Constructs a [RenderNode] from a [context].
   RenderNode(this.context);
 
+  /// Context for this node that stores all necessary information
+  /// for rendering the node.
   final CaTeXContext context;
 
   /// Handles sizing of the render node.
@@ -105,7 +111,7 @@ abstract class RenderNode<P extends NodeParentData> extends RenderBox
   }
 
   @override
-  NodeParentData get parentData => super.parentData;
+  NodeParentData get parentData => super.parentData as NodeParentData;
 
   @override
   bool get sizedByParent => false;

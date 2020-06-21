@@ -33,7 +33,29 @@ List<String> get equations => [
     ];
 
 void main() {
-  runApp(const App());
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    String message = '';
+    assert(() {
+      try {
+        return details.exception.toString();
+      } catch (e) {
+        message = 'Error';
+      }
+      message += '\nSee also: https://flutter.dev/docs/testing/errors';
+      return true;
+    }());
+    final Object exception = details.exception;
+
+    if (exception is CaTeXException) {
+      return ErrorWidget(exception);
+    }
+
+    return ErrorWidget.withDetails(
+      message: message,
+      error: exception is FlutterError ? exception : null,
+    );
+  };
+  runApp(App());
 }
 
 class App extends StatelessWidget {

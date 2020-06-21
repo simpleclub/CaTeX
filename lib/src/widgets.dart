@@ -88,7 +88,7 @@ class _CaTeXState extends State<CaTeX> {
   @override
   Widget build(BuildContext context) {
     if (_exception != null) {
-      return ErrorWidget(_exception);
+      throw _exception;
     }
 
     // Rendering a full tree can be expensive and the tree never changes.

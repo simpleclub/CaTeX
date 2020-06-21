@@ -8,6 +8,7 @@ import 'package:catex/src/lookup/styles.dart';
 /// This matches the inherent tree structure of TeX quite well.
 /// It is based on https://github.com/KaTeX/KaTeX/blob/fa8fbc0c18e5e3fe98f347ceed3a48699d561c72/src/Options.js.
 class CaTeXContext {
+  /// Constructs a [CaTeXContext] from its properties.
   const CaTeXContext({
     this.input,
     this.style,
@@ -19,19 +20,38 @@ class CaTeXContext {
     this.fontStyle,
   });
 
+  /// The input for the context.
+  ///
+  /// This will be parts of the whole input given to CaTeX.
   final String input;
-  final CaTeXStyle
-      // todo: [style] is unsupported.
-      style;
+
+  // todo: [style] is unsupported.
+  // ignore: public_member_api_docs
+  final CaTeXStyle style;
+
+  /// The color of rendered output.
+  ///
+  /// This controls the color for both font characters and other rendered
+  /// output that is part of the symbols.
   final Color color;
-  final double
-      // todo: [size] is unsupported.
-      size,
-      textSize;
+
+  // todo: [size] is unsupported.
+  // ignore: public_member_api_docs
+  final double size;
+
+  /// Size used for the rendered symbols.
+  final double textSize;
+
+  /// Font family used for the rendered characters.
   final String fontFamily;
+
+  /// [FontWeight] used for the rendered characters.
   final FontWeight fontWeight;
+
+  /// [FontStyle] used for the rendered characters.
   final FontStyle fontStyle;
 
+  /// Copies the context with overridden properties.
   CaTeXContext copyWith({
     String input,
     CaTeXStyle style,

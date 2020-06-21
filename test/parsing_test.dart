@@ -97,8 +97,11 @@ void main() {
     FontNode rootNode;
 
     test('succeeds with a single node (function) as the root node', () {
-      expect(() => rootNode = Parser(r'\sf{\bf{\textcolor{red}s}}').parse(),
-          returnsNormally);
+      expect(
+        () => rootNode =
+            Parser(r'\sf{\bf{\textcolor{red}s}}').parse() as FontNode,
+        returnsNormally,
+      );
     });
 
     test('child is another font node', () {
@@ -111,7 +114,9 @@ void main() {
 
     test('succeeds with single function root node', () {
       expect(
-          () => rootNode = Parser(r'\sf{\bf{word}}').parse(), returnsNormally);
+        () => rootNode = Parser(r'\sf{\bf{word}}').parse() as FontNode,
+        returnsNormally,
+      );
     });
 
     test('child is another font node', () {
@@ -124,8 +129,8 @@ void main() {
 
     test('succeeds with group root node', () {
       expect(
-          () =>
-              rootNode = Parser(r'\varepsilon = \frac{\frac{2}{1}}{3}').parse(),
+          () => rootNode = Parser(r'\varepsilon = \frac{\frac{2}{1}}{3}')
+              .parse() as GroupNode,
           returnsNormally);
     });
 
@@ -150,7 +155,10 @@ void main() {
         ' and 3 on the second one', () {
       final first = children[2] as FracNode;
       FracNode second;
-      expect(() => second = first.children[0], returnsNormally);
+      expect(
+        () => second = first.children[0] as FracNode,
+        returnsNormally,
+      );
       expect(first.children[1].context.input, equals('3'));
       expect(second.children[0].context.input, equals('2'));
       expect(second.children[1].context.input, equals('1'));
@@ -162,7 +170,9 @@ void main() {
 
     test('configures root node successfully', () {
       expect(
-          () => rootNode = Parser(r'7^\frac{4}{2}').parse(), returnsNormally);
+        () => rootNode = Parser(r'7^\frac{4}{2}').parse() as GroupNode,
+        returnsNormally,
+      );
     });
 
     test('detects character and sup function node', () {
