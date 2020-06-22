@@ -1,6 +1,6 @@
 ![logo][]
 
-# CaTeX
+# CaTeX [![](https://img.shields.io/pub/v/catex.svg)](https://pub.dev/packages/catex)
 
 A package that allows to draw TeX equations inline as a widget using only Flutter.
 
