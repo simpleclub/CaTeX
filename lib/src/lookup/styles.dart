@@ -4,7 +4,16 @@
 /// See *The TeXbook* from page 140 for the different styles.
 /// The actual names are T', S', etc. for the cramped styles, however,
 /// Dart does not allow the prime symbol for variable names.
-enum CaTeXStyle { d, dc, t, tc, s, sc, ss, ssc }
+enum CaTeXStyle {
+  d,
+  dc,
+  t,
+  tc,
+  s,
+  sc,
+  ss,
+  ssc,
+}
 
 // todo(creativecreatorormaybenot): support this.
 class CaTeXStyleData {

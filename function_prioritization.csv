@@ -122,7 +122,7 @@ function,supported,frequency
 \lfloor,false,7
 \le,false,7
 \theta,true,6
-\displaystyle,false,6
+\displaystyle,true,6
 \notin,false,6
 \rho,true,6
 \phi,true,6
@@ -192,7 +192,7 @@ function,supported,frequency
 \Bigl,false,1
 \Bigr,false,1
 \leftharpoondown,false,1
-\scriptstyle,false,1
+\scriptstyle,true,1
 \u,false,1
 \!,false,0
 #,false,0
@@ -522,7 +522,7 @@ _,false,0
 \hbox,false,0
 \hdashline,false,0
 \hearts,false,0
-\heartsuit,false,0
+\heartsuit,true,0
 \hfil,false,0
 \hfill,false,0
 \hline,false,0
@@ -569,9 +569,10 @@ _,false,0
 \Join,false,0
 \Kappa,false,0
 \kappa,false,0
-\KaTeX,false,0
+\KaTeX,true,0
+\CaTeX,true,0
 \ker,false,0
-\kern,false,0
+\kern,true,0
 \Ket,false,0
 \ket,false,0
 \Koppa,false,0
@@ -588,7 +589,7 @@ _,false,0
 \large,false,0
 \Large,false,0
 \LARGE,false,0
-\LaTeX,false,0
+\LaTeX,true,0
 \lBrace,false,0
 \lbrack,false,0
 \ldotp,false,0
@@ -782,7 +783,7 @@ _,false,0
 \pagecolor,false,0
 \parallel,false,0
 \part,false,0
-\perp,false,0
+\perp,true,0
 \phantom,false,0
 \phase,false,0
 \Pi,false,0
@@ -812,7 +813,7 @@ _,false,0
 \Psi,false,0
 \pu,false,0
 \raise,false,0
-\raisebox,false,0
+\raisebox,true,0
 \rang,false,0
 \Rarr,false,0
 \rArr,false,0
@@ -858,7 +859,7 @@ _,false,0
 \sc,false,0
 \scalebox,false,0
 \scr,false,0
-\scriptscriptstyle,false,0
+\scriptscriptstyle,true,0
 \sdot,false,0
 \searrow,false,0
 \sec,false,0
@@ -932,7 +933,7 @@ _,false,0
 \tanh,false,0
 \Tau,false,0
 \tbinom,false,0
-\TeX,false,0
+\TeX,true,0
 \textasciitilde,false,0
 \textasciicircum,false,0
 \textbackslash,false,0
@@ -961,7 +962,7 @@ _,false,0
 \textsf,false,0
 \textsl,false,0
 \textsterling,false,0
-\textstyle,false,0
+\textstyle,true,0
 \texttip,false,0
 \texttt,false,0
 \textunderscore,false,0

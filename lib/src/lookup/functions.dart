@@ -1,4 +1,6 @@
+import 'package:catex/src/lookup/fonts.dart';
 import 'package:catex/src/lookup/modes.dart';
+import 'package:catex/src/lookup/styles.dart';
 import 'package:catex/src/parsing/functions/boxed.dart';
 import 'package:catex/src/parsing/functions/color_box.dart';
 import 'package:catex/src/parsing/functions/font.dart';
@@ -18,19 +20,63 @@ import 'package:flutter/foundation.dart';
 /// manual work seems reasonable.
 /// Either way, the conversion will be a simple process.
 enum CaTeXFunction {
+  /// `\frac{}{}` displays a fraction.
   frac,
+
+  /// `\tt{}` uses the [CaTeXFont.typewriter] font.
   tt,
+
+  /// `\rm{}` uses the [CaTeXFont.main] font and a normal font weight and style.
   rm,
+
+  /// `\sf{}` uses the [CaTeXFont.sansSerif] font.
   sf,
+
+  /// `\bf{}` uses bold font weight.
   bf,
+
+  /// `\it{}` uses the italic font style.
   it,
+
+  /// `\cal{}` uses the [CaTeXFont.caligraphic] font.
   cal,
+
+  /// `\textcolor{}{}` colors text.
   textColor,
+
+  /// `_{}` puts its group into subscript.
   sub,
+
+  /// `^{}` puts its group into superscript.
   sup,
+
+  /// `\colorbox{}{}` draws a colored box around its group.
   colorBox,
+
+  /// `\boxed{}` draws a box around its group.
   boxed,
+
+  /// `\sqrt{}` displays a square root.
   sqrt,
+
+  /// `\displaystyle` uses [CaTeXStyle.d].
+  displayStyle,
+
+  /// `\textstyle` uses [CaTeXStyle.t].
+  textStyle,
+
+  /// `\scriptstyle` uses [CaTeXStyle.s].
+  scriptStyle,
+
+  /// `\scriptscriptstyle` uses [CaTeXStyle.ss].
+  scriptScriptStyle,
+
+  // todo(creativecreatorormaybenot)
+  /// `\kern{}` adds or removes horizontal space.
+  kern,
+
+  /// `\raisebox{}{}` shifts text vertically.
+  raiseBox,
 }
 
 /// Names, i.e. control sequences that correspond to
@@ -50,39 +96,55 @@ const supportedFunctionNames = <String, CaTeXFunction>{
   r'\colorbox': CaTeXFunction.colorBox,
   r'\boxed': CaTeXFunction.boxed,
   r'\sqrt': CaTeXFunction.sqrt,
+  r'\displaystyle': CaTeXFunction.displayStyle,
+  r'\textstyle': CaTeXFunction.textStyle,
+  r'\scriptstyle': CaTeXFunction.scriptStyle,
+  r'\scriptscriptstyle': CaTeXFunction.scriptScriptStyle,
+  r'\kern': CaTeXFunction.kern,
+  r'\raisebox': CaTeXFunction.raiseBox,
 };
 
-const List<CaTeXFunction>
+/// CaTeX functions that are available in math mode.
+const List<CaTeXFunction> supportedMathFunctions = [
+  CaTeXFunction.frac,
+  CaTeXFunction.tt,
+  CaTeXFunction.rm,
+  CaTeXFunction.sf,
+  CaTeXFunction.bf,
+  CaTeXFunction.it,
+  CaTeXFunction.cal,
+  CaTeXFunction.textColor,
+  CaTeXFunction.sub,
+  CaTeXFunction.sup,
+  CaTeXFunction.colorBox,
+  CaTeXFunction.boxed,
+  CaTeXFunction.sqrt,
+  CaTeXFunction.displayStyle,
+  CaTeXFunction.textStyle,
+  CaTeXFunction.scriptStyle,
+  CaTeXFunction.scriptScriptStyle,
+  CaTeXFunction.kern,
+  CaTeXFunction.raiseBox,
+];
 
-    /// CaTeX functions that are available in math mode.
-    supportedMathFunctions = [
-      CaTeXFunction.frac,
-      CaTeXFunction.tt,
-      CaTeXFunction.rm,
-      CaTeXFunction.sf,
-      CaTeXFunction.bf,
-      CaTeXFunction.it,
-      CaTeXFunction.cal,
-      CaTeXFunction.textColor,
-      CaTeXFunction.sub,
-      CaTeXFunction.sup,
-      CaTeXFunction.colorBox,
-      CaTeXFunction.boxed,
-      CaTeXFunction.sqrt,
-    ],
-
-    /// CaTeX functions that are available in text mode.
-    supportedTextFunctions = [
-      CaTeXFunction.tt,
-      CaTeXFunction.rm,
-      CaTeXFunction.sf,
-      CaTeXFunction.bf,
-      CaTeXFunction.it,
-      CaTeXFunction.cal,
-      CaTeXFunction.textColor,
-      CaTeXFunction.colorBox,
-      CaTeXFunction.boxed,
-    ];
+/// CaTeX functions that are available in text mode.
+const List<CaTeXFunction> supportedTextFunctions = [
+  CaTeXFunction.tt,
+  CaTeXFunction.rm,
+  CaTeXFunction.sf,
+  CaTeXFunction.bf,
+  CaTeXFunction.it,
+  CaTeXFunction.cal,
+  CaTeXFunction.textColor,
+  CaTeXFunction.colorBox,
+  CaTeXFunction.boxed,
+  CaTeXFunction.displayStyle,
+  CaTeXFunction.textStyle,
+  CaTeXFunction.scriptStyle,
+  CaTeXFunction.scriptScriptStyle,
+  CaTeXFunction.kern,
+  CaTeXFunction.raiseBox,
+];
 
 /// Looks up the [FunctionNode] subclass for a given input.
 ///
@@ -126,13 +188,27 @@ FunctionNode lookupFunction(ParsingContext context) {
       return BoxedNode(context);
     case CaTeXFunction.sqrt:
       return SqrtNode(context);
+    case CaTeXFunction.displayStyle:
+    case CaTeXFunction.textStyle:
+    case CaTeXFunction.scriptStyle:
+    case CaTeXFunction.scriptScriptStyle:
+      return StylingNode(context);
+    case CaTeXFunction.kern:
+      return KernNode(context);
+    case CaTeXFunction.raiseBox:
+      return RaiseBoxNode(context);
   }
   // Not adding a default clause will make
   // the IDE help to add missing clauses.
   return null;
 }
 
+/// Properties that every function defines, giving context about its use case.
+///
+/// A function defines this in its [FunctionNode].
 class FunctionProperties {
+  /// Constructs [FunctionProperties] from the number of [arguments] and
+  /// a [greediness] value.
   const FunctionProperties({
     @required this.arguments,
     @required this.greediness,

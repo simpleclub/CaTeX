@@ -1,4 +1,7 @@
-enum SymbolFont { main, ams }
+enum SymbolFont {
+  main,
+  ams,
+}
 
 enum SymbolGroup {
   accent,
@@ -15,7 +18,11 @@ enum SymbolGroup {
 }
 
 class SymbolData {
-  const SymbolData(this.unicode, this.font, this.group);
+  const SymbolData(
+    this.unicode,
+    this.font,
+    this.group,
+  );
 
   final SymbolFont font;
   final SymbolGroup group;

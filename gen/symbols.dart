@@ -60,7 +60,7 @@ Future<void> main(List<String> args) async {
           (unicode == null || unicode?.isNotEmpty == true) &&
           name?.isNotEmpty == true &&
           createUnicodeEntry != null,
-      'Input `defineSymbol($mode, $font, $group, $unicode, $name` is invalid.',
+      'Input `defineSymbol($mode, $font, $group, $unicode, $name)` is invalid.',
     );
 
     (mode == math ? mathSymbols : textSymbols)

@@ -1,5 +1,5 @@
 name: catex
-description: Flutter package that outputs TeX equations (like LaTeX, KaTeX, MathJaX, etc.) inline
+description: Flutter package that outputs TeX equations (like LaTeX, KaTeX, MathJax, etc.) inline
              using a widget and Flutter only.
 version: 0.0.1
 homepage: https://github.com/simpleclub/CaTeX

@@ -1,0 +1,14 @@
+name: demo
+description: Demo application for CaTeX, serving also as a web page for directions.
+publish_to: 'none'
+version: 0.0.1
+
+environment:
+  sdk: ">=2.8.4 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  catex:
+    path: ../
