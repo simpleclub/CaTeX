@@ -2,7 +2,8 @@
 
 # CaTeX [![](https://img.shields.io/pub/v/catex.svg)](https://pub.dev/packages/catex)
 
-A package that allows to draw TeX equations inline as a widget using only Flutter.
+Flutter package that outputs **TeX** equations (like LaTeX, KaTeX, MathJax, etc.) inline using a 
+widget and *Flutter only*.
 
 The implementation is mainly based on [*The TeXbook* by Donald E. Knuth][TeXbook], 
 [*TeX by Topic* by Victor Eijkhout][TeX by Topic], and the [KaTeX project][KaTeX GitHub].
