@@ -40,7 +40,8 @@ abstract class CaTeXException implements Exception {
   static const _helpAppendix = '\n\nFor help, '
       'consult the CaTeX README, which can be found at '
       'https://github.com/simpleclub/CaTeX, '
-      'or read through the CaTeX API documentation. If you think '
+      'or read through the CaTeX API documentation at '
+      'https://pub.dev/documentation/catex/latest. If you think '
       'that you might have encountered a bug or any other issue, '
       'feel free to look for similar issues or file a new issue at '
       'https://github.com/simpleclub/CaTeX/issues.';
