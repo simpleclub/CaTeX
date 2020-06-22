@@ -38,6 +38,7 @@ enum Spacing {
   thickSpace,
 }
 
+/// [Spacing] extension that adds functionality for converting to pixel values.
 extension SpacingMeasurement on Spacing {
   /// Space value in pixels; converted from math units with the help of
   /// https://tex.stackexchange.com/a/41371/192809.
@@ -57,8 +58,9 @@ extension SpacingMeasurement on Spacing {
         return 4;
       case Spacing.thickSpace:
         return 5;
+      default:
+        throw UnimplementedError();
     }
-    throw ArgumentError.value(this);
   }
 }
 
@@ -158,8 +160,9 @@ const _spacings = <_Spacing, Map<_Spacing, Spacing>>{
   },
 };
 
+/// Spacing relationships for script and scriptscript styles.
 // todo: [_tightSpacings] is unsupported.
-// Spacing relationships for script and scriptscript styles.
+// ignore: unused_element
 const _tightSpacings = <_Spacing, Map<_Spacing, Spacing>>{
   _Spacing.ord: {
     _Spacing.op: Spacing.thinSpace,

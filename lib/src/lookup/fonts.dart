@@ -1,3 +1,6 @@
+/// Fonts supported by CaTeX, i.e. the supported font families.
+///
+/// Note that these are the fonts taken from the KaTeX project.
 enum CaTeXFont {
   ams,
   caligraphic,
@@ -13,6 +16,7 @@ enum CaTeXFont {
   typewriter,
 }
 
+/// Extension for [CaTeXFont]s that adds stringify functionality.
 extension RetrieveFont on CaTeXFont {
   /// Returns the font family with the package path.
   /// This means that you should not provide the `package`
@@ -58,7 +62,7 @@ extension RetrieveFont on CaTeXFont {
         buffer.write('Typewriter');
         break;
       default:
-        throw ArgumentError.value(this);
+        throw UnimplementedError();
     }
     return buffer.toString();
   }

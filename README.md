@@ -122,7 +122,7 @@ used functions and the frequency of appearance can be found [here][function_freq
 If you find something that is fundamentally flawed, please propose a better solution - 
 we are open to complete revamps.
 
-[//]: #(a list of all links used in this document)
+[//]: # (a list of all links used in this document)
 
 [logo]: https://i.imgur.com/6DvWz3S.png
 [example]: https://github.com/simpleclub/CaTeX/blob/master/example/README.md
