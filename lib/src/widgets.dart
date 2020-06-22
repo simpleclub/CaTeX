@@ -46,6 +46,7 @@ class CaTeX extends StatefulWidget {
       : assert(input != null),
         super(key: key);
 
+  /// TeX input string that should be rendered by CaTeX.
   final String input;
 
   @override
@@ -88,18 +89,20 @@ class _CaTeXState extends State<CaTeX> {
   @override
   Widget build(BuildContext context) {
     if (_exception != null) {
+      // Throwing the parsing exception here will make sure that it is
+      // displayed by the Flutter ErrorWidget.
       throw _exception;
     }
 
     // Rendering a full tree can be expensive and the tree never changes.
     // Because of this, we want to insert a repaint boundary between the
     // CaTeX output and the rest of the widget tree.
-    return TreeWidget(_rootNode);
+    return _TreeWidget(_rootNode);
   }
 }
 
-class TreeWidget extends SingleChildRenderObjectWidget {
-  TreeWidget(
+class _TreeWidget extends SingleChildRenderObjectWidget {
+  _TreeWidget(
     NodeWidget child, {
     Key key,
   })  : assert(child != null),

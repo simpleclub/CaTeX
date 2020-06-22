@@ -7,13 +7,14 @@ List<String> get equations => [
       r'\eta = 7^\frac{4}{2}',
       r'\epsilon = \frac 2 {3 + 2}',
       r'x_{initial} = \frac {20x} {\frac{15}{3}}',
-      r'\colorbox{red}{bunt} \boxed{'
+      // ignore: no_adjacent_strings_in_list
+      r'\colorbox{red}{bunt} \boxed{ '
           r'\rm{\sf{\bf{'
-          r'\textcolor{red} s \textcolor{pink}  i \textcolor{purple}m'
-          r'\textcolor{blue}p \textcolor{cyan}  l \textcolor{teal}  e}'
-          r'\textcolor{lime}c \textcolor{yellow}l \textcolor{amber} u \textcolor{orange} b'
-          r'}}}',
-      r'x_i=a^n',
+          r'\textcolor{red} s \textcolor{pink}  i \textcolor{purple}m '
+          r'\textcolor{blue}p \textcolor{cyan}  l \textcolor{teal}  e} '
+          r'\textcolor{lime}c \textcolor{yellow}l \textcolor{amber} u '
+          r'\textcolor{orange} b}}}',
+      'x_i=a^n',
       r'12^{\frac{\frac{2}{7}}{1}}',
       r'\varepsilon = \frac{\frac{2}{1}}{3}',
       r'\alpha\beta\gamma\delta',
@@ -21,44 +22,46 @@ List<String> get equations => [
       r'\alpha\ \beta\ \ \gamma\ \ \ \delta',
       r'\epsilon = \frac{2}{3 + 2}',
       r'\tt {type} \textcolor{teal}{\rm{\tt {writer} }}',
-      r'l = a * t * e * x',
+      'l = a * t * e * x',
       r'\rm\tt{sp   a c  i n\ \bf\it g}',
       r'5 = 1 \cdot 5',
-      r'{2 + 3}+{3             +4    }=12',
+      '{2 + 3}+{3             +4    }=12',
       r'\backslash \leftarrow \uparrow \rightarrow  \$',
       r'42\uparrow 99\Uparrow\ \  19\downarrow 1\Downarrow',
-      r'5x =      25',
+      '5x =      25',
       r'10\cdot10 = 100',
-      r'a := 96',
+      'a := 96',
     ];
 
 void main() {
   ErrorWidget.builder = (FlutterErrorDetails details) {
-    String message = '';
-    assert(() {
-      try {
-        return details.exception.toString();
-      } catch (e) {
-        message = 'Error';
-      }
-      message += '\nSee also: https://flutter.dev/docs/testing/errors';
-      return true;
-    }());
-    final Object exception = details.exception;
-
+    final exception = details.exception;
     if (exception is CaTeXException) {
       return ErrorWidget(exception);
     }
+
+    var message = '';
+    // The assert ensures that any exceptions that are not CaTeX exceptions
+    // are not shown in release and profile mode. This ensures that no
+    // stack traces or other sensitive information (information that the user
+    // is in no way interested in) is shown on screen.
+    assert(() {
+      message = '${details.exception}\n'
+          'See also: https://flutter.dev/docs/testing/errors';
+      return true;
+    }());
 
     return ErrorWidget.withDetails(
       message: message,
       error: exception is FlutterError ? exception : null,
     );
   };
-  runApp(App());
+  runApp(const App());
 }
 
+/// Example app widget that uses [MaterialApp] to display CaTeX output.
 class App extends StatelessWidget {
+  /// Constructs the example [App].
   const App({Key key}) : super(key: key);
 
   @override
@@ -72,25 +75,28 @@ class App extends StatelessWidget {
   }
 }
 
+/// Example home page that includes an infinite list of CaTeX example widgets
+/// and a text field to test out CaTeX.
 class Home extends StatelessWidget {
+  /// Constructs a [Home] widget.
   const Home({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tap to toggle equations'),
+        title: const Text('Tap to toggle equations'),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.only(bottom: 16),
         itemBuilder: (context, index) {
           if (index == 0) {
-            return const Highlighted(
-              child: TextFieldEquation(),
+            return const _Highlighted(
+              child: _TextFieldEquation(),
             );
           }
 
-          return Highlighted(
+          return _Highlighted(
             child: ToggleEquation(
               equations[(index - 1) % equations.length],
             ),
@@ -101,14 +107,14 @@ class Home extends StatelessWidget {
   }
 }
 
-class TextFieldEquation extends StatefulWidget {
-  const TextFieldEquation({Key key}) : super(key: key);
+class _TextFieldEquation extends StatefulWidget {
+  const _TextFieldEquation({Key key}) : super(key: key);
 
   @override
-  State createState() => _TextFieldEquationState();
+  State createState() => __TextFieldEquationState();
 }
 
-class _TextFieldEquationState extends State<TextFieldEquation> {
+class __TextFieldEquationState extends State<_TextFieldEquation> {
   TextEditingController _controller;
 
   bool _input;
@@ -123,7 +129,7 @@ class _TextFieldEquationState extends State<TextFieldEquation> {
 
   @override
   Widget build(BuildContext context) {
-    if (_input)
+    if (_input) {
       return TextField(
         controller: _controller,
         autocorrect: false,
@@ -134,6 +140,7 @@ class _TextFieldEquationState extends State<TextFieldEquation> {
           });
         },
       );
+    }
 
     return InkWell(
       onTap: () {
@@ -193,8 +200,8 @@ class _ToggleEquationState extends State<ToggleEquation> {
   }
 }
 
-class Highlighted extends StatelessWidget {
-  const Highlighted({Key key, this.child}) : super(key: key);
+class _Highlighted extends StatelessWidget {
+  const _Highlighted({Key key, this.child}) : super(key: key);
 
   final Widget child;
 

@@ -80,17 +80,32 @@ this:
 ```dart
 void main() {
   ErrorWidget.builder = (FlutterErrorDetails details) {
-    String message = '';
+    final exception = details.exception;
+    if (exception is CaTeXException) {
+      return ErrorWidget(exception);
+    }
+
+    var message = '';
+    // The assert ensures that any exceptions that are not CaTeX exceptions
+    // are not shown in release and profile mode. This ensures that no
+    // stack traces or other sensitive information (information that the user
+    // is in no way interested in) is shown on screen.
     assert(() {
-      message = _stringify(details.exception) + '\nSee also: https://flutter.dev/docs/testing/errors';
+      message = '${details.exception}\n'
+          'See also: https://flutter.dev/docs/testing/errors';
       return true;
     }());
-    final Object exception = details.exception;
-    return ErrorWidget.withDetails(message: message, error: exception is FlutterError ? exception : null);
+
+    return ErrorWidget.withDetails(
+      message: message,
+      error: exception is FlutterError ? exception : null,
+    );
   };
-  runApp(MyApp());
+  runApp(const App());
 }
 ```
+
+See the [example app](https://github.com/simpleclub/CaTeX/tree/master/example) for more examples.
 
 ## Expanding supported functionality
 
@@ -107,7 +122,7 @@ used functions and the frequency of appearance can be found [here][function_freq
 If you find something that is fundamentally flawed, please propose a better solution - 
 we are open to complete revamps.
 
-[//]: # (a list of all links used in this document)
+[//]: #(a list of all links used in this document)
 
 [logo]: https://i.imgur.com/6DvWz3S.png
 [example]: https://github.com/simpleclub/CaTeX/blob/master/example/README.md

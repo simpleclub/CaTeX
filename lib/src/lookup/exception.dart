@@ -1,4 +1,5 @@
 import 'package:catex/src/lookup/context.dart';
+import 'package:flutter/foundation.dart';
 
 /// Base for all exceptions thrown in/by CaTeX.
 abstract class CaTeXException implements Exception {
@@ -18,11 +19,33 @@ abstract class CaTeXException implements Exception {
         _input = input,
         _during = during;
 
-  final String _reason, _input, _during;
+  final String _reason;
+  final String _input;
+  final String _during;
 
+  /// Exception message constructed from the individual parts given to
+  /// a [CaTeXException].
+  ///
+  /// This message is returned from [toString] as well.
   String get message =>
-      '$CaTeXException during $_during: $_reason, for input: $_input';
+      // ignore: missing_whitespace_between_adjacent_strings
+      '$CaTeXException during $_during: $_reason, for input: $_input'
+      // Only show the help part of the exception in debug mode as
+      // users will most likely not benefit from seeing this message at all.
+      // The help appendix is directed at developers only. Because it is
+      // encouraged that CaTeX error messages can be shown in release mode,
+      // this needs to be considered.
+      '${kDebugMode ? _helpAppendix : ''}';
 
+  static const _helpAppendix = '\n\nFor help, '
+      'consult the CaTeX README, which can be found at '
+      'https://github.com/simpleclub/CaTeX, '
+      'or read through the CaTeX API documentation. If you think '
+      'that you might have encountered a bug or any other issue, '
+      'feel free to look for similar issues or file a new issue at '
+      'https://github.com/simpleclub/CaTeX/issues.';
+
+  /// Returns the [message] of this CaTeX exception.
   @override
   String toString() => message;
 }
