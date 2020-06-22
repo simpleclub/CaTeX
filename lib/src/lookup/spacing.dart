@@ -2,8 +2,6 @@ import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/lookup/symbols.dart';
 import 'package:meta/meta.dart';
 
-import 'generated/symbols.g.dart';
-
 /// Returns the spacing that should be inserted in logical pixels based
 /// on the [previous] and [current] characters in math mode.
 ///

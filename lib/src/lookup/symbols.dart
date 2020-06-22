@@ -1,3 +1,5 @@
+export 'generated/symbols.g.dart';
+
 enum SymbolFont {
   main,
   ams,

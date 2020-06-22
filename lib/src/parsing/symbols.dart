@@ -1,7 +1,6 @@
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/exception.dart';
 import 'package:catex/src/lookup/fonts.dart';
-import 'package:catex/src/lookup/generated/symbols.g.dart';
 import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/lookup/symbols.dart';
 import 'package:catex/src/parsing/parsing.dart';

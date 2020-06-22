@@ -2,8 +2,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:catex/src/lookup/context.dart';
-import 'package:catex/src/lookup/generated/symbols.g.dart';
 import 'package:catex/src/lookup/modes.dart';
+import 'package:catex/src/lookup/symbols.dart';
 import 'package:catex/src/rendering/character.dart';
 import 'package:catex/src/rendering/rendering.dart';
 import 'package:flutter/rendering.dart';
