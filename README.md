@@ -37,8 +37,10 @@ the [**SIL Open Font License**][fonts license].
 Additionally, some code, e.g. what is used for translating symbols is from KaTeX.  
 You can find the [license for the main KaTeX repo here][KaTeX license].
 
-The CaTeX project itself was built for [simpleclub][], initially by 
-[creativecreatorormaybenot][], (see the [`LICENSE` file][license]).
+The CaTeX open source project was created by [simpleclub][], initially by 
+[creativecreatorormaybenot][] (see the [`LICENSE` file][license]).  
+CaTeX itself is an open source project with the aim of providing a way to render TeX
+fast in Flutter. This was needed for the [simpleclub app][simpleclub], hence, the association.
 
 ## Implementation
 
