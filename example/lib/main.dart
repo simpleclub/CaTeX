@@ -18,7 +18,9 @@ List<String> get equations => [
       r'12^{\frac{\frac{2}{7}}{1}}',
       r'\varepsilon = \frac{\frac{2}{1}}{3}',
       r'\alpha\beta\gamma\delta',
-      r'\colorbox{black}{\textcolor{white} {black} } \colorbox{white}{\textcolor{black} {white} }',
+      // ignore: no_adjacent_strings_in_list
+      r'\colorbox{black}{\textcolor{white} {black} } \colorbox{white} '
+          r'{\textcolor{black} {white} }',
       r'\alpha\ \beta\ \ \gamma\ \ \ \delta',
       r'\epsilon = \frac{2}{3 + 2}',
       r'\tt {type} \textcolor{teal}{\rm{\tt {writer} }}',
@@ -111,10 +113,10 @@ class _TextFieldEquation extends StatefulWidget {
   const _TextFieldEquation({Key key}) : super(key: key);
 
   @override
-  State createState() => __TextFieldEquationState();
+  State createState() => _TextFieldEquationState();
 }
 
-class __TextFieldEquationState extends State<_TextFieldEquation> {
+class _TextFieldEquationState extends State<_TextFieldEquation> {
   TextEditingController _controller;
 
   bool _input;
