@@ -5,6 +5,7 @@ import 'package:catex/src/parsing/functions/boxed.dart';
 import 'package:catex/src/parsing/functions/color_box.dart';
 import 'package:catex/src/parsing/functions/font.dart';
 import 'package:catex/src/parsing/functions/frac.dart';
+import 'package:catex/src/parsing/functions/raise_box.dart';
 import 'package:catex/src/parsing/functions/sqrt.dart';
 import 'package:catex/src/parsing/functions/sub_sup.dart';
 import 'package:catex/src/parsing/functions/text_color.dart';
@@ -192,9 +193,9 @@ FunctionNode lookupFunction(ParsingContext context) {
     case CaTeXFunction.textStyle:
     case CaTeXFunction.scriptStyle:
     case CaTeXFunction.scriptScriptStyle:
-      return StylingNode(context);
+//      return StylingNode(context);
     case CaTeXFunction.kern:
-      return KernNode(context);
+//      return KernNode(context);
     case CaTeXFunction.raiseBox:
       return RaiseBoxNode(context);
   }

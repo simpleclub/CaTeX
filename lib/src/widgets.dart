@@ -149,8 +149,11 @@ class NodeWidget<R extends RenderNode> extends MultiChildRenderObjectWidget {
           key: UniqueKey(),
         );
 
+  /// Context used for this widget to create its [RenderNode].
   final CaTeXContext context;
 
+  /// Callback function that creates the [RenderNode] for this node given
+  /// the [context].
   final R Function(CaTeXContext context) createRenderNode;
 
   @override

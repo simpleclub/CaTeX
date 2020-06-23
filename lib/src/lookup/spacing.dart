@@ -1,4 +1,5 @@
 import 'package:catex/src/lookup/modes.dart';
+import 'package:catex/src/lookup/sizing.dart';
 import 'package:catex/src/lookup/symbols.dart';
 import 'package:meta/meta.dart';
 
@@ -25,7 +26,7 @@ double pixelSpacingFromCharacters({
           : symbols[CaTeXMode.math][current]?.group?.asSpacingType ??
               _Spacing.ord;
   return _spacings[previousSpacingType][currentSpacingType]
-          ?.inPixels(fontSize) ??
+          ?.convertToPx(fontSize) ??
       0;
 }
 
@@ -40,11 +41,8 @@ enum Spacing {
 extension SpacingMeasurement on Spacing {
   /// Space value in pixels; converted from math units with the help of
   /// https://tex.stackexchange.com/a/41371/192809.
-  double inPixels(double fontSize) {
-    final inEm = _inMu / 18;
-    // Assume that 1em is equal to the font size, i.e. that the
-    // character m width is equal to the font size.
-    return fontSize * inEm;
+  double convertToPx(double fontSize) {
+    return muToPx(_inMu, fontSize: fontSize);
   }
 
   /// Space values in math units.

@@ -27,7 +27,9 @@ class SymbolNode extends LeafNode<RenderSymbol> {
 
     if (symbol == null) {
       throw ConfigurationException(
-          reason: 'Unknown symbol in ${_context.mode}', input: context.input);
+        reason: 'Unknown symbol in ${_context.mode}',
+        input: context.input,
+      );
     }
 
     return RenderSymbol(

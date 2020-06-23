@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:catex/src/lookup/characters.dart';
 import 'package:catex/src/lookup/context.dart';
+import 'package:catex/src/lookup/spacing.dart';
 import 'package:catex/src/rendering/rendering.dart';
+import 'package:catex/src/widgets.dart';
 import 'package:flutter/rendering.dart';
 
 class RenderCharacter extends RenderNode {
