@@ -32,7 +32,8 @@ class RaiseBoxNode extends MultiChildNode<RenderRaiseBox>
   RenderRaiseBox createRenderNode(CaTeXContext context) {
     return RenderRaiseBox(
       context,
-      shift: children[0].context.input.trim().parseToPx(context.textSize),
+      // Negative sign because the box should be raised by the amount.
+      shift: -children[0].context.input.trim().parseToPx(context.textSize),
     );
   }
 }

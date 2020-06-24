@@ -13,5 +13,8 @@ class RenderRaiseBox extends RenderNode with SingleChildRenderNodeMixin {
         super(context);
 
   /// Vertical shift of the raise box in pixels.
+  ///
+  /// This has the opposite sign of the raise value specified in the input
+  /// as the box is supposed to **raise** based on the value.
   final double shift;
 }

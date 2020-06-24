@@ -87,7 +87,8 @@ double exToPx(
   @required double fontSize,
 }) {
   assert(fontSize != null);
-  return fontSize * ex * .58;
+  // Eyeballed using the TeX logo macro.
+  return fontSize * ex * .52;
 }
 
 /// Converts mu to px.

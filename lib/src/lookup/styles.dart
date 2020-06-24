@@ -123,3 +123,27 @@ const styles = <CaTeXStyle, CaTeXStyleData>{
   CaTeXStyle.ss: CaTeXStyleData(6, 3, false),
   CaTeXStyle.ssc: CaTeXStyleData(7, 3, true),
 };
+
+/// [CaTeXStyleData] for [CaTeXStyle.d].
+final displayStyle = styles[CaTeXStyle.d];
+
+/// [CaTeXStyleData] for [CaTeXStyle.dc].
+final crampedDisplayStyle = styles[CaTeXStyle.dc];
+
+/// [CaTeXStyleData] for [CaTeXStyle.d].
+final textStyle = styles[CaTeXStyle.t];
+
+/// [CaTeXStyleData] for [CaTeXStyle.tc].
+final crampedTextStyle = styles[CaTeXStyle.tc];
+
+/// [CaTeXStyleData] for [CaTeXStyle.s].
+final scriptStyle = styles[CaTeXStyle.s];
+
+/// [CaTeXStyleData] for [CaTeXStyle.sc].
+final crampedScriptStyle = styles[CaTeXStyle.sc];
+
+/// [CaTeXStyleData] for [CaTeXStyle.ss].
+final scriptScriptStyle = styles[CaTeXStyle.ss];
+
+/// [CaTeXStyleData] for [CaTeXStyle.ssc].
+final crampedScriptScriptStyle = styles[CaTeXStyle.ssc];

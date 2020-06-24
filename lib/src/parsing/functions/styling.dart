@@ -18,11 +18,31 @@ class StylingNode extends SingleChildNode<RenderStyling>
   NodeWidget<RenderStyling> configureWidget(CaTeXContext context) {
     super.configureWidget(context);
 
+    final function = supportedFunctionNames[context.input];
+
+    double sizeFactor = 1.0;
+
+    // todo: styling is not yet supported
+    // This is only a workaround to make the logo work.
+    // Note that styles actually switch and do not just impact sizes by a
+    // constant factor → this implementation is complete garbage (:
+    switch (function) {
+      case CaTeXFunction.scriptStyle:
+        // Eyeballed for the logo.
+        sizeFactor = .8;
+        break;
+      default:
+
+      /// noop
+    }
+
     return NodeWidget(
       context,
       createRenderNode,
       children: [
-        child.createWidget(context),
+        child.createWidget(context.copyWith(
+          textSize: sizeFactor * context.textSize,
+        )),
       ],
     );
   }

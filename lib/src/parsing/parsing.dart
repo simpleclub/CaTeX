@@ -2,6 +2,7 @@ import 'package:catex/src/lookup/characters.dart';
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/exception.dart';
 import 'package:catex/src/lookup/functions.dart';
+import 'package:catex/src/lookup/macros.dart';
 import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/parsing/character.dart';
 import 'package:catex/src/parsing/empty.dart';
@@ -126,7 +127,7 @@ class Parser {
               _consumeChar();
               // _lookupFunction here is fine because I know for a fact
               // that these functions exist as I put them there (:
-              _addNode(_lookupFunction(_consumeToken()));
+              _addNode(_parseFunctionNode(_consumeToken()));
               _skipSpaces();
               return _parse();
             }
@@ -158,8 +159,16 @@ class Parser {
               _consumeChar();
               return _parse();
             }
-            final token = _consumeToken(), function = _lookupFunction(token);
-            _addNode(function ?? SymbolNode(token));
+            final token = _consumeToken(), macro = macros[token.input];
+
+            if (macro == null) {
+              final function = _parseFunctionNode(token);
+              _addNode(function ?? SymbolNode(token));
+            } else {
+              // Replace the token with the macro.
+              _addNode(Parser._(token.copyWith(input: macro)).parse());
+            }
+
             _skipSpaces();
             return _parse();
           case _Token.controlSymbol:
@@ -255,9 +264,9 @@ class Parser {
     _state = _State.S;
   }
 
-  ParsingNode _lookupFunction(ParsingContext token) => lookupFunction(token);
+  ParsingNode _parseFunctionNode(ParsingContext token) => lookupFunction(token);
 
-  /// Finds and extract group to pass it to a new parser.
+  /// Finds and extracts group to pass it to a new parser.
   ///
   /// This will not always return a [GroupNode] because of the way [_addNode]
   /// is set up. If the group contains only a single token, a

@@ -14,6 +14,10 @@ List<String> get equations => [
           r'\textcolor{blue}p \textcolor{cyan}  l \textcolor{teal}  e} '
           r'\textcolor{lime}c \textcolor{yellow}l \textcolor{amber} u '
           r'\textcolor{orange} b}}}',
+      r'\TeX',
+      r'\LaTeX',
+      r'\KaTeX',
+      r'\CaTeX',
       'x_i=a^n',
       r'12^{\frac{\frac{2}{7}}{1}}',
       r'\varepsilon = \frac{\frac{2}{1}}{3}',
