@@ -15,11 +15,11 @@ const macros = <String, String>{
   '\\hArr': '\\Leftrightarrow',
   '\\Harr': '\\Leftrightarrow',
   '\\hearts': '\\heartsuit',
-  '\\TeX': '\\rm{T\\kern-.1667em\\raisebox{-.5ex}{E}\\kern-.125emX}',
+  '\\TeX': '\\rm{T\\kern{-.1667em}\\raisebox{-.5ex}{E}\\kern{-.125em}X}',
   '\\LaTeX':
-      '\\rm{L\\kern-.36em\\raisebox{.205em}{\\scriptstyle A} \\kern-.15em\\TeX}',
+      '\\rm{L\\kern{-.36em}\\raisebox{.205em}{\\scriptstyle A} \\kern{-.15em}\\TeX}',
   '\\KaTeX':
-      '\\rm{K\\kern-.17em\\raisebox{0.205em}{\\scriptstyle A} \\kern-.15em\\TeX}',
+      '\\rm{K\\kern{-.17em}\\raisebox{0.205em}{\\scriptstyle A} \\kern{-.15em}\\TeX}',
   '\\CaTeX':
-      '\\rm{\\raisebox{-0.05em}C\\kern-.15em\\raisebox{0.26em}{\\scriptstyle A}\\kern-.15em\\TeX}',
+      '\\rm{\\raisebox{-0.05em}C\\kern{-.15em}\\raisebox{0.26em}{\\scriptstyle A}\\kern{-.15em}\\TeX}',
 };

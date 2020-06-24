@@ -55,19 +55,19 @@ Future<void> main(List<String> args) async {
   defineMacro("\\\\hearts", "\\\\heartsuit");
 
   defineMacro("\\\\TeX",
-      "\\\\rm{T\\\\kern-.1667em\\\\raisebox{-.5ex}{E}\\\\kern-.125emX}");
+      "\\\\rm{T\\\\kern{-.1667em}\\\\raisebox{-.5ex}{E}\\\\kern{-.125em}X}");
   defineMacro(
       "\\\\LaTeX",
-      "\\\\rm{L\\\\kern-.36em\\\\raisebox{.205em}{\\\\scriptstyle A} "
-          "\\\\kern-.15em\\\\TeX}");
+      "\\\\rm{L\\\\kern{-.36em}\\\\raisebox{.205em}{\\\\scriptstyle A} "
+          "\\\\kern{-.15em}\\\\TeX}");
   defineMacro(
       "\\\\KaTeX",
-      "\\\\rm{K\\\\kern-.17em\\\\raisebox{0.205em}{\\\\scriptstyle A} "
-          "\\\\kern-.15em\\\\TeX}");
+      "\\\\rm{K\\\\kern{-.17em}\\\\raisebox{0.205em}{\\\\scriptstyle A} "
+          "\\\\kern{-.15em}\\\\TeX}");
   defineMacro(
       "\\\\CaTeX",
-      "\\\\rm{\\\\raisebox{-0.05em}C\\\\kern-.15em\\\\raisebox{0.26em}"
-          "{\\\\scriptstyle A}\\\\kern-.15em\\\\TeX}");
+      "\\\\rm{\\\\raisebox{-0.05em}C\\\\kern{-.15em}\\\\raisebox{0.26em}"
+          "{\\\\scriptstyle A}\\\\kern{-.15em}\\\\TeX}");
 
   for (final entry in macros.entries) {
     lines.add(" '${entry.key}': '${entry.value}',");

@@ -10,6 +10,7 @@ import 'package:meta/meta.dart';
 /// single characters. For example, functions are treated as [_Spacing.ord]s.
 double pixelSpacingFromCharacters({
   @required String previous,
+  // todo(creativecreatorormaybenot): probably need next in order to allow for signed numbers
   @required String current,
   @required double fontSize,
 }) {

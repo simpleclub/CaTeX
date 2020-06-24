@@ -26,6 +26,7 @@ class RenderCharacter extends RenderNode {
 
 /// Text painter for all nodes that paint characters in a typeset way.
 class TypesetPainter extends TextPainter {
+  /// Constructs a typeset [TextPainter] given a [context].
   TypesetPainter(CaTeXContext context)
       : assert(context != null),
         super(

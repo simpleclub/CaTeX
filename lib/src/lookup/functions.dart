@@ -5,8 +5,10 @@ import 'package:catex/src/parsing/functions/boxed.dart';
 import 'package:catex/src/parsing/functions/color_box.dart';
 import 'package:catex/src/parsing/functions/font.dart';
 import 'package:catex/src/parsing/functions/frac.dart';
+import 'package:catex/src/parsing/functions/kern.dart';
 import 'package:catex/src/parsing/functions/raise_box.dart';
 import 'package:catex/src/parsing/functions/sqrt.dart';
+import 'package:catex/src/parsing/functions/styling.dart';
 import 'package:catex/src/parsing/functions/sub_sup.dart';
 import 'package:catex/src/parsing/functions/text_color.dart';
 import 'package:catex/src/parsing/parsing.dart';
@@ -72,8 +74,7 @@ enum CaTeXFunction {
   /// `\scriptscriptstyle` uses [CaTeXStyle.ss].
   scriptScriptStyle,
 
-  // todo(creativecreatorormaybenot)
-  /// `\kern{}` adds or removes horizontal space.
+  /// `\kern{}` creates horizontal spacing.
   kern,
 
   /// `\raisebox{}{}` shifts text vertically.
@@ -189,15 +190,15 @@ FunctionNode lookupFunction(ParsingContext context) {
       return BoxedNode(context);
     case CaTeXFunction.sqrt:
       return SqrtNode(context);
+    case CaTeXFunction.raiseBox:
+      return RaiseBoxNode(context);
+    case CaTeXFunction.kern:
+      return KernNode(context);
     case CaTeXFunction.displayStyle:
     case CaTeXFunction.textStyle:
     case CaTeXFunction.scriptStyle:
     case CaTeXFunction.scriptScriptStyle:
-//      return StylingNode(context);
-    case CaTeXFunction.kern:
-//      return KernNode(context);
-    case CaTeXFunction.raiseBox:
-      return RaiseBoxNode(context);
+      return StylingNode(context);
   }
   // Not adding a default clause will make
   // the IDE help to add missing clauses.
