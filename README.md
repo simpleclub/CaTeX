@@ -1,6 +1,6 @@
 ![logo][]
 
-# CaTeX [![](https://img.shields.io/pub/v/catex.svg)](https://pub.dev/packages/catex)
+# CaTeX [![][shield]][pub]
 
 Flutter package that outputs **TeX** equations (like LaTeX, KaTeX, MathJax, etc.) inline using a 
 widget and *Flutter only*.
@@ -13,7 +13,7 @@ The implementation is mainly based on [*The TeXbook* by Donald E. Knuth][TeXbook
 This version is only a proof of concept. For a few supported equations, 
 see the [`example`][example] app.
 
-To get a feel of even what set of *characters* is only supported, see the 
+To get a feel of even what set of *characters* is only supported, see the
 [`Category` enum in `characters.dart`][categories].
 
 ## Usage
@@ -108,7 +108,7 @@ void main() {
 }
 ```
 
-See the [example app](https://github.com/simpleclub/CaTeX/tree/master/example) for more examples.
+See the [example app][example] for more examples.
 
 ## Expanding supported functionality
 
@@ -127,8 +127,10 @@ we are open to complete revamps.
 
 [//]: # (a list of all links used in this document)
 
+[shield]: https://img.shields.io/pub/v/catex.svg
+[pub]: https://pub.dev/packages/catex
 [logo]: https://i.imgur.com/6DvWz3S.png
-[example]: https://github.com/simpleclub/CaTeX/blob/master/example/README.md
+[example]: https://github.com/simpleclub/CaTeX/tree/master/example
 [categories]: https://github.com/simpleclub/CaTeX/blob/master/lib/src/lookup/characters.dart
 [license]: https://github.com/simpleclub/CaTeX/blob/master/LICENSE
 [contributing]: https://github.com/simpleclub/CaTeX/blob/master/CONTRIBUTING.md

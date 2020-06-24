@@ -6,13 +6,17 @@ linter:
     # understandable for anyone who wants to contribute.
     # Additionally, it helps a lot when getting back
     # into the code.
-    - public_member_api_docs
+    public_member_api_docs: true
 
     # This is good for consistency and not too hard
     # to actually do. It is especially useful for keeping
     # documentation and comments readable because the
     # formatter will not take care of that.
-    - lines_longer_than_80_chars
+    lines_longer_than_80_chars: true
+
+    # Types can be inferred and IDEs display the inferred
+    # type. Annotating when inference is possible, is redundant.
+    type_annotate_public_apis: false
 
 analyzer:
   exclude:

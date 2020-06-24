@@ -13,19 +13,17 @@ extension SizeString on String {
     // callback.
     final input = this;
 
-    final letterIndex = runes.firstWhere(
-      (element) =>
-          CharacterCategory.letter.matches(String.fromCharCode(element)),
-      orElse: () => null,
-    );
-    if (letterIndex == null || length < letterIndex) {
+    final letterIndex = runes.toList().indexWhere(
+          (element) =>
+              CharacterCategory.letter.matches(String.fromCharCode(element)),
+        );
+    if (letterIndex == -1 || length <= letterIndex + 1) {
       throw ConfigurationException(
-        // todo(creativecreatorormaybenot): find out how this is thrown (if it is displayed) and adjust when this is called if necessary or adjust the exception type if necessary
         reason: 'No size unit specified',
         input: input,
       );
     }
-    if (length > letterIndex) {
+    if (length > letterIndex + 2) {
       throw ConfigurationException(
         reason: 'Input found after the size unit (correct would be 1px; '
             'incorrect would be 1px5)',
@@ -33,12 +31,15 @@ extension SizeString on String {
       );
     }
 
-    var value = double.parse(substring(0, letterIndex), (valueString) {
+    final valueString = substring(0, letterIndex);
+    var value = double.tryParse(substring(0, letterIndex));
+
+    if (value == null) {
       throw ConfigurationException(
         reason: 'Invalid double size value: $valueString',
         input: input,
       );
-    });
+    }
 
     final sizeUnit = substring(letterIndex, letterIndex + 2);
     switch (sizeUnit) {

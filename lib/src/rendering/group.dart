@@ -4,29 +4,38 @@ import 'dart:ui';
 import 'package:catex/src/lookup/characters.dart';
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/spacing.dart';
+import 'package:catex/src/parsing//group.dart';
 import 'package:catex/src/rendering/character.dart';
+import 'package:catex/src/rendering/functions/raise_box.dart';
 import 'package:catex/src/rendering/functions/sub_sup.dart';
 import 'package:catex/src/rendering/rendering.dart';
 
+/// Renders a [GroupNode].
 class RenderGroup extends RenderNode {
+  /// Constructs a [RenderGroup] given a [context].
   RenderGroup(CaTeXContext context) : super(context);
 
   /// Positions the children in a row and positions
   /// them about a common center line vertically.
   @override
   void configure() {
-    var height = .0, width = .0;
+    // This height is used for the initial combined height before any vertical
+    // shifts are applied to child nodes.
+    var initialHeight = .0;
+    var width = .0;
 
     // Find out the height that is needed first.
     for (final child in children) {
-      height = max(
-        height,
+      initialHeight = max(
+        initialHeight,
         sizeChildNode(child).height,
       );
     }
 
+    // These are used to cover w/e vertical shifts are applied to child nodes.
+    var heightTopOverflow = .0, heightBottomOverflow = .0;
+
     RenderNode previousChild;
-    var subSupTopOverflow = .0, subSupBottomOverflow = .0;
     // Position all children centered based on
     // the height that was retrieved before.
     // Additionally, accumulate the total width and position
@@ -37,8 +46,8 @@ class RenderGroup extends RenderNode {
               // Divide the space that would be missing at the bottom
               // if the child was positioned at y=0 by two and
               // bump the child down by that value. This will center it.
-              (height - size.height) / 2,
-          dyShifted = dy + _subSupAddend(child);
+              (initialHeight - size.height) / 2,
+          dyShifted = dy + _subSupAddend(child) + _raiseBoxAddend(child);
 
       // Symbols can cause extra spacing and
       // interact with characters in that way.
@@ -57,12 +66,21 @@ class RenderGroup extends RenderNode {
       ));
       width += size.width + symbolSpacing;
 
+      // todo(creativecreatorormaybenot): remove redundancies
       if (child is RenderSubSup) {
         if (CharacterCategory.superscript.matches(child.context.input)) {
-          subSupTopOverflow = max(subSupTopOverflow, -dyShifted);
+          heightTopOverflow = max(heightTopOverflow, -dyShifted);
         } else {
-          subSupBottomOverflow =
-              max(subSupBottomOverflow, (dyShifted + size.height) - height);
+          heightBottomOverflow = max(
+              heightBottomOverflow, (dyShifted + size.height) - initialHeight);
+        }
+      } else if (child is RenderRaiseBox) {
+        final verticalShift = child.shift;
+        if (verticalShift < 0) {
+          heightTopOverflow = max(heightTopOverflow, -dyShifted);
+        } else {
+          heightBottomOverflow = max(
+              heightBottomOverflow, (dyShifted + size.height) - initialHeight);
         }
       }
 
@@ -71,16 +89,16 @@ class RenderGroup extends RenderNode {
 
     // If there is an overflow at the top, all children need to be bumped
     // down by that overflow again.
-    if (subSupTopOverflow > 0) {
+    if (heightTopOverflow > 0) {
       for (final child in children) {
         child.positionNode(
-            child.parentData.offset + Offset(0, subSupTopOverflow));
+            child.parentData.offset + Offset(0, heightTopOverflow));
       }
     }
 
     renderSize = Size(
       width,
-      height + subSupTopOverflow + subSupBottomOverflow,
+      initialHeight + heightTopOverflow + heightBottomOverflow,
     );
   }
 
@@ -100,6 +118,13 @@ class RenderGroup extends RenderNode {
       } else {
         return contextSize.height * _subFactor;
       }
+    }
+    return 0;
+  }
+
+  double _raiseBoxAddend(RenderNode child) {
+    if (child is RenderRaiseBox) {
+      return child.shift;
     }
     return 0;
   }
