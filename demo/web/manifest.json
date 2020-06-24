@@ -1,0 +1,11 @@
+{
+    "name": "CaTeX demo",
+    "short_name": "CaTeX",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Demo application for CaTeX, serving also as a web page for directions.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false
+}

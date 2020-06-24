@@ -10,5 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  url_launcher: ^5.4.11
+
   catex:
     path: ../

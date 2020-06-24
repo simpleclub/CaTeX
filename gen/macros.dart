@@ -66,7 +66,7 @@ Future<void> main(List<String> args) async {
           "\\\\kern{-.15em}\\\\TeX}");
   defineMacro(
       "\\\\CaTeX",
-      "\\\\rm{\\\\raisebox{-0.05em}C\\\\kern{-.12em}\\\\raisebox{0.26em}"
+      "\\\\rm{\\\\raisebox{-0.05em}C\\\\kern{-.12em}\\\\raisebox{0.2em}"
           "{\\\\scriptstyle A}\\\\kern{-.15em}\\\\TeX}");
 
   for (final entry in macros.entries) {

@@ -21,5 +21,5 @@ const macros = <String, String>{
   '\\KaTeX':
       '\\rm{K\\kern{-.17em}\\raisebox{0.205em}{\\scriptstyle A} \\kern{-.15em}\\TeX}',
   '\\CaTeX':
-      '\\rm{\\raisebox{-0.05em}C\\kern{-.12em}\\raisebox{0.26em}{\\scriptstyle A}\\kern{-.15em}\\TeX}',
+      '\\rm{\\raisebox{-0.05em}C\\kern{-.12em}\\raisebox{0.2em}{\\scriptstyle A}\\kern{-.15em}\\TeX}',
 };
