@@ -121,7 +121,7 @@ to understand how you can easily add functions and more.
 To help prioritization of function development, we conducted some research examining how often 
 certain functions appear in some of simpleclub's content. 
 This should give a rough feeling for what is most commonly used. A CSV file with the list of 
-used functions, and the frequency of appearance can be found [here][function_frequency].
+used functions and the frequency of appearance can be found [here][function_frequency].
 
 If you find something that is fundamentally flawed, please propose a better solution - 
 we are open to complete revamps.
