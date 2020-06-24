@@ -6,7 +6,7 @@ Flutter package that outputs **TeX** equations (like LaTeX, KaTeX, MathJax, etc.
 widget and *Flutter only*.
 
 The implementation is mainly based on [*The TeXbook* by Donald E. Knuth][TeXbook], 
-[*TeX by Topic* by Victor Eijkhout][TeX by Topic], and the [KaTeX project][KaTeX GitHub].
+[*TeX by Topic* by Victor Eijkhout][TeX by Topic], and the [KaTeX][KaTeX GitHub] project.
 
 ## Supported inputs
 
@@ -38,8 +38,9 @@ the [**SIL Open Font License**][fonts license].
 Additionally, some code, e.g. what is used for translating symbols is from KaTeX.  
 You can find the [license for the main KaTeX repo here][KaTeX license].
 
-The CaTeX open source project was created by [simpleclub][], initially by 
-[creativecreatorormaybenot][] individually (see the [`LICENSE` file][license]).  
+The CaTeX open source project was created and is maintained by [simpleclub][] (see the [`LICENSE` file][license]).
+Special thanks goes to [creativecreatorormaybenot][] who initially created this project.
+ 
 CaTeX itself is an open source project with the aim of providing a way to render TeX
 fast in Flutter. This was needed for the [simpleclub app][simpleclub], hence, the association.
 
@@ -120,12 +121,10 @@ to understand how you can easily add functions and more.
 To help prioritization of function development, we conducted some research examining how often 
 certain functions appear in some of simpleclub's content. 
 This should give a rough feeling for what is most commonly used. A CSV file with the list of 
-used functions and the frequency of appearance can be found [here][function_frequency].
+used functions, and the frequency of appearance can be found [here][function_frequency].
 
 If you find something that is fundamentally flawed, please propose a better solution - 
 we are open to complete revamps.
-
-[//]: # (a list of all links used in this document)
 
 [shield]: https://img.shields.io/pub/v/catex.svg
 [pub]: https://pub.dev/packages/catex

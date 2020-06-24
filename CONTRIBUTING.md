@@ -73,6 +73,7 @@ Updating the generation to support these should be straight forward.
   `p` for simple patches, `m` for minor versions, `M` for major versions, and `r` for releases.
   Do not forget to reset the values to the right of the value you incremented to 0. 
   You should omit `+0`.
+  
 * Commit your changes: `git commit -am "<commit_message>"`
 * Push your changes: `git push origin <name_of_your_branch>`
 
@@ -88,7 +89,10 @@ Alternatively, you can also use `git pull-request` via [GitHub hub][].
 * Adhere to the lints, i.e. the warnings provided by Dart's linter based on the repo's lint rules.  
   Run `flutter analyze` in order to ensure that you are not missing any warnings or errors.
 
-[//]: # (a list of all links used in this document)
+## Contributor License Agreement
+
+We require contributors to sign our [Contributor License Agreement (CLA)][CLA]. 
+In order for us to review and merge your code, please follow the link and sign it.
 
 [repo]: https://github.com/simpleclub/CaTeX
 [pubspec]: https://github.com/simpleclub/CaTeX/blob/master/pubspec.yaml
@@ -97,3 +101,4 @@ Alternatively, you can also use `git pull-request` via [GitHub hub][].
 [create pr]: https://help.github.com/en/articles/creating-a-pull-request-from-a-fork
 [GitHub hub]: https://hub.github.com/
 [ssh key]: https://help.github.com/articles/generating-ssh-keys/
+[CLA]: https://simpleclub.page.link/cla
