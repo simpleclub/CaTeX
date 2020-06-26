@@ -1,0 +1,14 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      # Can only publish the package when the Pubspec changed.
+      - 'pubspec.yaml'
+
+      # Demo can be deployed whenever.
+      - 'demo/lib/**'
+      - 'demo/web/**'
+      - 'demo/pubspec.yaml'
