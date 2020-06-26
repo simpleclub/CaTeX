@@ -1,5 +1,5 @@
 {
-    "name": "CaTeX demo",
+    "name": "CaTeX - Fast TeX renderer for Flutter",
     "short_name": "CaTeX",
     "start_url": ".",
     "display": "standalone",

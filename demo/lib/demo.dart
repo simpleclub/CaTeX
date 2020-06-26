@@ -11,7 +11,7 @@ class DemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CaTeX demo',
+      title: 'CaTeX - Fast TeX renderer for Flutter',
       home: Scaffold(
         body: Stack(
           children: [

@@ -46,7 +46,7 @@ jobs:
           FOLDER: demo/build/web
           GIT_CONFIG_NAME: creativecreatorormaybenot
           GIT_CONFIG_EMAIL: creativecreatorormaybenot@gmail.com
-          COMMIT_MESSAGE: Deploy demo page Flutter web deployment
+          COMMIT_MESSAGE: Deploy CaTeX Flutter web demo page
 
   pub-package:
     timeout-minutes: 6
