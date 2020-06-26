@@ -1,13 +1,6 @@
 name: Checks
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - '**/lib/**'
-      - '**/pubspec.yaml'
-      - '**/test/**'
   pull_request:
     branches:
       - master
@@ -18,6 +11,7 @@ on:
 
 jobs:
   analyze:
+    timeout-minutes: 6
     runs-on: ${{ matrix.os }}
     name: Analysis & format (${{ matrix.channel }} on ${{ matrix.os }})
     strategy:
@@ -32,24 +26,37 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1.2.0
+
+      - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
-      - name: Setup projects (root & example)
+
+      - name: Setup projects
         run: |
           flutter pub get
+
           cd example
           flutter create .
           rm -rf test
           flutter pub get
+
+          cd ../demo
+          flutter pub get
+
           cd ..
-      - name: Check format
+
+      - name: Check format (flutter format)
+        if: ${{ matrix.channel }} != 'dev'
         run: flutter format . --set-exit-if-changed --fix
+
+      - name: Check format (dart format)
+          if: ${{ matrix.channel }} == 'dev'
+          run: dart format .
+
       - run: flutter analyze
 
   test:
-    # Not using the conditional as jobs are not re-run when the draft status changes.
-    #if: github.event.pull_request.draft == false
+    timeout-minutes: 6
     runs-on: ${{ matrix.os }}
     name: Test (${{ matrix.channel }} on ${{ matrix.os }})
     strategy:
@@ -64,16 +71,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - uses: subosito/flutter-action@v1.2.0
         with:
           channel: ${{ matrix.channel }}
-      - name: Setup projects (root & example)
-        run: |
-          flutter pub get
-          cd example
-          flutter create .
-          rm -rf test
-          flutter pub get
-          cd ..
+
+      - name: Setup project
+        run: flutter pub get
+
       - name: Run unit tests
         run: flutter test
+
+  pana:
+    timeout-minutes: 9
+    runs-on: ubuntu-latest
+    name: Pub PANA
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Clean up directory # Matches the publish workflow.
+        run: rm -rf .github demo gen CODEOWNERS CONTRIBUTING.md function_prioritization.csv
+
+      - uses: axel-op/dart-package-analyzer@v2
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}

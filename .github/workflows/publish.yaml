@@ -12,3 +12,57 @@ on:
       - 'demo/lib/**'
       - 'demo/web/**'
       - 'demo/pubspec.yaml'
+
+jobs:
+  demo-page:
+    timeout-minutes: 6
+    runs-on: ubuntu-latest
+    name: CaTeX demo page
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: subosito/flutter-action@v1.3.2
+        with:
+          # Using the dev channel for now as Flutter web is not supported on stable yet.
+          channel: 'dev'
+
+      - name: Build web app
+        run: |
+          cd demo
+          flutter pub get
+          flutter config --enable-web
+          flutter build web --release
+          cd build/web
+          touch ".nojekyll"
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: demo/build/web
+          GIT_CONFIG_NAME: creativecreatorormaybenot
+          GIT_CONFIG_EMAIL: creativecreatorormaybenot@gmail.com
+          COMMIT_MESSAGE: Deploy demo page Flutter web deployment
+
+  pub-package:
+    timeout-minutes: 6
+    runs-on: ubuntu-latest
+    name: CaTeX Pub package
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Clean up directory
+        # Deletes some files that do not need to be published to Pub.
+        run: rm -rf .github demo gen CODEOWNERS CONTRIBUTING.md function_prioritization.csv
+
+      - name: Deploy to Pub
+        uses: sakebook/actions-flutter-pub-publisher@v1.3.0
+        with:
+          credential: ${{ secrets.PUB_CREDENTIALS }}
+          flutter_package: true
+          skip_test: true
