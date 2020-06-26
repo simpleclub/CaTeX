@@ -177,7 +177,7 @@ class _CaTeXEditorState extends State<_CaTeXEditor> {
   void initState() {
     super.initState();
 
-    _controller = TextEditingController(text: r'\CaTeX')
+    _controller = TextEditingController(text: r'\CaTeX = 42')
       ..addListener(() {
         setState(() {});
       });
