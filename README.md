@@ -53,6 +53,10 @@ If you fetch the strings from a database, you can just pass them to `CaTeX`:
 CaTeX(equation);
 ```
 
+> _We are aware the library does not support every single formula at the beginning._
+> _The library is smart enough to know what formulas it can and cannot display and will throw an appropriate error._
+> _To benefit immediately from the library, we fall back to an alternative when the formula is not supported._
+
 ### Fonts & licenses
 
 The included fonts are taken from [the `katex-fonts` repository][katex-fonts] and licensed under 
