@@ -1,6 +1,6 @@
 ![logo][]
 
-# CaTeX [![][shield]][pub] | [Demo][demo]
+# CaTeX [![][shield]][pub] → [demo][]
 
 Flutter package that outputs **TeX** equations (like LaTeX, KaTeX, MathJax, etc.) inline using a 
 widget and *Flutter only*.
