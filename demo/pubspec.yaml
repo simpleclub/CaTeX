@@ -14,3 +14,6 @@ dependencies:
 
   catex:
     path: ../
+
+dev_dependencies:
+  lint: ^1.2.0 # https://pub.dev/packages/lint
