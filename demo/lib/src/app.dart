@@ -3,6 +3,7 @@ import 'package:demo/src/editor.dart';
 import 'package:demo/src/link_button.dart';
 import 'package:demo/src/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Demo application for CaTeX.
@@ -44,14 +45,16 @@ class DemoApp extends StatelessWidget {
                 top: 16,
                 bottom: 8,
               ),
-              child: GestureDetector(
-                onTap: () {
-                  launch(katexUrl);
-                },
-                behavior: HitTestBehavior.opaque,
-                child: DefaultTextStyle.merge(
-                  style: const TextStyle(fontSize: 48),
-                  child: const CaTeX(r'\CaTeX'),
+              child: MouseRegion(
+                cursor: MaterialStateMouseCursor.clickable,
+                child: GestureDetector(
+                  onTap: () {
+                    launch(katexUrl);
+                  },
+                  child: DefaultTextStyle.merge(
+                    style: const TextStyle(fontSize: 48),
+                    child: const CaTeX(r'\CaTeX'),
+                  ),
                 ),
               ),
             ),
@@ -153,9 +156,17 @@ class DemoApp extends StatelessWidget {
               thickness: 1,
               height: 1,
             ),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 264),
-              child: Image.network(logoUrl),
+            MouseRegion(
+              cursor: MaterialStateMouseCursor.clickable,
+              child: GestureDetector(
+                onTap: () {
+                  launch(organizationUrl);
+                },
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 264),
+                  child: Image.network(logoUrl),
+                ),
+              ),
             ),
           ],
         ),

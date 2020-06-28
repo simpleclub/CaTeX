@@ -47,3 +47,9 @@ const defaultInput = r'\boxed{\CaTeX = 42}';
 // simpleclub
 /// simpleclub logo.
 const logoUrl = 'https://i.imgur.com/1CoSmA6.png';
+
+/// Name used as a tooltip label.
+const organizationName = 'simpleclub';
+
+/// URL for simpleclub's GitHub.
+const organizationUrl = 'https://github.com/simpleclub';
