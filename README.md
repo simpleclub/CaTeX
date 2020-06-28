@@ -11,17 +11,18 @@ using a widget and *Flutter only* - no plugins, no web views.
 Being Dart only, CaTeX renders TeX ***faster*** than any other Flutter plugin and is way more
 flexible. You can view a [demo running on the web][demo].
 
-**Note**: CaTeX is pre-v0.1 release and lacks support for some major TeX functionality. You can help
+CaTeX is an open source project with the aim of providing a way to render TeX
+fast in Flutter. This was needed for the [simpleclub app][simpleclub], hence, the association.
+It is also maintained by [simpleclub][] (see the [`LICENSE`][license] file), 
+initially created individually by [creativecreatorormaybenot][].  
+
+### Note
+
+CaTeX is pre-v0.1 release and lacks support for some major TeX functionality. You can help
 and contribute; see the [contributing guide][contributing].
 
 > To benefit from the library *right now*, we fall back to an alternative when a specific formula 
 > is not supported. CaTeX automatically throws appropriate exceptions for handling this.
-
-The CaTeX open source project was created by [simpleclub][] (see the [`LICENSE`][license] file), 
-initially by [creativecreatorormaybenot][] individually.  
- 
-CaTeX itself is an open source project with the aim of providing a way to render TeX
-fast in Flutter. This was needed for the [simpleclub app][simpleclub], hence, the association.
 
 ## Usage
 
