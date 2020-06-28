@@ -88,6 +88,8 @@ Alternatively, you can also use `git pull-request` via [GitHub hub][].
 * Use `flutter format . --fix` to format all code.
 * Adhere to the lints, i.e. the warnings provided by Dart's linter based on the repo's lint rules.  
   Run `flutter analyze` in order to ensure that you are not missing any warnings or errors.
+* If you find something that is fundamentally flawed, please propose a better solution - 
+  we are open to complete revamps.
 
 ## Contributor License Agreement
 
