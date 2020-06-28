@@ -154,7 +154,7 @@ we are open to complete revamps.
 
 [shield]: https://img.shields.io/pub/v/catex.svg
 [pub]: https://pub.dev/packages/catex
-[logo]: https://i.imgur.com/6DvWz3S.png
+[logo]: https://i.imgur.com/67VUyFm.png
 [example]: https://github.com/simpleclub/CaTeX/tree/master/example
 [categories]: https://github.com/simpleclub/CaTeX/blob/master/lib/src/lookup/characters.dart
 [license]: https://github.com/simpleclub/CaTeX/blob/master/LICENSE
