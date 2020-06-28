@@ -1,6 +1,7 @@
 # [![CaTeX logo][logo]][demo]
 
 [![CaTeX on Pub][Pub shield]][Pub]
+[![CaTeX Flutter web demo][demo shield]][demo]
 
 CaTeX is a Flutter package that outputs **TeX** equations (like LaTeX, KaTeX, MathJax, etc.) inline 
 using a widget and *Flutter only* - no plugins, no web views.
@@ -186,6 +187,7 @@ See our [contributing guide][contributing] for more information.
 [creativecreatorormaybenot]: https://github.com/creativecreatorormaybenot
 [simpleclub]: https://github.com/simpleclub
 [demo]: https://simpleclub.github.io/CaTeX
+[demo shield]: https://img.shields.io/badge/CaTeX-demo-FFC107
 [Pub shield]: https://img.shields.io/pub/v/catex.svg
 [Pub]: https://pub.dev/packages/catex
 [TeXbook]: http://www.ctex.org/documents/shredder/src/texbook.pdf
