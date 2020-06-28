@@ -8,6 +8,28 @@ widget and *Flutter only*.
 The implementation is mainly based on [*The TeXbook* by Donald E. Knuth][TeXbook], 
 [*TeX by Topic* by Victor Eijkhout][TeX by Topic], and the [KaTeX][KaTeX GitHub] project.
 
+## Mission
+
+There are already a couple of TeX libraries out there. So why create another?
+
+Most of those libraries use already existing implementations, mostly using a WebView. 
+Which is a valid approach, it's straightforward to implement. You just have to write a wrapper.
+
+However, we believe that because of the overhead of utilizing WebViews, 
+it makes the libraries less portable and performant. 
+At simpleclub, we recently decided to move from a Flutter-native hybrid to go all-in with Flutter.
+Now we need a well-written Flutter TeX library that works on every platform and can display lots of formulas. 
+So we decided to start this Open-Source effort of bringing Dart-native TeX support to Flutter.
+
+A custom TeX parser could potentially also allow us to bring accessibility and screen reader support out of the box.
+Here we could build on the work of [T.V. Raman][AsTeR] 
+who developed Audio System For Technical Readings (AsTeR) for his Ph.D.
+
+As this involves a lot of work, we would be happy to work with you bringing this vision to life together, 
+so everyone can benefit from a pure-Flutter TeX library.
+
+See our [contribution guide][contributing] for more information.
+
 ## Supported inputs
 
 This version is only a proof of concept. For a few supported equations, 
@@ -30,6 +52,10 @@ If you fetch the strings from a database, you can just pass them to `CaTeX`:
 ```dart
 CaTeX(equation);
 ```
+
+> _We are aware the library does not support every single formula at the beginning._
+> _The library is smart enough to know what formulas it can and cannot display and will throw an appropriate error._
+> _To benefit immediately from the library, we fall back to an alternative when the formula is not supported._
 
 ### Fonts & licenses
 
@@ -139,6 +165,7 @@ we are open to complete revamps.
 [katex-fonts]: https://github.com/KaTeX/katex-fonts/tree/feee984b451fea029d921ea0d41b917f56c8b7f6
 [fonts license]: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 [KaTeX license]: https://github.com/KaTeX/KaTeX/blob/b14197d9c9052d937dc789e1ac492bcdcdde5599/LICENSE
+[AsTeR]: http://emacspeak.sourceforge.net/raman/aster/aster-toplevel.html
 [creativecreatorormaybenot]: https://github.com/creativecreatorormaybenot
 [simpleclub]: https://github.com/simpleclub
 [function_frequency]: https://github.com/simpleclub/CaTeX/blob/master/function_prioritization.csv
