@@ -20,6 +20,7 @@ double pixelSpacingFromCharacters({
 
   final previousSpacingType = previous.length != 1
           ? _Spacing.ord
+          // todo(creativecreatorormaybenot): do not look up symbols here - use one lookup everywhere, i.e. use the looked up string from the symbol node
           : symbols[CaTeXMode.math][previous]?.group?.asSpacingType ??
               _Spacing.ord,
       currentSpacingType = current.length != 1
@@ -33,8 +34,13 @@ double pixelSpacingFromCharacters({
 
 /// Three types of spacing based on https://www.overleaf.com/learn/latex/Spacing_in_math_mode?nocdn=true.
 enum Spacing {
+  /// Space equivalent to `\thinmuskip`. todo: support properly
   thinSpace,
+
+  /// Space equivalent to `\mediummuskip`. todo: support properly
   mediumSpace,
+
+  /// Space equivalent to `\thickmuskip`. todo: support properly
   thickSpace,
 }
 

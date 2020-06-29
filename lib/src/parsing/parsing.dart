@@ -148,9 +148,16 @@ class Parser {
               // away in _extractGroup.
               _addNode(_extractGroup());
             } else {
-              // Any other character can just be rendered as they are.
+              // Any other single character.
               _consumeChar();
-              _addNode(CharacterNode(_consumeToken()));
+
+              // Some other characters are also special symbols. However,
+              // this is currently handled in RenderCharacter as there are
+              // some problems with it.
+              final token = _consumeToken();
+
+              // Any other characters can just be rendered as they are.
+              _addNode(CharacterNode(token));
             }
             _skipSpaces();
             return _parse();
@@ -234,7 +241,7 @@ class Parser {
     return category.matches(_input.substring(0, 1));
   }
 
-  /// Adds the current char to the
+  /// Adds the current char to the current [_tokenInput].
   void _consumeChar() {
     assert(_input.isNotEmpty);
     _tokenInput += _input.substring(0, 1);

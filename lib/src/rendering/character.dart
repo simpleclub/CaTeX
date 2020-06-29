@@ -2,17 +2,34 @@ import 'dart:ui';
 
 import 'package:catex/src/lookup/characters.dart';
 import 'package:catex/src/lookup/context.dart';
+import 'package:catex/src/lookup/symbols.dart';
+import 'package:catex/src/parsing/symbols.dart';
 import 'package:catex/src/rendering/rendering.dart';
 import 'package:flutter/rendering.dart';
+import 'package:meta/meta.dart';
 
 class RenderCharacter extends RenderNode {
-  RenderCharacter(CaTeXContext context) : super(context);
+  RenderCharacter(
+    CaTeXContext context, {
+    @required this.symbol,
+  }) : super(context);
+
+  /// Stores the symbol resolved from the [context]'s input for a rendering
+  /// workaround.
+  ///
+  /// Specifically, some characters are also special symbol, but they
+  /// apparently need to be handled very differently from normal symbols, i.e.
+  /// a [SymbolNode] cannot handle it properly.
+  final SymbolData symbol;
 
   TextPainter _painter;
 
   @override
   void configure() {
-    _painter = TypesetPainter(context);
+    _painter = TypesetPainter(context.copyWith(
+      // todo: solve this properly
+      input: symbol?.unicode,
+    ));
     _painter.layout();
 
     renderSize = _painter.size;

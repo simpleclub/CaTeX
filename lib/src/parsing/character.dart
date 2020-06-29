@@ -1,10 +1,16 @@
 import 'package:catex/src/lookup/context.dart';
+import 'package:catex/src/lookup/symbols.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/character.dart';
 import 'package:catex/src/widgets.dart';
 
 class CharacterNode extends LeafNode<RenderCharacter> {
-  CharacterNode(ParsingContext context) : super(context);
+  CharacterNode(ParsingContext context)
+      : _context = context,
+        super(context);
+
+  /// Stores the [ParsingContext] for a workaround solution.
+  final ParsingContext _context;
 
   @override
   NodeWidget<RenderCharacter> configureWidget(CaTeXContext context) {
@@ -15,6 +21,14 @@ class CharacterNode extends LeafNode<RenderCharacter> {
 
   @override
   RenderCharacter createRenderNode(CaTeXContext context) {
-    return RenderCharacter(context);
+    // todo: remove this workaround solution of correcting how some symbols are rendered
+    // The symbol is passed explicitly as the input needs to stay the same for
+    // correct spacing etc.
+    final symbol = symbols[_context.mode][context.input];
+
+    return RenderCharacter(
+      context,
+      symbol: symbol,
+    );
   }
 }
