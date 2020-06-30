@@ -65,15 +65,26 @@ jobs:
 
           cd ..
 
-      - name: Check format (flutter format)
+      - name: Check package and example format (flutter format)
         if: matrix.channel == 'stable'
-        run: flutter format . --set-exit-if-changed --fix
+        run: flutter format lib gen test example --set-exit-if-changed --fix
 
-      - name: Check format (dart format)
+      - name: Check package and example format (dart format)
         if: matrix.channel != 'stable'
-        run: dart format .
+        run: dart format lib gen test example
 
-      - run: flutter analyze
+      - name: Check demo format
+        # The demo project needs separate format checking as it only runs on dev.
+        if: matrix.channel == 'dev'
+        run: dart format demo
+
+      - name: Analyze package and example
+        run: flutter analyze --no-current-package lib gen test example
+
+      - name: Analyze demo
+        # The demo project needs a separate analysis as it only runs on dev.
+        if: matrix.channel == 'dev'
+        run: flutter analyze --no-current-package demo
 
   test:
     timeout-minutes: 6
