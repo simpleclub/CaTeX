@@ -3,15 +3,18 @@ import 'dart:ui';
 import 'package:catex/src/lookup/characters.dart';
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/symbols.dart';
+import 'package:catex/src/parsing/character.dart';
 import 'package:catex/src/parsing/symbols.dart';
 import 'package:catex/src/rendering/rendering.dart';
+import 'package:catex/src/rendering/symbols.dart';
 import 'package:flutter/rendering.dart';
-import 'package:meta/meta.dart';
 
+/// [RenderNode] for [CharacterNode].
 class RenderCharacter extends RenderNode {
+  /// Constructs a [CharacterNode] from a [context] and an optional [symbol].
   RenderCharacter(
     CaTeXContext context, {
-    @required this.symbol,
+    this.symbol,
   }) : super(context);
 
   /// Stores the symbol resolved from the [context]'s input for a rendering
@@ -20,6 +23,11 @@ class RenderCharacter extends RenderNode {
   /// Specifically, some characters are also special symbol, but they
   /// apparently need to be handled very differently from normal symbols, i.e.
   /// a [SymbolNode] cannot handle it properly.
+  ///
+  /// This means that [RenderSymbol] does *not* use this property and instead
+  /// populates the [CaTeXContext.input] with the symbol. Any other
+  /// [RenderCharacter] will pass a [symbol] explicitly if the input is to be
+  /// rendered using a different unicode character.
   final SymbolData symbol;
 
   TextPainter _painter;
