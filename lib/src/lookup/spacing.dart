@@ -10,7 +10,8 @@ import 'package:meta/meta.dart';
 /// single characters. For example, functions are treated as [_Spacing.ord]s.
 double pixelSpacingFromCharacters({
   @required String previous,
-  // todo(creativecreatorormaybenot): probably need next in order to allow for signed numbers
+  // todo(creativecreatorormaybenot): probably need next in order to
+  // todo| allow for signed numbers
   @required String current,
   @required double fontSize,
 }) {
@@ -20,7 +21,9 @@ double pixelSpacingFromCharacters({
 
   final previousSpacingType = previous.length != 1
           ? _Spacing.ord
-          // todo(creativecreatorormaybenot): do not look up symbols here - use one lookup everywhere, i.e. use the looked up string from the symbol node
+          // todo(creativecreatorormaybenot): do not look up symbols here
+          // todo| use one lookup everywhere, i.e. use the looked up string
+          // todo| from the symbol node
           : symbols[CaTeXMode.math][previous]?.group?.asSpacingType ??
               _Spacing.ord,
       currentSpacingType = current.length != 1
