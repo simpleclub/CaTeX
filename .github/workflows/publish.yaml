@@ -28,7 +28,7 @@ jobs:
       - uses: subosito/flutter-action@v1.3.2
         with:
           # Using the dev channel for now as Flutter web is not supported on stable yet.
-          flutter-version: 1.20.0-2.0.pre
+          flutter-version: '1.20.0-2.0.pre'
 
       - name: Build web app
         run: |
