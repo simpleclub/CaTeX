@@ -10,6 +10,7 @@ import 'package:catex/src/parsing/functions/raise_box.dart';
 import 'package:catex/src/parsing/functions/sqrt.dart';
 import 'package:catex/src/parsing/functions/styling.dart';
 import 'package:catex/src/parsing/functions/sub_sup.dart';
+import 'package:catex/src/parsing/functions/text.dart';
 import 'package:catex/src/parsing/functions/text_color.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:flutter/foundation.dart';
@@ -79,6 +80,33 @@ enum CaTeXFunction {
 
   /// `\raisebox{}{}` shifts text vertically.
   raiseBox,
+
+  /// `\text{}` enters text mode.
+  text,
+
+  /// `\textnormal{}` enters text mode with the normal font.
+  textNormal,
+
+  /// `\textrm{}` uses a roman serif font in text mode.
+  textRm,
+
+  /// `\textsf{}` uses a serif font in text mode.
+  textSf,
+
+  /// `\texttt{}` uses a typewriter font in text mode.
+  textTt,
+
+  /// `\textbf{}` uses a bold font weight in text mode.
+  textBf,
+
+  /// `\textmd{}` uses normal font weight in text mode.
+  textMd,
+
+  /// `\textit{}` uses italic font style in text mode.
+  textIt,
+
+  /// `\textit{}` uses normal font style in text mode.
+  textUp,
 }
 
 /// Names, i.e. control sequences that correspond to
@@ -92,6 +120,15 @@ const supportedFunctionNames = <String, CaTeXFunction>{
   r'\bf': CaTeXFunction.bf,
   r'\it': CaTeXFunction.it,
   r'\cal': CaTeXFunction.cal,
+  r'\text': CaTeXFunction.text,
+  r'\textnormal': CaTeXFunction.textNormal,
+  r'\textrm': CaTeXFunction.textRm,
+  r'\textsf': CaTeXFunction.textSf,
+  r'\texttt': CaTeXFunction.textTt,
+  r'\textbf': CaTeXFunction.textBf,
+  r'\textmd': CaTeXFunction.textMd,
+  r'\textit': CaTeXFunction.textIt,
+  r'\textup': CaTeXFunction.textUp,
   r'\textcolor': CaTeXFunction.textColor,
   '_': CaTeXFunction.sub,
   '^': CaTeXFunction.sup,
@@ -127,6 +164,15 @@ const List<CaTeXFunction> supportedMathFunctions = [
   CaTeXFunction.scriptScriptStyle,
   CaTeXFunction.kern,
   CaTeXFunction.raiseBox,
+  CaTeXFunction.text,
+  CaTeXFunction.textNormal,
+  CaTeXFunction.textRm,
+  CaTeXFunction.textSf,
+  CaTeXFunction.textTt,
+  CaTeXFunction.textBf,
+  CaTeXFunction.textMd,
+  CaTeXFunction.textIt,
+  CaTeXFunction.textUp,
 ];
 
 /// CaTeX functions that are available in text mode.
@@ -146,6 +192,15 @@ const List<CaTeXFunction> supportedTextFunctions = [
   CaTeXFunction.scriptScriptStyle,
   CaTeXFunction.kern,
   CaTeXFunction.raiseBox,
+  CaTeXFunction.text,
+  CaTeXFunction.textNormal,
+  CaTeXFunction.textRm,
+  CaTeXFunction.textSf,
+  CaTeXFunction.textTt,
+  CaTeXFunction.textBf,
+  CaTeXFunction.textMd,
+  CaTeXFunction.textIt,
+  CaTeXFunction.textUp,
 ];
 
 /// Looks up the [FunctionNode] subclass for a given input.
@@ -199,6 +254,16 @@ FunctionNode lookupFunction(ParsingContext context) {
     case CaTeXFunction.scriptStyle:
     case CaTeXFunction.scriptScriptStyle:
       return StylingNode(context);
+    case CaTeXFunction.text:
+    case CaTeXFunction.textNormal:
+    case CaTeXFunction.textRm:
+    case CaTeXFunction.textSf:
+    case CaTeXFunction.textTt:
+    case CaTeXFunction.textBf:
+    case CaTeXFunction.textMd:
+    case CaTeXFunction.textIt:
+    case CaTeXFunction.textUp:
+      return TextNode(context);
   }
   // Not adding a default clause will make
   // the IDE help to add missing clauses.
@@ -230,3 +295,21 @@ class FunctionProperties {
   /// allocated their arguments from left to right, parsing would fail.
   final int greediness;
 }
+
+/// Workaround solution for entering text mode until text mode is properly
+/// supported.
+///
+/// The parser uses this to determine whether it should include spaces or not.
+/// In a proper solution, the parser should never do that.
+@Deprecated('Workaround solution should not be used.')
+const textModeSwitchingFunctions = <CaTeXFunction>[
+  CaTeXFunction.text,
+  CaTeXFunction.textNormal,
+  CaTeXFunction.textRm,
+  CaTeXFunction.textSf,
+  CaTeXFunction.textTt,
+  CaTeXFunction.textBf,
+  CaTeXFunction.textMd,
+  CaTeXFunction.textIt,
+  CaTeXFunction.textUp,
+];

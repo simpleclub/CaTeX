@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 /// Example equations to test and showcase the renderer and parser.
 List<String> get equations => [
+      r'\text{Hello, World!}',
       r'\mu =: \sqrt{x}',
       r'\eta = 7^\frac{4}{2}',
       r'\epsilon = \frac 2 {3 + 2}',

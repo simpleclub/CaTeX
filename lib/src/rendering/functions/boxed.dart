@@ -1,10 +1,13 @@
 import 'dart:ui';
 
 import 'package:catex/src/lookup/context.dart';
+import 'package:catex/src/parsing/functions/boxed.dart';
 import 'package:catex/src/rendering/group.dart';
 import 'package:catex/src/rendering/rendering.dart';
 
+/// [RenderNode] for [BoxedNode].
 class RenderBoxed extends RenderNode with SingleChildRenderNodeMixin {
+  /// Constructs a [RenderBoxed] given a [context].
   RenderBoxed(CaTeXContext context) : super(context);
 
   Paint _borderPaint;

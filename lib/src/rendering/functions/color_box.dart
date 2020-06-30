@@ -1,10 +1,13 @@
 import 'dart:ui';
 
 import 'package:catex/src/lookup/context.dart';
+import 'package:catex/src/parsing/functions/color_box.dart';
 import 'package:catex/src/rendering/group.dart';
 import 'package:catex/src/rendering/rendering.dart';
 
+/// [RenderNode] for [ColorBoxNode].
 class RenderColorBox extends RenderNode with SingleChildRenderNodeMixin {
+  /// Constructs a [RenderColorBox] given a [context].
   RenderColorBox(CaTeXContext context) : super(context);
 
   Paint _backgroundPaint;

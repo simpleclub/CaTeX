@@ -2,9 +2,12 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:catex/src/lookup/context.dart';
+import 'package:catex/src/parsing/functions/frac.dart';
 import 'package:catex/src/rendering/rendering.dart';
 
+/// [RenderNode] for [FracNode].
 class RenderFrac extends RenderNode {
+  /// Constructs a [RenderFrac] given a [context].
   RenderFrac(CaTeXContext context) : super(context);
 
   Paint _linePaint;

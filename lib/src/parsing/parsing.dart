@@ -37,8 +37,10 @@ class Parser {
 
   final ParsingContext _context;
 
+  /// [ParsingContext] the parser starts with.
   ParsingContext get rootContext => _context;
 
+  /// [ParsingNode] that is the result of parsing the [rootContext].
   ParsingNode get rootNode => _rootNode;
 
   ParsingNode _rootNode;
@@ -47,6 +49,11 @@ class Parser {
   _State _state;
   _Token _token;
   String _tokenInput;
+
+  /// Stores the latest parsed function in order to determine the [CaTeXMode]
+  /// for a group.
+  @Deprecated('Avoid workaround solutions.')
+  ParsingContext _lastFunctionToken;
 
   /// Parses the [rootContext] and populates the [rootNode].
   ///
@@ -89,6 +96,8 @@ class Parser {
     _index = null;
     _token = null;
     _tokenInput = null;
+
+    _lastFunctionToken = null;
   }
 
   /// Handles parsing recursively.
@@ -104,9 +113,20 @@ class Parser {
         _state = _charIs(CharacterCategory.space) ? _State.S : _State.M;
         return _parse();
       case _State.S:
+        assert(_tokenInput.isEmpty);
+
         if (_charIs(CharacterCategory.space)) {
           _input = _input.substring(1);
           _index++;
+
+          // Workaround solution for inserting a single space (no matter how
+          // many there actually are) in text mode.
+          if (_context.mode == CaTeXMode.text &&
+              (_rootNode == null ||
+                  !(_group.children.last is CharacterNode &&
+                      _group.children.last.context.input == ' '))) {
+            _addNode(CharacterNode(_context.copyWith(input: ' ')));
+          }
         } else {
           _state = _State.M;
         }
@@ -250,6 +270,13 @@ class Parser {
   }
 
   ParsingContext _consumeToken() {
+    // After any token is consumed, the stored function should be thrown away
+    // because it might not affect the group anymore. This works as a workaround
+    // because all currently supported text functions accept exactly one group
+    // and when parsing that group, the text mode will be extracted from the
+    // latest function before consuming any token.
+    _lastFunctionToken = null;
+
     final token = _tokenInput;
     _tokenInput = '';
     return _context.copyWith(input: token);
@@ -271,7 +298,11 @@ class Parser {
     _state = _State.S;
   }
 
-  ParsingNode _parseFunctionNode(ParsingContext token) => lookupFunction(token);
+  ParsingNode _parseFunctionNode(ParsingContext token) {
+    _lastFunctionToken = token;
+
+    return lookupFunction(token);
+  }
 
   /// Finds and extracts group to pass it to a new parser.
   ///
@@ -282,6 +313,11 @@ class Parser {
   /// It is not as easy as finding the next closing character because
   /// groups can be nested.
   ParsingNode _extractGroup() {
+    final mode = textModeSwitchingFunctions
+            .contains(supportedFunctionNames[_lastFunctionToken?.input])
+        ? CaTeXMode.text
+        : null;
+
     // Save the beginning index for error handling.
     final beginning = _index;
 
@@ -328,7 +364,9 @@ class Parser {
           input: _context.input);
     }
 
-    final groupParser = Parser._(_consumeToken());
+    final groupParser = Parser._(
+      _consumeToken().copyWith(mode: mode),
+    );
 
     // Throw away the end of group character.
     _consumeChar();
