@@ -1,7 +1,7 @@
 import 'package:catex/src/lookup/context.dart';
 import 'package:flutter/foundation.dart';
 
-/// Base for all exceptions thrown in/by CaTeX.
+/// Basis for all exceptions thrown by CaTeX.
 abstract class CaTeXException implements Exception {
   /// Constructs a [CaTeXException] from a [reason], an [input], and the
   /// phase of CaTeX's output process that the exception occurred in ([during]).
