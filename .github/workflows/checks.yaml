@@ -5,9 +5,12 @@ on:
     branches:
       - master
     paths:
-      - '**/lib/**'
-      - '**/pubspec.yaml'
-      - '**/test/**'
+      # Not restricting paths for now as there might be updates to the SDKs which change the
+      # outcome of these actions between different commits, even when there was no package change.
+      - '**'
+#      - '**/lib/**'
+#      - '**/pubspec.yaml'
+#      - '**/test/**'
 
 jobs:
   analyze:
