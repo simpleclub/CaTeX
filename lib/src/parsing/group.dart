@@ -3,8 +3,12 @@ import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/group.dart';
 import 'package:catex/src/widgets.dart';
 
+/// [ParsingNode] for groups.
 class GroupNode extends MultiChildNode<RenderGroup> {
-  GroupNode(ParsingContext context) : super(context);
+  /// Constructs a [GroupNode] given a [ParsingContext].
+  GroupNode(this._context) : super(_context);
+
+  final ParsingContext _context;
 
   @override
   NodeWidget<RenderGroup> configureWidget(CaTeXContext context) {
@@ -19,6 +23,6 @@ class GroupNode extends MultiChildNode<RenderGroup> {
 
   @override
   RenderGroup createRenderNode(CaTeXContext context) {
-    return RenderGroup(context);
+    return RenderGroup(context, _context.mode);
   }
 }

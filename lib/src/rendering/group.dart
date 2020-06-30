@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:catex/src/lookup/characters.dart';
 import 'package:catex/src/lookup/context.dart';
+import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/lookup/spacing.dart';
 import 'package:catex/src/parsing/group.dart';
 import 'package:catex/src/rendering/character.dart';
@@ -12,8 +13,17 @@ import 'package:catex/src/rendering/rendering.dart';
 
 /// Renders a [GroupNode].
 class RenderGroup extends RenderNode {
-  /// Constructs a [RenderGroup] given a [context].
-  RenderGroup(CaTeXContext context) : super(context);
+  /// Constructs a [RenderGroup] given a [context] and a [mode].
+  RenderGroup(
+    CaTeXContext context,
+    this.mode,
+  ) : super(context);
+
+  // todo: remove workaround soltion
+  /// The [CaTeXMode] this group should be configured in.
+  ///
+  /// In [CaTeXMode.text], character spacing is ignored.
+  final CaTeXMode mode;
 
   /// Positions the children in a row and positions
   /// them about a common center line vertically.
@@ -52,7 +62,7 @@ class RenderGroup extends RenderNode {
       // Symbols can cause extra spacing and
       // interact with characters in that way.
       var symbolSpacing = .0;
-      if (previousChild != null) {
+      if (mode == CaTeXMode.math && previousChild != null) {
         symbolSpacing = pixelSpacingFromCharacters(
           previous: previousChild.context.input,
           current: child.context.input,
