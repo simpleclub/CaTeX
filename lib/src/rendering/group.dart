@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:catex/src/lookup/characters.dart';
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/spacing.dart';
-import 'package:catex/src/parsing//group.dart';
+import 'package:catex/src/parsing/group.dart';
 import 'package:catex/src/rendering/character.dart';
 import 'package:catex/src/rendering/functions/raise_box.dart';
 import 'package:catex/src/rendering/functions/sub_sup.dart';
