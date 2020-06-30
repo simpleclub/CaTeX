@@ -3,6 +3,7 @@ import 'package:catex/src/parsing/character.dart';
 import 'package:catex/src/parsing/functions/font.dart';
 import 'package:catex/src/parsing/functions/frac.dart';
 import 'package:catex/src/parsing/functions/sub_sup.dart';
+import 'package:catex/src/parsing/functions/text.dart';
 import 'package:catex/src/parsing/group.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/parsing/symbols.dart';
@@ -178,6 +179,91 @@ void main() {
     test('detects character and sup function node', () {
       expect(rootNode.children[0], isA<CharacterNode>());
       expect(rootNode.children[1], isA<SubSupNode>());
+    });
+  });
+
+  group(r' \text{ spa  cing   }', () {
+    TextNode rootNode;
+
+    test('configures root node successfully', () {
+      expect(
+        () => rootNode = Parser(r' \text{ spa  cing   }').parse() as TextNode,
+        returnsNormally,
+      );
+    });
+
+    GroupNode groupNode;
+
+    test('groups text child properly', () {
+      expect(
+        () => groupNode = rootNode.child as GroupNode,
+        returnsNormally,
+      );
+    });
+
+    test('inserts at max one space in text mode', () {
+      expect(groupNode.children, hasLength(10));
+
+      expect(groupNode.children[0], isA<CharacterNode>());
+      expect(groupNode.children[0].context.input, equals(' '));
+
+      expect(groupNode.children[1], isA<CharacterNode>());
+      expect(groupNode.children[1].context.input, equals('s'));
+      expect(groupNode.children[2], isA<CharacterNode>());
+      expect(groupNode.children[2].context.input, equals('p'));
+      expect(groupNode.children[3], isA<CharacterNode>());
+      expect(groupNode.children[3].context.input, equals('a'));
+
+      expect(groupNode.children[4], isA<CharacterNode>());
+      expect(groupNode.children[4].context.input, equals(' '));
+
+      expect(groupNode.children[5], isA<CharacterNode>());
+      expect(groupNode.children[5].context.input, equals('c'));
+      expect(groupNode.children[6], isA<CharacterNode>());
+      expect(groupNode.children[6].context.input, equals('i'));
+      expect(groupNode.children[7], isA<CharacterNode>());
+      expect(groupNode.children[7].context.input, equals('n'));
+      expect(groupNode.children[8], isA<CharacterNode>());
+      expect(groupNode.children[8].context.input, equals('g'));
+
+      expect(groupNode.children[9], isA<CharacterNode>());
+      expect(groupNode.children[9].context.input, equals(' '));
+    });
+  });
+
+  group(' { spa  cing   }', () {
+    GroupNode rootNode;
+
+    test('configures root node successfully', () {
+      expect(
+        () => rootNode = Parser(' { spa  cing   }').parse() as GroupNode,
+        returnsNormally,
+      );
+    });
+
+    test('skips spaces in math mode', () {
+      expect(rootNode.children, hasLength(7));
+
+      expect(rootNode.children[0], isA<CharacterNode>());
+      expect(rootNode.children[0].context.input, equals('s'));
+
+      expect(rootNode.children[1], isA<CharacterNode>());
+      expect(rootNode.children[1].context.input, equals('p'));
+
+      expect(rootNode.children[2], isA<CharacterNode>());
+      expect(rootNode.children[2].context.input, equals('a'));
+
+      expect(rootNode.children[3], isA<CharacterNode>());
+      expect(rootNode.children[3].context.input, equals('c'));
+
+      expect(rootNode.children[4], isA<CharacterNode>());
+      expect(rootNode.children[4].context.input, equals('i'));
+
+      expect(rootNode.children[5], isA<CharacterNode>());
+      expect(rootNode.children[5].context.input, equals('n'));
+
+      expect(rootNode.children[6], isA<CharacterNode>());
+      expect(rootNode.children[6].context.input, equals('g'));
     });
   });
 }
