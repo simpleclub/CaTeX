@@ -46,11 +46,11 @@ jobs:
           cd ..
 
       - name: Check format (flutter format)
-        if: matrix.channel != 'dev'
+        if: matrix.channel == 'stable'
         run: flutter format . --set-exit-if-changed --fix
 
       - name: Check format (dart format)
-        if: matrix.channel == 'dev'
+        if: matrix.channel != 'stable'
         run: dart format .
 
       - run: flutter analyze
