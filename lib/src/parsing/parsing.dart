@@ -50,9 +50,9 @@ class Parser {
   _Token _token;
   String _tokenInput;
 
+  // todo: build proper solution
   /// Stores the latest parsed function in order to determine the [CaTeXMode]
   /// for a group.
-  @Deprecated('Avoid workaround solutions.')
   ParsingContext _lastFunctionToken;
 
   /// Parses the [rootContext] and populates the [rootNode].
@@ -97,6 +97,7 @@ class Parser {
     _token = null;
     _tokenInput = null;
 
+    // todo: do not use workaround solution
     _lastFunctionToken = null;
   }
 
@@ -275,6 +276,7 @@ class Parser {
     // because all currently supported text functions accept exactly one group
     // and when parsing that group, the text mode will be extracted from the
     // latest function before consuming any token.
+    // todo: do not use workaround solution
     _lastFunctionToken = null;
 
     final token = _tokenInput;
@@ -299,6 +301,7 @@ class Parser {
   }
 
   ParsingNode _parseFunctionNode(ParsingContext token) {
+    // todo: do not use workaround solution
     _lastFunctionToken = token;
 
     return lookupFunction(token);
@@ -313,6 +316,7 @@ class Parser {
   /// It is not as easy as finding the next closing character because
   /// groups can be nested.
   ParsingNode _extractGroup() {
+    // todo: do not use workaround solution
     final mode = textModeSwitchingFunctions
             .contains(supportedFunctionNames[_lastFunctionToken?.input])
         ? CaTeXMode.text

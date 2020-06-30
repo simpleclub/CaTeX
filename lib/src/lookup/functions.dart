@@ -296,12 +296,12 @@ class FunctionProperties {
   final int greediness;
 }
 
+// todo: build proper solution
 /// Workaround solution for entering text mode until text mode is properly
 /// supported.
 ///
 /// The parser uses this to determine whether it should include spaces or not.
 /// In a proper solution, the parser should never do that.
-@Deprecated('Workaround solution should not be used.')
 const textModeSwitchingFunctions = <CaTeXFunction>[
   CaTeXFunction.text,
   CaTeXFunction.textNormal,
