@@ -10,7 +10,8 @@ on:
       - '**/lib/**'
       - '**/test/**'
       - '**/web/**'
-      - '.github/workflows/*'
+      # This will commonly be Flutter version bumps.
+      - '.github/workflows/checks.yaml'
 
 jobs:
   analyze:

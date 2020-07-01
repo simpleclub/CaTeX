@@ -9,6 +9,8 @@ on:
       - 'demo/lib/**'
       - 'demo/web/**'
       - 'demo/pubspec.yaml'
+      # This will commonly be Flutter version bumps.
+      - '.github/workflows/demo.yaml'
 
 jobs:
   demo-deploy:
