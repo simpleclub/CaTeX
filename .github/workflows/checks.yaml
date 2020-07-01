@@ -4,14 +4,6 @@ on:
   pull_request:
     branches:
       - master
-    paths:
-      - '**/pubspec.yaml'
-      - '**/analysis_options.yaml'
-      - '**/lib/**'
-      - '**/test/**'
-      - '**/web/**'
-      # This will commonly be Flutter version bumps.
-      - '.github/workflows/checks.yaml'
 
 jobs:
   analyze:
