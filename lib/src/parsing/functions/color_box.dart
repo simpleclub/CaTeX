@@ -1,12 +1,14 @@
+import 'package:catex/src/lookup/colors.dart';
 import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/functions.dart';
-import 'package:catex/src/parsing/functions/text_color.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/functions/color_box.dart';
 import 'package:catex/src/widgets.dart';
 import 'package:flutter/cupertino.dart';
 
+/// [ParsingNode] for [CaTeXFunction.colorBox].
 class ColorBoxNode extends MultiChildNode<RenderColorBox> with FunctionNode {
+  /// Constructs a [ColorBoxNode] given a [context].
   ColorBoxNode(ParsingContext context) : super(context);
 
   @override
@@ -36,7 +38,7 @@ class ColorBoxNode extends MultiChildNode<RenderColorBox> with FunctionNode {
     return RenderColorBox(context.copyWith(
       // Only modify the context of the actual box node with the color
       // because the children are unaffected by the colored background.
-      color: colorFromChildNode(children[0], context: context),
+      color: parseColor(children[0].context.input),
     ));
   }
 }

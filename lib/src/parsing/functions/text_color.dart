@@ -1,15 +1,13 @@
-import 'dart:ui';
-
 import 'package:catex/src/lookup/colors.dart';
 import 'package:catex/src/lookup/context.dart';
-import 'package:catex/src/lookup/exception.dart';
 import 'package:catex/src/lookup/functions.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/functions/text_color.dart';
 import 'package:catex/src/widgets.dart';
-import 'package:flutter/foundation.dart';
 
+/// [ParsingNode] for [CaTeXFunction.textColor].
 class TextColorNode extends MultiChildNode<RenderTextColor> with FunctionNode {
+  /// Constructs a [TextColorNode] given a [context].
   TextColorNode(ParsingContext context) : super(context);
 
   @override
@@ -28,7 +26,7 @@ class TextColorNode extends MultiChildNode<RenderTextColor> with FunctionNode {
       // for configuration only.
       children: [
         children[1].createWidget(context.copyWith(
-          color: colorFromChildNode(children[0], context: context),
+          color: parseColor(children[0].context.input),
         )),
       ],
     );
@@ -38,23 +36,4 @@ class TextColorNode extends MultiChildNode<RenderTextColor> with FunctionNode {
   RenderTextColor createRenderNode(CaTeXContext context) {
     return RenderTextColor(context);
   }
-}
-
-/// Retrieves a color from [supportedColors] for the color string defined by
-/// the child node (which should be a group node in order for this to work).
-///
-/// Throws a [ConfigurationException] if no color is found.
-Color colorFromChildNode(ParsingNode child, {@required CaTeXContext context}) {
-  assert(child != null);
-  assert(context != null);
-
-  final colorString = child.context.input.trim(),
-      color = supportedColors[colorString];
-  if (color == null) {
-    throw ConfigurationException(
-      reason: 'Unknown color: $colorString',
-      input: context.input,
-    );
-  }
-  return color;
 }
