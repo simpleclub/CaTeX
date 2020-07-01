@@ -32,7 +32,7 @@ function,supported,frequency
 \int,true,437
 \operatorname,false,431
 \dfrac,false,353
-\bar,true,315
+\bar,false,315
 \cos,false,308
 \mu,true,296
 \vert,false,289
@@ -122,7 +122,7 @@ function,supported,frequency
 \cdots,false,7
 \partial,true,7
 \rfloor,false,7
-\tilde,true,7
+\tilde,false,7
 \lfloor,false,7
 \le,true,7
 \theta,true,6
