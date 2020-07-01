@@ -9,7 +9,7 @@ using a widget and *Flutter only* - no plugins, no web views.
 ## About CaTeX
 
 Being Dart only, CaTeX renders TeX ***faster*** than any other Flutter plugin and is way more
-flexible. You can view a [demo running on the web][demo].
+flexible. You can view a [***demo** running on the web*][demo].
 
 CaTeX is an open source project with the aim of providing a way to render TeX
 fast in Flutter. This was needed for the [simpleclub app][simpleclub], hence, the association.

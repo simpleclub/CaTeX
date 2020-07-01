@@ -1,20 +1,17 @@
-name: Publish
+name: Demo deployment
 
 on:
   push:
     branches:
       - master
     paths:
-      # Can only publish the package when the Pubspec changed.
-      - 'pubspec.yaml'
-
-      # Demo can be deployed whenever.
+      # Demo can be deployed at any time.
       - 'demo/lib/**'
       - 'demo/web/**'
       - 'demo/pubspec.yaml'
 
 jobs:
-  demo-page:
+  demo-deploy:
     timeout-minutes: 6
     runs-on: ubuntu-latest
     name: CaTeX demo page
@@ -49,22 +46,3 @@ jobs:
           GIT_CONFIG_NAME: creativecreatorormaybenot
           GIT_CONFIG_EMAIL: creativecreatorormaybenot@gmail.com
           COMMIT_MESSAGE: Deploy CaTeX Flutter web demo page
-
-  pub-package:
-    timeout-minutes: 6
-    runs-on: ubuntu-latest
-    name: CaTeX Pub package
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Clean up directory
-        # Deletes some files that do not need to be published to Pub.
-        run: rm -rf .github demo gen CODEOWNERS CONTRIBUTING.md function_prioritization.csv
-
-      - name: Deploy to Pub
-        uses: sakebook/actions-flutter-pub-publisher@v1.3.0
-        with:
-          credential: ${{ secrets.PUB_CREDENTIALS }}
-          flutter_package: true
-          skip_test: true

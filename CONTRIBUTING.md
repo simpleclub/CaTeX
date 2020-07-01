@@ -66,14 +66,11 @@ Updating the generation to support these should be straight forward.
 * Create a feature branch: `git checkout upstream/master -b <name_of_your_branch>`
 * Now, you can change the code necessary for your patch.
 
-  Make sure that you bump the version in [`pubspec.yaml`][pubspec] 
-  and add an entry to [`CHANGELOG.md`][changelog].  
-  The version format is `r.M.m+p`. You will want to increment one of these values and which one 
-  you increment depends on the impact of your patch: 
-  `p` for simple patches, `m` for minor versions, `M` for major versions, and `r` for releases.
-  Do not forget to reset the values to the right of the value you incremented to 0. 
-  You should omit `+0`.
-  
+  Make sure that you bump the version in [`pubspec.yaml`][pubspec]. You **must** bump the Pubspec
+  version when a new package version should be released and edit the [`CHANGELOG.md`][changelog]
+  accordingly.  
+  The version format needs to follow [Dart's semantic versioning][Dart SemVer]. You need to take
+  [caret syntax][] into consideration when landing breaking changes.
 * Commit your changes: `git commit -am "<commit_message>"`
 * Push your changes: `git push origin <name_of_your_branch>`
 
@@ -104,3 +101,5 @@ In order for us to review and merge your code, please follow the link and sign i
 [GitHub hub]: https://hub.github.com/
 [ssh key]: https://help.github.com/articles/generating-ssh-keys/
 [CLA]: https://simpleclub.page.link/cla
+[Dart SemVer]: https://dart.dev/tools/pub/versioning#semantic-versions
+[caret syntax]: https://dart.dev/tools/pub/dependencies#caret-syntax

@@ -99,13 +99,13 @@ enum CaTeXFunction {
   /// `\textbf{}` uses a bold font weight in text mode.
   textBf,
 
-  /// `\textmd{}` uses normal font weight in text mode.
+  /// `\textmd{}` uses medium font weight in text mode.
   textMd,
 
-  /// `\textit{}` uses italic font style in text mode.
+  /// `\textit{}` uses an italic font style in text mode.
   textIt,
 
-  /// `\textit{}` uses normal font style in text mode.
+  /// `\textit{}` uses an upright font style in text mode.
   textUp,
 }
 
