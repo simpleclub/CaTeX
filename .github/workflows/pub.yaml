@@ -46,9 +46,8 @@ jobs:
         id: changelog
         # Stores the changelog file until the second entry in a body property.
         # PS I really do dislike creating these bash commands (:
-        # todo(creativecreatorormaybenot): fix the command
         run: |
-          echo ::set-output name=body::$(sed -n '/##/{p; :loop n; /##/q; p; b loop}' CHANGELOG.md)
+          echo ::set-output name=body::"$(sed -n '/##/{p; :loop n; /##/q; p; b loop}' CHANGELOG.md)"
 
       - name: Create Release
         id: create_release
