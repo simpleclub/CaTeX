@@ -1,3 +1,7 @@
+## NEXT RELEASE - REPLACE WITH VERSION
+
+* Improved documentation.
+
 ## 0.0.1
 
 * Initial release of the CaTeX package.
