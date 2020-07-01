@@ -1,0 +1,63 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      # Can only publish the package when the Pubspec changed, i.e. specifically the package
+      # version, however, we can ensure that this is the case in code review.
+      - 'pubspec.yaml'
+
+jobs:
+  pub-deploy:
+    timeout-minutes: 6
+    runs-on: ubuntu-latest
+    name: CaTeX Pub package
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Clean up directory
+        # Deletes some files that do not need to be published to Pub.
+        run: rm -rf .github demo gen CODEOWNERS CONTRIBUTING.md function_prioritization.csv
+
+      - name: Deploy to Pub
+        uses: sakebook/actions-flutter-pub-publisher@v1.3.0
+        with:
+          credential: ${{ secrets.PUB_CREDENTIALS }}
+          flutter_package: true
+          skip_test: true
+
+  tag-release:
+    needs: pub-deploy
+    timeout-minutes: 4
+    runs-on: ubuntu-latest
+    name: Tag package release
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Extract package version
+        id: version
+        run: echo ::set-output name=string::v$(awk '{if ($1 ~ /^version:/) print $2}' pubspec.yaml)
+
+      - name: Extract latest changelog entry
+        id: changelog
+        # Stores the changelog file until the second entry in a body property.
+        # PS I really do dislike creating these bash commands (:
+        # todo(creativecreatorormaybenot): fix the command
+        run: |
+          echo ::set-output name=body::$(sed -n '/##/{p; :loop n; /##/q; p; b loop}' CHANGELOG.md)
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.string }}
+          release_name: CaTeX ${{ steps.version.string }}
+          body: ${{ steps.changelog.body }}
+          draft: false
+          prerelease: false
