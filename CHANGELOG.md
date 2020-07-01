@@ -1,6 +1,7 @@
 ## 0.0.1+1
 
 * Expanded color support to include HTML color keywords and hexadecimal strings.
+* Improved documentation.
 
 ## 0.0.1
 
