@@ -5,6 +5,11 @@ import 'package:catex/src/lookup/exception.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:flutter/rendering.dart';
 
+// todo(creativecreatorormaybenot): use a single render object class for all
+// todo| nodes and create a custom class that has the configuration and
+// todo| rendering method + the necessary properties. This ensures that every
+// todo| node uses only the correct members.
+// todo| https://github.com/simpleclub/CaTeX/issues/41
 /// Abstract class for all render nodes.
 ///
 /// A sub class should implement [configure] and [render].
@@ -76,10 +81,12 @@ abstract class RenderNode<P extends NodeParentData> extends RenderBox
     _context.paintChild(child, child.parentData.offset);
   }
 
+  /// List of child [RenderNode]s.
   List<RenderNode> children;
 
   Size _renderSize;
 
+  /// The size that CaTeX determines for this node.
   Size get renderSize => _renderSize;
 
   set renderSize(Size value) {

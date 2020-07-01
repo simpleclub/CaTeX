@@ -36,7 +36,7 @@ class RenderFrac extends RenderNode {
     paintChildNode(children[0]);
     paintChildNode(children[1]);
 
-    final lineHeight = children[0].size.height;
+    final lineHeight = children[0].renderSize.height;
     canvas.drawLine(
       // todo: figure out line properties properly.
       Offset(0, lineHeight),

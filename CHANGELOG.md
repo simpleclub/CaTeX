@@ -1,3 +1,7 @@
+## 0.0.1+2
+
+* Fix `\frac` line positioning.
+
 ## 0.0.1+1
 
 * Expanded color support to include HTML color keywords and hexadecimal strings.
