@@ -1,4 +1,4 @@
-name: Pub publish
+name: Package deployment
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
   pub-deploy:
     timeout-minutes: 6
     runs-on: ubuntu-latest
-    name: CaTeX Pub package
+    name: CaTeX Pub publish
 
     steps:
       - uses: actions/checkout@v2
