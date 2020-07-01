@@ -9,6 +9,8 @@ on:
       - 'demo/lib/**'
       - 'demo/web/**'
       - 'demo/pubspec.yaml'
+      # When a new CaTeX version is published, the demo should also be updated.
+      - 'pubspec.yaml'
       # This will commonly be Flutter version bumps.
       - '.github/workflows/demo.yaml'
 
