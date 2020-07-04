@@ -1,4 +1,4 @@
-name: catex
+name: catexx
 description: >-
   Fast math TeX renderer for Flutter written in Dart. Outputs TeX formulas (like LaTeX,
   KaTeX, MathJax, etc.) inline using only Flutter.
