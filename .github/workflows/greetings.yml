@@ -1,0 +1,26 @@
+name: Greetings
+
+on:
+  - pull_request
+  - issues
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: |
+          Hi 👋🏽 Thank you for opening your first issue with CaTeX ❤
+          You can expect triage from us soon 🙂
+          In the meantime, you can try to search for similar issues in our [issue database].
+
+          [issue database]: https://github.com/simpleclub/CaTeX/issues?q=is%3Aissue
+        pr-message: |
+          Thank you so much for opening your first pull request for CaTeX ❤
+          
+          Make sure that you have made yourself familiar with our [contributing guide].
+          If all checks are passing and you have checked all items in the checklist, your PR should be merged in no time 🙂
+          
+          [contributing guide]: https://github.com/simpleclub/CaTeX/blob/master/CONTRIBUTING.md
