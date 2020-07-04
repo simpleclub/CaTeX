@@ -10,14 +10,15 @@
 
 ## Checklist
 
-*Remove `If this PR [...]` items that do not apply to your PR.*
+*Remove `If [...]` items that do not apply to your PR.*
 
 - [ ] I added a PR description.
-- [ ] I linked all related issues I could find.
+- [ ] I linked all related issues I could find (no links if there are none).
 - [ ] If this PR changes anything about the main `catex` or `example` package (also README etc.),
       I created an entry in `CHANGELOG.md` (`## NEXT RELEASE` if it is not worth an update).
 - [ ] If this PR includes a notable change in the `catex` package, I updated the version according
       to [Dart's semantic versioning](https://dart.dev/tools/pub/versioning#semantic-versions).
 - [ ] If this PR adds new functions, I updated the `function_prioritization.csv` file.
-- [ ] I added tests covering all my additions (Golden tests for anything rendering related).
+- [ ] If there is new functionality in code, I added tests covering all my additions
+      (Golden tests for anything rendering related).
 - [ ] All required checks pass.
