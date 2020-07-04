@@ -4,9 +4,9 @@
 
 ## Related issues
 
-*Links to issues that are related to your PR. Use
-[keywords](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
-if applicable.*
+*Links to issues that are related to your PR. Use [keywords] if applicable.*
+
+[keywords]: https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword
 
 ## Checklist
 
