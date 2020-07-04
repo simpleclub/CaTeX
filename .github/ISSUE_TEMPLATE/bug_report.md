@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-### Describe the bug
+## Bug description
 
 *A clear and concise description of what the bug is.*
 
@@ -18,7 +18,7 @@ Steps to reproduce the behavior:
 0. Run on '....'
 0. See error
 
-### Expected behavior
+## Expected behavior
 
 *A clear and concise description of what you expected to happen.*
 

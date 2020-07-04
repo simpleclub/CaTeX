@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-### Description
+## Feature description
 
 *A clear and concise description of your new feature.*
 
