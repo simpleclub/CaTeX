@@ -12,6 +12,8 @@
 
 *Remove `If [...]` items that do not apply to your PR.*
 
+- [x] I have made myself familiar with the CaTeX
+      [contributing guide](https://github.com/simpleclub/CaTeX/blob/master/CONTRIBUTING.md).
 - [ ] I added a PR description.
 - [ ] I linked all related issues I could find (no links if there are none).
 - [ ] If this PR changes anything about the main `catex` or `example` package (also README etc.),
