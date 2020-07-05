@@ -1,6 +1,7 @@
 ## 0.0.1+3
 
 * Added `\hat` implementation that works for small letters.
+* Added `\mathbb`.
 
 ## 0.0.1+2
 

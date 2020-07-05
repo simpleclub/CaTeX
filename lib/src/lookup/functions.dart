@@ -111,6 +111,9 @@ enum CaTeXFunction {
 
   /// `\textit{}` uses an upright font style in text mode.
   textUp,
+
+  /// `\mathbb{}` uses the [CaTeXFont.ams] font.
+  mathbb,
 }
 
 /// Names, i.e. control sequences that correspond to
@@ -146,6 +149,7 @@ const supportedFunctionNames = <String, CaTeXFunction>{
   r'\scriptscriptstyle': CaTeXFunction.scriptScriptStyle,
   r'\kern': CaTeXFunction.kern,
   r'\raisebox': CaTeXFunction.raiseBox,
+  r'\mathbb': CaTeXFunction.mathbb,
 };
 
 /// CaTeX functions that are available in math mode.
@@ -179,6 +183,7 @@ const List<CaTeXFunction> supportedMathFunctions = [
   CaTeXFunction.textMd,
   CaTeXFunction.textIt,
   CaTeXFunction.textUp,
+  CaTeXFunction.mathbb,
 ];
 
 /// CaTeX functions that are available in text mode.
@@ -241,6 +246,7 @@ FunctionNode lookupFunction(ParsingContext context) {
     case CaTeXFunction.bf:
     case CaTeXFunction.it:
     case CaTeXFunction.cal:
+    case CaTeXFunction.mathbb:
       return FontNode(context);
     case CaTeXFunction.textColor:
       return TextColorNode(context);
