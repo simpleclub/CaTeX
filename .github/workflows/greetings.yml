@@ -1,7 +1,13 @@
 name: Greetings
 
 on:
-  - pull_request
+  # Cannot run the greeting job on PRs because the contributors we want to greet will open PRs
+  # from their own forks. When creating a PR from a fork, the GitHub Actions associated with that
+  # PR will be run from the fork as far as credentials are concerned. The GITHUB_TOKEN secret
+  # only has read access in that case and therefore cannot create a PR comment with the greetings
+  # message. See:
+  # https://docs.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#permissions-for-the-github_token
+#  - pull_request
   - issues
 
 jobs:
@@ -13,14 +19,8 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: |
           Hi 👋🏽 Thank you for opening your first issue with CaTeX ❤
+
           You can expect triage from us soon 🙂
           In the meantime, you can try to search for similar issues in our [issue database].
 
           [issue database]: https://github.com/simpleclub/CaTeX/issues?q=is%3Aissue
-        pr-message: |
-          Thank you so much for opening your first pull request for CaTeX ❤
-          
-          Make sure that you have made yourself familiar with our [contributing guide].
-          If all checks are passing and you have checked all items in the checklist, your PR should be merged in no time 🙂
-          
-          [contributing guide]: https://github.com/simpleclub/CaTeX/blob/master/CONTRIBUTING.md
