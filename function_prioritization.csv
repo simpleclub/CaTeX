@@ -61,7 +61,7 @@ function,supported,frequency
 \overline,false,115
 \Delta,true,114
 \omega,true,110
-\hat,false,103
+\hat,trueish,103
 \varepsilon,true,101
 \textbf,true,93
 \lim,false,92
