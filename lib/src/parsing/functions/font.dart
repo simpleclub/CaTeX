@@ -47,6 +47,11 @@ class FontNode extends SingleChildNode<RenderFont>
       case CaTeXFunction.cal:
         family = CaTeXFont.caligraphic.family;
         break;
+      case CaTeXFunction.mathbb:
+        weight = FontWeight.normal;
+        style = FontStyle.normal;
+        family = CaTeXFont.ams.family;
+        break;
       default: // noop
     }
 
