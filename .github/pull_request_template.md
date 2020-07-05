@@ -2,9 +2,9 @@
 
 *A clear and concise description of what your PR accomplishes.*
 
-## Related issues
+## Related issues & PRs
 
-*Links to issues that are related to your PR. Use [keywords] if applicable.*
+*Links to issues and PRs that are related to your PR. Use [keywords] for issues if applicable.*
 
 [keywords]: https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword
 
@@ -15,7 +15,7 @@
 - [x] I have made myself familiar with the CaTeX
       [contributing guide](https://github.com/simpleclub/CaTeX/blob/master/CONTRIBUTING.md).
 - [ ] I added a PR description.
-- [ ] I linked all related issues I could find (no links if there are none).
+- [ ] I linked all related issues and PRs I could find (no links if there are none).
 - [ ] If this PR changes anything about the main `catex` or `example` package (also README etc.),
       I created an entry in `CHANGELOG.md` (`## UPCOMING RELEASE` if the change on its own
       is not worth an update).
