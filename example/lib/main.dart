@@ -20,6 +20,7 @@ List<String> get equations => [
       r'\KaTeX',
       r'\CaTeX',
       'x_i=a^n',
+      r'\hat{y} = H y',
       r'12^{\frac{\frac{2}{7}}{1}}',
       r'\varepsilon = \frac{\frac{2}{1}}{3}',
       r'\alpha\beta\gamma\delta',

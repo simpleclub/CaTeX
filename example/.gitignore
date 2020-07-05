@@ -47,3 +47,5 @@ app.*.map.json
 android
 ios
 web
+test
+.metadata

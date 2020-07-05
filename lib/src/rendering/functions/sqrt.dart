@@ -21,7 +21,7 @@ class RenderSqrt extends RenderNode with SingleChildRenderNodeMixin {
       ..strokeWidth = context.textSize / 20
       ..strokeCap = StrokeCap.square;
     _surdPainter = TypesetPainter(
-        context.copyWith(input: symbols[CaTeXMode.math][r'\surd'].unicode));
+        context.copyWith(input: symbols[CaTeXMode.math][r'\surd'].unicode),);
 
     _surdPainter.layout();
     final childSize = sizeChildNode(child),

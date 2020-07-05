@@ -25,11 +25,11 @@ import 'package:flutter/foundation.dart';
 /// manual work seems reasonable.
 /// Either way, the conversion will be a simple process.
 enum CaTeXFunction {
-  /// `\hat{}` applies hat to the content of bracket
-  hat,
-
   /// `\frac{}{}` displays a fraction.
   frac,
+
+  /// `\hat{}` displays a hat above its group.
+  hat,
 
   /// `\tt{}` uses the [CaTeXFont.typewriter] font.
   tt,
@@ -117,8 +117,8 @@ enum CaTeXFunction {
 /// a CaTeX function. See [_lookupFunctionData] to find the
 /// function definitions and explanations in the classes.
 const supportedFunctionNames = <String, CaTeXFunction>{
-  r'\hat': CaTeXFunction.hat,
   r'\frac': CaTeXFunction.frac,
+  r'\hat': CaTeXFunction.hat,
   r'\tt': CaTeXFunction.tt,
   r'\rm': CaTeXFunction.rm,
   r'\sf': CaTeXFunction.sf,
