@@ -1,6 +1,10 @@
+## 0.0.1+3
+
+* Added `\hat` implementation that works for small letters.
+
 ## 0.0.1+2
 
-* Fix `\frac` line positioning.
+* Fixed `\frac` line positioning.
 
 ## 0.0.1+1
 
