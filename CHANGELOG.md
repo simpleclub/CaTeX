@@ -1,3 +1,7 @@
+## UPCOMING RELEASE
+
+* Adjusted alignment of sub and sup elements if both are used at the same time.
+
 ## 0.0.1+3
 
 * Added `\hat` implementation that works for small letters.
