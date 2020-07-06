@@ -504,6 +504,7 @@ Future<void> main(List<String> args) async {
   defineSymbol(math, main, rel, "\\ue020", "\\\\@not");
   defineSymbol(math, main, rel, "\\u2282", "\\\\subset", true);
   defineSymbol(math, main, rel, "\\u2283", "\\\\supset", true);
+  defineSymbol(math, main, rel, "\\u2284", "\\\\nsubset", true);
   defineSymbol(math, main, rel, "\\u2286", "\\\\subseteq", true);
   defineSymbol(math, main, rel, "\\u2287", "\\\\supseteq", true);
   defineSymbol(math, ams, rel, "\\u2288", "\\\\nsubseteq", true);

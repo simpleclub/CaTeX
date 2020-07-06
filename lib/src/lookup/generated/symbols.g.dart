@@ -827,6 +827,8 @@ const symbols = <CaTeXMode, Map<String, SymbolData>>{
     '\u2282': SymbolData('\u2282', SymbolFont.main, SymbolGroup.rel),
     '\\supset': SymbolData('\u2283', SymbolFont.main, SymbolGroup.rel),
     '\u2283': SymbolData('\u2283', SymbolFont.main, SymbolGroup.rel),
+    '\\nsubset': SymbolData('\u2284', SymbolFont.main, SymbolGroup.rel),
+    '\u2284': SymbolData('\u2284', SymbolFont.main, SymbolGroup.rel),
     '\\subseteq': SymbolData('\u2286', SymbolFont.main, SymbolGroup.rel),
     '\u2286': SymbolData('\u2286', SymbolFont.main, SymbolGroup.rel),
     '\\supseteq': SymbolData('\u2287', SymbolFont.main, SymbolGroup.rel),

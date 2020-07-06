@@ -1,6 +1,6 @@
 ## UPCOMING RELEASE
 
-* Added `\notin`, `\neq`.
+* Added `\notin`, `\neq`, `\nsubset`.
 
 ## 0.0.1+3
 
