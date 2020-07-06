@@ -59,6 +59,15 @@ class RenderGroup extends RenderNode {
               (initialHeight - size.height) / 2,
           dyShifted = dy + _subSupAddend(child) + _raiseBoxAddend(child);
 
+      // If the current and the previous child are RenderSubSup, we can
+      // assume that the previous child was sub and the current is sup.
+      // In this case the current child is shifted by the width of previous
+      // child to left. This way both are horizontally well aligned.
+      double dxShifted = 0;
+      if (previousChild is RenderSubSup && child is RenderSubSup) {
+        dxShifted = -previousChild.renderSize.width;
+      }
+
       // Symbols can cause extra spacing and
       // interact with characters in that way.
       var symbolSpacing = .0;
@@ -71,7 +80,7 @@ class RenderGroup extends RenderNode {
       }
 
       child.positionNode(Offset(
-        width + symbolSpacing,
+        width + symbolSpacing + dxShifted,
         dyShifted,
       ));
       width += size.width + symbolSpacing;
