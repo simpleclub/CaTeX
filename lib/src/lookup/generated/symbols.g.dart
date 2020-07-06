@@ -118,6 +118,8 @@ const symbols = <CaTeXMode, Map<String, SymbolData>>{
   CaTeXMode.math: {
     '\\equiv': SymbolData('\u2261', SymbolFont.main, SymbolGroup.rel),
     '\u2261': SymbolData('\u2261', SymbolFont.main, SymbolGroup.rel),
+    '\\neq': SymbolData('\u2260', SymbolFont.main, SymbolGroup.rel),
+    '\u2260': SymbolData('\u2260', SymbolFont.main, SymbolGroup.rel),
     '\\prec': SymbolData('\u227a', SymbolFont.main, SymbolGroup.rel),
     '\u227a': SymbolData('\u227a', SymbolFont.main, SymbolGroup.rel),
     '\\succ': SymbolData('\u227b', SymbolFont.main, SymbolGroup.rel),
@@ -818,6 +820,8 @@ const symbols = <CaTeXMode, Map<String, SymbolData>>{
     '>': SymbolData('>', SymbolFont.main, SymbolGroup.rel),
     '\\in': SymbolData('\u2208', SymbolFont.main, SymbolGroup.rel),
     '\u2208': SymbolData('\u2208', SymbolFont.main, SymbolGroup.rel),
+    '\\notin': SymbolData('\u2209', SymbolFont.main, SymbolGroup.rel),
+    '\u2209': SymbolData('\u2209', SymbolFont.main, SymbolGroup.rel),
     '\\@not': SymbolData('\ue020', SymbolFont.main, SymbolGroup.rel),
     '\\subset': SymbolData('\u2282', SymbolFont.main, SymbolGroup.rel),
     '\u2282': SymbolData('\u2282', SymbolFont.main, SymbolGroup.rel),

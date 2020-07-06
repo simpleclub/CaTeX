@@ -1,3 +1,7 @@
+## UPCOMING RELEASE
+
+* Added `\notin`, `\neq`.
+
 ## 0.0.1+3
 
 * Added `\hat` implementation that works for small letters.

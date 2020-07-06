@@ -77,6 +77,7 @@ Future<void> main(List<String> args) async {
 
   /// This is based on https://github.com/KaTeX/KaTeX/blob/c8c7c3954c4c3e2a3e0499a1fd52e9c66e286462/src/symbols.js.
   defineSymbol(math, main, rel, "\\u2261", "\\\\equiv", true);
+  defineSymbol(math, main, rel, "\\u2260", "\\\\neq", true);
   defineSymbol(math, main, rel, "\\u227a", "\\\\prec", true);
   defineSymbol(math, main, rel, "\\u227b", "\\\\succ", true);
   defineSymbol(math, main, rel, "\\u223c", "\\\\sim", true);
@@ -499,6 +500,7 @@ Future<void> main(List<String> args) async {
   defineSymbol(math, main, rel, "\\u2190", "\\\\gets");
   defineSymbol(math, main, rel, ">", "\\\\gt", true);
   defineSymbol(math, main, rel, "\\u2208", "\\\\in", true);
+  defineSymbol(math, main, rel, "\\u2209", "\\\\notin", true);
   defineSymbol(math, main, rel, "\\ue020", "\\\\@not");
   defineSymbol(math, main, rel, "\\u2282", "\\\\subset", true);
   defineSymbol(math, main, rel, "\\u2283", "\\\\supset", true);
