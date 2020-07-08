@@ -83,7 +83,7 @@ class RenderGroup extends RenderNode {
         width + symbolSpacing + dxShifted,
         dyShifted,
       ));
-      width += size.width + symbolSpacing;
+      width += size.width + symbolSpacing + dxShifted;
 
       // todo(creativecreatorormaybenot): remove redundancies
       if (child is RenderSubSup) {
