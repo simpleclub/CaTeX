@@ -1,6 +1,7 @@
 ## UPCOMING RELEASE
 
 * Adjusted alignment of sub and sup elements if both are used at the same time.
+* Added `\notin`, `\neq`, `\nsubset`.
 
 ## 0.0.1+3
 
