@@ -63,7 +63,7 @@ class RenderGroup extends RenderNode {
       // assume that the previous child was sub and the current is sup.
       // In this case the current child is shifted by the width of previous
       // child to left. This way both are horizontally well aligned.
-      double dxShifted = 0;
+      var dxShifted = .0;
       if (previousChild is RenderSubSup && child is RenderSubSup) {
         dxShifted = -previousChild.renderSize.width;
       }
