@@ -184,6 +184,7 @@ bringing this vision to life together - so everyone can benefit from a pure-Flut
 
 See our [contributing guide][contributing] for more information.
 
+
 [logo]: https://i.imgur.com/67VUyFm.png
 [creativecreatorormaybenot]: https://github.com/creativecreatorormaybenot
 [simpleclub]: https://github.com/simpleclub
