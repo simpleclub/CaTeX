@@ -206,4 +206,4 @@ See our [contributing guide][contributing] for more information.
 [fonts license]: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 [KaTeX license]: https://github.com/KaTeX/KaTeX/blob/b14197d9c9052d937dc789e1ac492bcdcdde5599/LICENSE
 [function_frequency]: https://github.com/simpleclub/CaTeX/blob/master/function_prioritization.csv
-[AsTeR]: https://shorturl.me/fKIEV
+[AsTeR]: https://tinyurl.com/catex-aster
