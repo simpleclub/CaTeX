@@ -191,8 +191,8 @@ See our [contributing guide][contributing] for more information.
 [demo shield]: https://img.shields.io/badge/CaTeX-demo-FFC107
 [Pub shield]: https://img.shields.io/pub/v/catex.svg
 [Pub]: https://pub.dev/packages/catex
-[TeXbook]: http://www.ctex.org/documents/shredder/src/texbook.pdf
-[TeX by Topic]: http://texdoc.net/texmf-dist/doc/plain/texbytopic/TeXbyTopic.pdf
+[TeXbook]: https://github.com/lewischeng-ms/plain-tex/raw/master/The%20TEXbook.PDF
+[TeX by Topic]: https://texdoc.net/texmf-dist/doc/plain/texbytopic/TeXbyTopic.pdf
 [KaTeX]: https://github.com/KaTeX/KaTeX
 [example]: https://github.com/simpleclub/CaTeX/tree/master/example
 [Flutter testing]: https://flutter.dev/docs/testing/errors
@@ -206,4 +206,4 @@ See our [contributing guide][contributing] for more information.
 [fonts license]: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 [KaTeX license]: https://github.com/KaTeX/KaTeX/blob/b14197d9c9052d937dc789e1ac492bcdcdde5599/LICENSE
 [function_frequency]: https://github.com/simpleclub/CaTeX/blob/master/function_prioritization.csv
-[AsTeR]: http://emacspeak.sourceforge.net/raman/aster/aster-toplevel.html
+[AsTeR]: https://shorturl.me/fKIEV
