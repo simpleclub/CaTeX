@@ -1,3 +1,7 @@
+## 0.0.1+6
+
+* Added support for intrinsic sizing.
+
 ## 0.0.1+5
 
 * Updated README and Pubspec according to Pub suggestions.
