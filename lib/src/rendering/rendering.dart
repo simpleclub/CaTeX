@@ -278,32 +278,39 @@ class RenderTree extends RenderBox with RenderObjectWithChildMixin<RenderNode> {
 
   Size _treeSize;
 
+  /// Does a mock layout pass and returns the size the tree would need to be
+  /// painted without clipping.
+  Size _computeIntrinsicDimensions() {
+    /// Not considering the width as the only effect of that would be throwing
+    /// the exception about clipping. That exception will then be thrown again
+    /// during the actual layout phase - so we can just ignore the constraints
+    /// here as they will not alter the _treeSize.
+    layout(const BoxConstraints());
+    return _treeSize;
+  }
+
   @override
   double computeMinIntrinsicWidth(double height) {
     assert(height >= 0);
-    layout(BoxConstraints(maxHeight: height));
-    return _treeSize.width;
+    return _computeIntrinsicDimensions().width;
   }
 
   @override
   double computeMaxIntrinsicWidth(double height) {
     assert(height >= 0);
-    layout(BoxConstraints(maxHeight: height));
-    return _treeSize.width;
+    return _computeIntrinsicDimensions().width;
   }
 
   @override
   double computeMinIntrinsicHeight(double width) {
     assert(width >= 0);
-    layout(BoxConstraints(maxWidth: width));
-    return _treeSize.height;
+    return _computeIntrinsicDimensions().height;
   }
 
   @override
   double computeMaxIntrinsicHeight(double width) {
     assert(width >= 0);
-    layout(BoxConstraints(maxWidth: width));
-    return _treeSize.height;
+    return _computeIntrinsicDimensions().height;
   }
 
   @override
