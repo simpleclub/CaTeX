@@ -20,7 +20,10 @@ jobs:
         issue-message: |
           Hi 👋🏽 Thank you for opening your first issue with CaTeX ❤
 
-          You can expect triage from us soon 🙂
-          In the meantime, you can try to search for similar issues in our [issue database].
+          The project is currently on-hold. See the [README] for further information.
 
-          [issue database]: https://github.com/simpleclub/CaTeX/issues?q=is%3Aissue
+          [README]: https://github.com/simpleclub/CaTeX
+#          You can expect triage from us soon 🙂
+#          In the meantime, you can try to search for similar issues in our [issue database].
+#
+#          [issue database]: https://github.com/simpleclub/CaTeX/issues?q=is%3Aissue

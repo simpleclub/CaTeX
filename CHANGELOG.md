@@ -1,3 +1,7 @@
+## 0.0.1+7
+
+* Added on-hold notice.
+
 ## 0.0.1+6
 
 * Added support for intrinsic sizing.

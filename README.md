@@ -6,6 +6,16 @@
 CaTeX is a Flutter package that outputs **TeX** equations (like LaTeX, KaTeX, MathJax, etc.) inline 
 using a widget and *Flutter only* - no plugins, no web views.
 
+# On-Hold
+
+Note that this package is currently **on-hold**.  
+This is because we are currently engaged with other efforts. Therefore, we cannot ensure
+maintenance of the package.
+
+However, there is an alternative that we encourage you to check out in the meantime :)  
+We worked together with **[`flutter_math`](https://pub.dev/packages/flutter_math)** to make that 
+package have all the necessary functionality.
+
 ## About CaTeX
 
 Being Dart only, CaTeX renders TeX ***faster*** than any other Flutter plugin and is way more

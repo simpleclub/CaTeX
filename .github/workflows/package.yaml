@@ -39,14 +39,14 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Extract package version
-        run: echo ::set-env name=VERSION::v"$(awk '{if ($1 ~ /^version:/) print $2}' pubspec.yaml)"
+        run: echo "VERSION::v$(awk '{if ($1 ~ /^version:/) print $2}' pubspec.yaml)" >> $GITHUB_ENV
 
       - name: Extract latest changelog entry
         # Stores the changelog file until the second entry in a body property.
         # PS I really do dislike creating these bash commands (:
         run: |
           lines=$(sed -n '/##/{p; :loop n; /##/q; p; b loop}' CHANGELOG.md)
-          echo "::set-env name=CHANGES::$lines"
+          echo "CHANGES::$lines" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
