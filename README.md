@@ -9,12 +9,13 @@ using a widget and *Flutter only* - no plugins, no web views.
 # On-Hold
 
 Note that this package is currently **on-hold**.  
-This is because we are currently engaged with other efforts. Therefore, we cannot ensure
-maintenance of the package.
+This is because we are currently primarily engaged with other efforts. Therefore, we cannot ensure
+active maintenance of the package.
 
 However, there is an alternative that we encourage you to check out in the meantime :)  
 We worked together with **[`flutter_math`](https://pub.dev/packages/flutter_math)** to make that 
-package have all the necessary functionality.
+package have all the necessary functionality and you should be able to use it in place of CaTeX
+for the while being.
 
 ## About CaTeX
 
