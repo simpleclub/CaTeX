@@ -7,11 +7,11 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
   catex:
     path: ../
+
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
   lint: ^1.2.0 # https://pub.dev/packages/lint
