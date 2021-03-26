@@ -24,8 +24,8 @@ class RenderCancel extends RenderNode {
   @override
   void render(Canvas canvas) {
     paintChildNode(children[0]);
-    final double horizontalPadding = renderSize.width * .05;
-    final double verticalPadding = renderSize.height * .05;
+    final horizontalPadding = renderSize.width * .05;
+    final verticalPadding = renderSize.height * .05;
 
     canvas.drawLine(
       Offset(renderSize.width - horizontalPadding, verticalPadding),
