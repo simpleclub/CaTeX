@@ -2,6 +2,7 @@ import 'package:catex/src/lookup/fonts.dart';
 import 'package:catex/src/lookup/modes.dart';
 import 'package:catex/src/lookup/styles.dart';
 import 'package:catex/src/parsing/functions/boxed.dart';
+import 'package:catex/src/parsing/functions/cancel.dart';
 import 'package:catex/src/parsing/functions/color_box.dart';
 import 'package:catex/src/parsing/functions/font.dart';
 import 'package:catex/src/parsing/functions/frac.dart';
@@ -114,6 +115,9 @@ enum CaTeXFunction {
 
   /// `\mathbb{}` uses the [CaTeXFont.ams] font.
   mathbb,
+
+  /// `\cancel{}` draws a slash from the top right to the bottom left corners.
+  cancel,
 }
 
 /// Names, i.e. control sequences that correspond to
@@ -150,6 +154,7 @@ const supportedFunctionNames = <String, CaTeXFunction>{
   r'\kern': CaTeXFunction.kern,
   r'\raisebox': CaTeXFunction.raiseBox,
   r'\mathbb': CaTeXFunction.mathbb,
+  r'\cancel': CaTeXFunction.cancel,
 };
 
 /// CaTeX functions that are available in math mode.
@@ -184,6 +189,7 @@ const List<CaTeXFunction> supportedMathFunctions = [
   CaTeXFunction.textIt,
   CaTeXFunction.textUp,
   CaTeXFunction.mathbb,
+  CaTeXFunction.cancel,
 ];
 
 /// CaTeX functions that are available in text mode.
@@ -212,6 +218,7 @@ const List<CaTeXFunction> supportedTextFunctions = [
   CaTeXFunction.textMd,
   CaTeXFunction.textIt,
   CaTeXFunction.textUp,
+  CaTeXFunction.cancel,
 ];
 
 /// Looks up the [FunctionNode] subclass for a given input.
@@ -263,6 +270,8 @@ FunctionNode lookupFunction(ParsingContext context) {
       return RaiseBoxNode(context);
     case CaTeXFunction.kern:
       return KernNode(context);
+    case CaTeXFunction.cancel:
+      return CancelNode(context);
     case CaTeXFunction.displayStyle:
     case CaTeXFunction.textStyle:
     case CaTeXFunction.scriptStyle:
