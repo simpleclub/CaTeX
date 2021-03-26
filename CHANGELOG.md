@@ -1,4 +1,4 @@
-## UPCOMING RELEASE
+## 0.0.1+8
 
 * Add `\cancel` function.
 
