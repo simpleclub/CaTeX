@@ -337,7 +337,7 @@ _,false,0
 \Bumpeq,false,0
 \bumpeq,false,0
 \cal,true,0
-\cancel,false,0
+\cancel,true,0
 \cancelto,false,0
 \Cap,false,0
 {cases},false,0

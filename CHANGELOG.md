@@ -1,3 +1,7 @@
+## 0.0.1+8
+
+* Add `\cancel` function.
+
 ## 0.0.1+7
 
 * Added on-hold notice.
