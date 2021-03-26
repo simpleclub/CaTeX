@@ -1,6 +1,6 @@
 ## UPCOMING RELEASE
 
-* Add \cancel function.
+* Add `\cancel` function.
 
 ## 0.0.1+7
 
