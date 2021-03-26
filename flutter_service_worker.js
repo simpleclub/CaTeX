@@ -3,34 +3,34 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "manifest.json": "24e573f324be79f6554e57c2b15a734d",
-"assets/packages/catex/fonts/KaTeX_Size3-Regular.ttf": "e87212c26bb86c21eb028aba2ac53ec3",
-"assets/packages/catex/fonts/KaTeX_SansSerif-Regular.ttf": "b5f967ed9e4933f1c3165a12fe3436df",
+  "assets/AssetManifest.json": "39e0ffbdadee78298ae4adbc7fe87662",
 "assets/packages/catex/fonts/KaTeX_Main-BoldItalic.ttf": "e3c361ea8d1c215805439ce0941a1c8d",
-"assets/packages/catex/fonts/KaTeX_Size2-Regular.ttf": "959972785387fe35f7d47dbfb0385bc4",
-"assets/packages/catex/fonts/KaTeX_Math-Italic.ttf": "a7732ecb5840a15be39e1eda377bc21d",
-"assets/packages/catex/fonts/KaTeX_Typewriter-Regular.ttf": "87f56927f1ba726ce0591955c8b3b42d",
-"assets/packages/catex/fonts/KaTeX_AMS-Regular.ttf": "657a5353a553777e270827bd1630e467",
-"assets/packages/catex/fonts/KaTeX_Main-Bold.ttf": "9eef86c1f9efa78ab93d41a0551948f7",
-"assets/packages/catex/fonts/KaTeX_Main-Italic.ttf": "ac3b1882325add4f148f05db8cafd401",
-"assets/packages/catex/fonts/KaTeX_Main-Regular.ttf": "5a5766c715ee765aa1398997643f1589",
-"assets/packages/catex/fonts/KaTeX_SansSerif-Bold.ttf": "ad0a28f28f736cf4c121bcb0e719b88a",
-"assets/packages/catex/fonts/KaTeX_Caligraphic-Regular.ttf": "7ec92adfa4fe03eb8e9bfb60813df1fa",
-"assets/packages/catex/fonts/KaTeX_SansSerif-Italic.ttf": "d89b80e7bdd57d238eeaa80ed9a1013a",
-"assets/packages/catex/fonts/KaTeX_Fraktur-Bold.ttf": "46b41c4de7a936d099575185a94855c4",
-"assets/packages/catex/fonts/KaTeX_Script-Regular.ttf": "55d2dcd4778875a53ff09320a85a5296",
-"assets/packages/catex/fonts/KaTeX_Fraktur-Regular.ttf": "dede6f2c7dad4402fa205644391b3a94",
-"assets/packages/catex/fonts/KaTeX_Size1-Regular.ttf": "1e6a3368d660edc3a2fbbe72edfeaa85",
-"assets/packages/catex/fonts/KaTeX_Size4-Regular.ttf": "85554307b465da7eb785fd3ce52ad282",
 "assets/packages/catex/fonts/KaTeX_Math-BoldItalic.ttf": "946a26954ab7fbd7ea78df07795a6cbc",
+"assets/packages/catex/fonts/KaTeX_Size1-Regular.ttf": "1e6a3368d660edc3a2fbbe72edfeaa85",
+"assets/packages/catex/fonts/KaTeX_Main-Italic.ttf": "ac3b1882325add4f148f05db8cafd401",
+"assets/packages/catex/fonts/KaTeX_Size3-Regular.ttf": "e87212c26bb86c21eb028aba2ac53ec3",
+"assets/packages/catex/fonts/KaTeX_AMS-Regular.ttf": "657a5353a553777e270827bd1630e467",
+"assets/packages/catex/fonts/KaTeX_Typewriter-Regular.ttf": "87f56927f1ba726ce0591955c8b3b42d",
+"assets/packages/catex/fonts/KaTeX_Main-Regular.ttf": "5a5766c715ee765aa1398997643f1589",
+"assets/packages/catex/fonts/KaTeX_Size4-Regular.ttf": "85554307b465da7eb785fd3ce52ad282",
+"assets/packages/catex/fonts/KaTeX_Fraktur-Bold.ttf": "46b41c4de7a936d099575185a94855c4",
+"assets/packages/catex/fonts/KaTeX_SansSerif-Bold.ttf": "ad0a28f28f736cf4c121bcb0e719b88a",
+"assets/packages/catex/fonts/KaTeX_SansSerif-Italic.ttf": "d89b80e7bdd57d238eeaa80ed9a1013a",
+"assets/packages/catex/fonts/KaTeX_Fraktur-Regular.ttf": "dede6f2c7dad4402fa205644391b3a94",
+"assets/packages/catex/fonts/KaTeX_Main-Bold.ttf": "9eef86c1f9efa78ab93d41a0551948f7",
+"assets/packages/catex/fonts/KaTeX_SansSerif-Regular.ttf": "b5f967ed9e4933f1c3165a12fe3436df",
+"assets/packages/catex/fonts/KaTeX_Math-Italic.ttf": "a7732ecb5840a15be39e1eda377bc21d",
+"assets/packages/catex/fonts/KaTeX_Script-Regular.ttf": "55d2dcd4778875a53ff09320a85a5296",
+"assets/packages/catex/fonts/KaTeX_Size2-Regular.ttf": "959972785387fe35f7d47dbfb0385bc4",
+"assets/packages/catex/fonts/KaTeX_Caligraphic-Regular.ttf": "7ec92adfa4fe03eb8e9bfb60813df1fa",
 "assets/packages/catex/fonts/KaTeX_Caligraphic-Bold.ttf": "a9c8e437146ef63fcd6fae7cf65ca859",
-"assets/NOTICES": "83e3636b562aa172069e229b26f1b83a",
-"assets/AssetManifest.json": "39e0ffbdadee78298ae4adbc7fe87662",
 "assets/FontManifest.json": "d5eef3f615cda3fb494ba78d661d9bcc",
-"index.html": "7ac0ed45f140eefebeb83b8015f21da0",
-"/": "7ac0ed45f140eefebeb83b8015f21da0",
-"version.json": "e8753d6fbfc8e4dda1ac2f06aee2e51f",
-"main.dart.js": "8cc2135ee7c46dab92db022ec0617f72"
+"assets/NOTICES": "a7b35318e0f751567fad11fe3ecf7942",
+"main.dart.js": "d1e5929fc73fd2a2bc615b76b88e5b12",
+"index.html": "11280cd0752c9b1a3d78b80df9fa284e",
+"/": "11280cd0752c9b1a3d78b80df9fa284e",
+"manifest.json": "24e573f324be79f6554e57c2b15a734d",
+"version.json": "e8753d6fbfc8e4dda1ac2f06aee2e51f"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -48,7 +48,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
@@ -174,7 +174,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
