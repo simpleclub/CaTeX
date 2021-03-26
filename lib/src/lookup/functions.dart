@@ -218,7 +218,6 @@ const List<CaTeXFunction> supportedTextFunctions = [
   CaTeXFunction.textMd,
   CaTeXFunction.textIt,
   CaTeXFunction.textUp,
-  CaTeXFunction.cancel,
 ];
 
 /// Looks up the [FunctionNode] subclass for a given input.
