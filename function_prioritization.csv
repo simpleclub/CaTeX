@@ -56,7 +56,7 @@ function,supported,frequency
 \beta,true,140
 \Omega,true,140
 \sum,false,128
-\geq,125
+\geq,true,125
 \gamma,true,116
 \overline,false,115
 \Delta,true,114
