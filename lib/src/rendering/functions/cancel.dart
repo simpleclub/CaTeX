@@ -24,10 +24,12 @@ class RenderCancel extends RenderNode {
   @override
   void render(Canvas canvas) {
     paintChildNode(children[0]);
+    final double horizontalPadding = renderSize.width * .05;
+    final double verticalPadding = renderSize.height * .05;
 
     canvas.drawLine(
-      Offset(renderSize.width, 0),
-      Offset(0, renderSize.height),
+      Offset(renderSize.width - horizontalPadding, verticalPadding),
+      Offset(horizontalPadding, renderSize.height - verticalPadding),
       _linePaint,
     );
   }
