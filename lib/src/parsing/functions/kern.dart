@@ -30,7 +30,7 @@ class KernNode extends SingleChildNode<RenderKern>
   RenderKern createRenderNode(CaTeXContext context) {
     return RenderKern(
       context,
-      space: child.context.input.trim().parseToPx(context.textSize),
+      space: child!.context.input.trim().parseToPx(context.textSize)!,
     );
   }
 }

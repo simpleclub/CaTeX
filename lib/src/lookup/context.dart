@@ -23,44 +23,44 @@ class CaTeXContext {
   /// The input for the context.
   ///
   /// This will be parts of the whole input given to CaTeX.
-  final String input;
+  final String? input;
 
   // todo: [style] is unsupported.
   // ignore: public_member_api_docs
-  final CaTeXStyle style;
+  final CaTeXStyle? style;
 
   /// The color of rendered output.
   ///
   /// This controls the color for both font characters and other rendered
   /// output that is part of the symbols.
-  final Color color;
+  final Color? color;
 
   // todo: [size] is unsupported.
   // ignore: public_member_api_docs
-  final double size;
+  final double? size;
 
   /// Size used for the rendered symbols.
-  final double textSize;
+  final double? textSize;
 
   /// Font family used for the rendered characters.
-  final String fontFamily;
+  final String? fontFamily;
 
   /// [FontWeight] used for the rendered characters.
-  final FontWeight fontWeight;
+  final FontWeight? fontWeight;
 
   /// [FontStyle] used for the rendered characters.
-  final FontStyle fontStyle;
+  final FontStyle? fontStyle;
 
   /// Copies the context with overridden properties.
   CaTeXContext copyWith({
-    String input,
-    CaTeXStyle style,
-    Color color,
-    double size,
-    double textSize,
-    String fontFamily,
-    FontWeight fontWeight,
-    FontStyle fontStyle,
+    String? input,
+    CaTeXStyle? style,
+    Color? color,
+    double? size,
+    double? textSize,
+    String? fontFamily,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
   }) =>
       CaTeXContext(
         input: input ?? this.input,

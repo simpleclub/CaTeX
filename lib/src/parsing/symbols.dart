@@ -23,12 +23,12 @@ class SymbolNode extends LeafNode<RenderSymbol> {
 
   @override
   RenderSymbol createRenderNode(CaTeXContext context) {
-    final symbol = symbols[_context.mode][context.input];
+    final symbol = symbols[_context.mode]![context.input!];
 
     if (symbol == null) {
       throw ConfigurationException(
         reason: 'Unknown symbol in ${_context.mode}',
-        input: context.input,
+        input: context.input!,
       );
     }
 

@@ -19,14 +19,14 @@ class FracNode extends MultiChildNode<RenderFrac>
     final childrenContext = context.copyWith(
       // todo: properly determine size reduction
       // (some systems are already partially setup but unsupported).
-      textSize: context.textSize * .78,
+      textSize: context.textSize! * .78,
     );
 
     return NodeWidget(
       context,
       createRenderNode,
       children: [
-        for (final child in children) child.createWidget(childrenContext),
+        for (final child in children) child!.createWidget(childrenContext),
       ],
     );
   }

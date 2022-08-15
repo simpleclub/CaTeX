@@ -28,5 +28,5 @@ class SymbolData {
 
   final SymbolFont font;
   final SymbolGroup group;
-  final String unicode;
+  final String? unicode;
 }

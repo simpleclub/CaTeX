@@ -50,7 +50,7 @@ enum CharacterCategory {
   invalidCharacter, // todo: [invalidCharacter] is unsupported.
 }
 
-final _matches = <CharacterCategory, RegExp>{
+final _matches = <CharacterCategory, RegExp?>{
   CharacterCategory.escapeCharacter: RegExp(r'\\'),
   CharacterCategory.beginningOfGroup: RegExp('{'),
   CharacterCategory.endOfGroup: RegExp('}'),
@@ -83,6 +83,6 @@ extension CategoryMatcher on CharacterCategory {
     assert(_matches[this] != null, '$this is not currently supported.');
     assert(character.length == 1, 'Only single characters can be checked.');
 
-    return _matches[this].hasMatch(character);
+    return _matches[this]!.hasMatch(character);
   }
 }

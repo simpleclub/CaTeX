@@ -42,7 +42,7 @@ const startParsingMode = CaTeXMode.math;
 /// [DefaultTextStyle].
 class CaTeX extends StatefulWidget {
   /// Constructs a [CaTeX] widget from an [input] string.
-  const CaTeX(this.input, {Key key})
+  const CaTeX(this.input, {Key? key})
       : assert(input != null),
         super(key: key);
 
@@ -54,18 +54,18 @@ class CaTeX extends StatefulWidget {
 }
 
 class _CaTeXState extends State<CaTeX> {
-  NodeWidget _rootNode;
-  CaTeXException _exception;
+  late NodeWidget _rootNode;
+  CaTeXException? _exception;
 
   void _parse() {
     _exception = null;
     try {
       // ignore: avoid_redundant_argument_values
       _rootNode = Parser(widget.input, mode: startParsingMode)
-          .parse()
+          .parse()!
           .createWidget(defaultCaTeXContext.copyWith(
             color: DefaultTextStyle.of(context).style.color,
-            textSize: DefaultTextStyle.of(context).style.fontSize * 1.21,
+            textSize: DefaultTextStyle.of(context).style.fontSize! * 1.21,
           ));
     } on CaTeXException catch (e) {
       _exception = e;
@@ -91,7 +91,7 @@ class _CaTeXState extends State<CaTeX> {
     if (_exception != null) {
       // Throwing the parsing exception here will make sure that it is
       // displayed by the Flutter ErrorWidget.
-      throw _exception;
+      throw _exception!;
     }
 
     // Rendering a full tree can be expensive and the tree never changes.
@@ -104,7 +104,7 @@ class _CaTeXState extends State<CaTeX> {
 class _TreeWidget extends SingleChildRenderObjectWidget {
   _TreeWidget(
     NodeWidget child, {
-    Key key,
+    Key? key,
   })  : assert(child != null),
         _context = child.context,
         super(child: child, key: key);
@@ -137,7 +137,7 @@ class NodeWidget<R extends RenderNode> extends MultiChildRenderObjectWidget {
   /// [ParsingNode.createWidget] methods of the [ChildrenNode.children].
   /// Logically, you will not specify children
   /// if this is constructed from a [LeafNode].
-  NodeWidget(this.context, this.createRenderNode, {List<NodeWidget> children})
+  NodeWidget(this.context, this.createRenderNode, {List<NodeWidget>? children})
       : assert(context != null),
         super(
           children: children ?? [],

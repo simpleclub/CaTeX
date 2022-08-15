@@ -185,7 +185,7 @@ class _ToggleEquationState extends State<ToggleEquation> {
       return Text(
         widget.equation,
         // ignore: deprecated_member_use
-        style: Theme.of(context).textTheme.subhead,
+        style: Theme.of(context).textTheme.subtitle1,
         textAlign: TextAlign.center,
       );
     }

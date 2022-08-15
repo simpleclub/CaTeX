@@ -17,15 +17,15 @@ class RenderCancel extends RenderNode {
   void render(Canvas canvas) {
     final linePaint = Paint()
       ..strokeWidth = 2
-      ..color = context.color;
+      ..color = context.color!;
 
     paintChildNode(children[0]);
-    final horizontalPadding = renderSize.width * .05;
-    final verticalPadding = renderSize.height * .05;
+    final horizontalPadding = renderSize!.width * .05;
+    final verticalPadding = renderSize!.height * .05;
 
     canvas.drawLine(
-      Offset(renderSize.width - horizontalPadding, verticalPadding),
-      Offset(horizontalPadding, renderSize.height - verticalPadding),
+      Offset(renderSize!.width - horizontalPadding, verticalPadding),
+      Offset(horizontalPadding, renderSize!.height - verticalPadding),
       linePaint,
     );
   }

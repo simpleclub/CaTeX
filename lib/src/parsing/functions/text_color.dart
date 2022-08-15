@@ -25,8 +25,8 @@ class TextColorNode extends MultiChildNode<RenderTextColor> with FunctionNode {
       // only has a single child because one child is used
       // for configuration only.
       children: [
-        children[1].createWidget(context.copyWith(
-          color: parseColor(children[0].context.input),
+        children[1]!.createWidget(context.copyWith(
+          color: parseColor(children[0]!.context.input),
         )),
       ],
     );

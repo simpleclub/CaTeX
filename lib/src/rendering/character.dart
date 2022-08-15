@@ -28,9 +28,9 @@ class RenderCharacter extends RenderNode {
   /// populates the [CaTeXContext.input] with the symbol. Any other
   /// [RenderCharacter] will pass a [symbol] explicitly if the input is to be
   /// rendered using a different unicode character.
-  final SymbolData symbol;
+  final SymbolData? symbol;
 
-  TextPainter _painter;
+  late TextPainter _painter;
 
   @override
   void configure() {
@@ -72,10 +72,10 @@ class TypesetPainter extends TextPainter {
 /// Specifies special behavior for certain characters.
 ///
 /// This can be overridden by functions, e.g. \rm.
-FontStyle _resolveFontStyle(CaTeXContext context) {
+FontStyle? _resolveFontStyle(CaTeXContext context) {
   if (context.fontStyle != null) return context.fontStyle;
 
-  if (CharacterCategory.letter.matches(context.input)) {
+  if (CharacterCategory.letter.matches(context.input!)) {
     return FontStyle.italic;
   }
 
@@ -85,7 +85,7 @@ FontStyle _resolveFontStyle(CaTeXContext context) {
 /// Specifies special behavior for certain characters.
 ///
 /// This can be overridden by functions, e.g. \rm.
-FontWeight _resolveFontWeight(CaTeXContext context) {
+FontWeight? _resolveFontWeight(CaTeXContext context) {
   if (context.fontWeight != null) return context.fontWeight;
 
   return FontWeight.normal;

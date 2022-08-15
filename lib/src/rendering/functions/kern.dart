@@ -11,7 +11,7 @@ class RenderKern extends RenderNode {
   /// Constructs a [RenderKern] given a [context].
   RenderKern(
     CaTeXContext context, {
-    @required this.space,
+    required this.space,
   })  : assert(space != null),
         super(context);
 

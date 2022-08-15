@@ -20,10 +20,10 @@ class SubSupNode extends SingleChildNode<RenderSubSup>
       context,
       createRenderNode,
       children: [
-        child.createWidget(context.copyWith(
+        child!.createWidget(context.copyWith(
           // todo: properly determine size reduction
           // (some systems are already partially setup but unsupported).
-          textSize: context.textSize * .6,
+          textSize: context.textSize! * .6,
         )),
       ],
     );

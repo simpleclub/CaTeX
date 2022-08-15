@@ -23,7 +23,7 @@ class RaiseBoxNode extends MultiChildNode<RenderRaiseBox>
       context,
       createRenderNode,
       children: [
-        children[1].createWidget(context),
+        children[1]!.createWidget(context),
       ],
     );
   }
@@ -33,7 +33,7 @@ class RaiseBoxNode extends MultiChildNode<RenderRaiseBox>
     return RenderRaiseBox(
       context,
       // Negative sign because the box should be raised by the amount.
-      shift: -children[0].context.input.trim().parseToPx(context.textSize),
+      shift: -children[0]!.context.input.trim().parseToPx(context.textSize)!,
     );
   }
 }
