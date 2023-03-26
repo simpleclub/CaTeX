@@ -25,17 +25,17 @@ class CaTeXStyleData {
   final int size;
   final bool cramped;
 
-  CaTeXStyleData get sup => styles[_sup[id]];
+  CaTeXStyleData? get sup => styles[_sup[id]];
 
-  CaTeXStyleData get sub => styles[_sub[id]];
+  CaTeXStyleData? get sub => styles[_sub[id]];
 
-  CaTeXStyleData get fracNum => styles[_fracNum[id]];
+  CaTeXStyleData? get fracNum => styles[_fracNum[id]];
 
-  CaTeXStyleData get fracDen => styles[_fracDen[id]];
+  CaTeXStyleData? get fracDen => styles[_fracDen[id]];
 
-  CaTeXStyleData get cramp => styles[_cramp[id]];
+  CaTeXStyleData? get cramp => styles[_cramp[id]];
 
-  CaTeXStyleData get text => styles[_text[id]];
+  CaTeXStyleData? get text => styles[_text[id]];
 
   @override
   bool operator ==(dynamic other) {

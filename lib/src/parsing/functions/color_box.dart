@@ -24,7 +24,7 @@ class ColorBoxNode extends MultiChildNode<RenderColorBox> with FunctionNode {
       createRenderNode,
       // Only take the color from the first child and render the second one.
       children: [
-        children[1].createWidget(context.copyWith(
+        children[1]!.createWidget(context.copyWith(
           // Letters in a color box are not italic by default.
           // Hence, we need to override the font style.
           fontStyle: FontStyle.normal,
@@ -38,7 +38,7 @@ class ColorBoxNode extends MultiChildNode<RenderColorBox> with FunctionNode {
     return RenderColorBox(context.copyWith(
       // Only modify the context of the actual box node with the color
       // because the children are unaffected by the colored background.
-      color: parseColor(children[0].context.input),
+      color: parseColor(children[0]!.context.input),
     ));
   }
 }

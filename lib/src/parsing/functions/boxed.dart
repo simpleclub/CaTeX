@@ -18,7 +18,7 @@ class BoxedNode extends SingleChildNode<RenderBoxed> with FunctionNode {
     return NodeWidget(
       context,
       createRenderNode,
-      children: [child.createWidget(context)],
+      children: [child!.createWidget(context)],
     );
   }
 

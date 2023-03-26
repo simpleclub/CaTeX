@@ -17,7 +17,7 @@ class GroupNode extends MultiChildNode<RenderGroup> {
     return NodeWidget(
       context,
       createRenderNode,
-      children: [for (final child in children) child.createWidget(context)],
+      children: [for (final child in children) child!.createWidget(context)],
     );
   }
 

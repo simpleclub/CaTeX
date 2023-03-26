@@ -10,6 +10,6 @@ import 'package:catex/src/rendering/rendering.dart';
 ///
 /// See also:
 ///  * [RenderGroup]
-class RenderSubSup extends RenderNode with SingleChildRenderNodeMixin {
+class RenderSubSup extends RenderNode<NodeParentData> with SingleChildRenderNodeMixin {
   RenderSubSup(CaTeXContext context) : super(context);
 }

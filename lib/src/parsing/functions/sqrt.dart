@@ -2,7 +2,6 @@ import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/functions.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/functions/sqrt.dart';
-import 'package:catex/src/rendering/rendering.dart';
 import 'package:catex/src/widgets.dart';
 
 class SqrtNode extends SingleChildNode with FunctionNode {
@@ -19,13 +18,13 @@ class SqrtNode extends SingleChildNode with FunctionNode {
       context,
       createRenderNode,
       children: [
-        child.createWidget(context),
+        child!.createWidget(context),
       ],
     );
   }
 
   @override
-  RenderNode<NodeParentData> createRenderNode(CaTeXContext context) {
+  RenderSqrt createRenderNode(CaTeXContext context) {
     return RenderSqrt(context);
   }
 }

@@ -24,7 +24,7 @@ class CancelNode extends SingleChildNode<RenderCancel>
       context,
       createRenderNode,
       children: [
-        child.createWidget(context),
+        child!.createWidget(context),
       ],
     );
   }

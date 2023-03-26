@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 ///
 /// The function will never return `null`. Instead, it will throw a
 /// [ConfigurationException].
-Color parseColor(String input) {
+Color? parseColor(String input) {
   final color = input.replaceFirst('#', '').trim();
 
   if (_htmlColors.containsKey(color)) {

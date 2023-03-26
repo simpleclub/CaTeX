@@ -18,7 +18,7 @@ class StylingNode extends SingleChildNode<RenderStyling>
   NodeWidget<RenderStyling> configureWidget(CaTeXContext context) {
     super.configureWidget(context);
 
-    final function = supportedFunctionNames[context.input];
+    final function = supportedFunctionNames[context.input!];
 
     double sizeFactor = 1.0;
 
@@ -40,8 +40,8 @@ class StylingNode extends SingleChildNode<RenderStyling>
       context,
       createRenderNode,
       children: [
-        child.createWidget(context.copyWith(
-          textSize: sizeFactor * context.textSize,
+        child!.createWidget(context.copyWith(
+          textSize: sizeFactor * context.textSize!,
         )),
       ],
     );

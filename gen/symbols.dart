@@ -48,7 +48,7 @@ Future<void> main(List<String> args) async {
     String mode,
     String font,
     String group,
-    String unicode,
+    String? unicode,
     String name, [
     // ignore: avoid_positional_boolean_parameters
     bool createUnicodeEntry = false,

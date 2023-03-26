@@ -56,7 +56,7 @@ class ParsingException extends CaTeXException {
   /// Constructs a [ParsingException] from a [reason] and an [input].
   ///
   /// See [CaTeXException] for the meaning of those.
-  ParsingException({String reason, String input})
+  ParsingException({required String reason, required String input})
       : super(reason, input, 'parsing');
 }
 
@@ -65,7 +65,7 @@ class ConfigurationException extends CaTeXException {
   /// Constructs a [ConfigurationException] from a [reason] and an [input].
   ///
   /// See [CaTeXException] for the meaning of those.
-  ConfigurationException({String reason, String input})
+  ConfigurationException({required String reason, required String input})
       : super(reason, input, 'configuration');
 }
 
@@ -74,6 +74,6 @@ class RenderingException extends CaTeXException {
   /// Constructs a [RenderingException] from a [reason] and an [input].
   ///
   /// See [CaTeXException] for the meaning of those.
-  RenderingException({String reason, String input})
+  RenderingException({required String reason, required String input})
       : super(reason, input, 'rendering');
 }

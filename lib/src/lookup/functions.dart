@@ -227,7 +227,7 @@ const List<CaTeXFunction> supportedTextFunctions = [
 /// [supportedFunctionNames] *and* this function is in [supportedMathFunctions]
 /// in math mode or in [supportedTextFunctions]
 /// in text mode. Otherwise, this function returns `null`.
-FunctionNode lookupFunction(ParsingContext context) {
+FunctionNode? lookupFunction(ParsingContext context) {
   final input = context.input,
       mode = context.mode,
       function = supportedFunctionNames[input];
@@ -299,8 +299,8 @@ class FunctionProperties {
   /// Constructs [FunctionProperties] from the number of [arguments] and
   /// a [greediness] value.
   const FunctionProperties({
-    @required this.arguments,
-    @required this.greediness,
+    required this.arguments,
+    required this.greediness,
   })  : assert(arguments != null),
         assert(greediness != null),
         assert(arguments > 0),

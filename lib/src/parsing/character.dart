@@ -27,7 +27,7 @@ class CharacterNode extends LeafNode<RenderCharacter> {
     // todo| are rendered
     // The symbol is passed explicitly as the input needs to stay the same for
     // correct spacing etc.
-    final symbol = symbols[_context.mode][context.input];
+    final symbol = symbols[_context.mode]![context.input!];
 
     return RenderCharacter(
       context,

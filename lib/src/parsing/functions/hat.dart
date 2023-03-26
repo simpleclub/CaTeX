@@ -2,7 +2,6 @@ import 'package:catex/src/lookup/context.dart';
 import 'package:catex/src/lookup/functions.dart';
 import 'package:catex/src/parsing/parsing.dart';
 import 'package:catex/src/rendering/functions/hat.dart';
-import 'package:catex/src/rendering/rendering.dart';
 import 'package:catex/src/widgets.dart';
 
 // todo: probably create an accent node to group accents together
@@ -24,13 +23,13 @@ class HatNode extends SingleChildNode with FunctionNode {
       context,
       createRenderNode,
       children: [
-        child.createWidget(context),
+        child!.createWidget(context),
       ],
     );
   }
 
   @override
-  RenderNode<NodeParentData> createRenderNode(CaTeXContext context) {
+  RenderHat createRenderNode(CaTeXContext context) {
     return RenderHat(context);
   }
 }

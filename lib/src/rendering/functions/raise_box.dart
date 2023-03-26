@@ -4,11 +4,11 @@ import 'package:catex/src/rendering/rendering.dart';
 import 'package:meta/meta.dart';
 
 /// [RenderNode] for [RaiseBoxNode].
-class RenderRaiseBox extends RenderNode with SingleChildRenderNodeMixin {
+class RenderRaiseBox extends RenderNode<NodeParentData> with SingleChildRenderNodeMixin {
   /// Constructs a [RenderRaiseBox] given a [context].
   RenderRaiseBox(
     CaTeXContext context, {
-    @required this.shift,
+    required this.shift,
   })  : assert(shift != null),
         super(context);
 
